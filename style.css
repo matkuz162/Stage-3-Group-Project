@@ -12,9 +12,17 @@ header {
   padding: 10px;
   color: black;
   position: fixed;
-  height: min-content;
+  height: 80px;
   width: 100%;
   top: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+header img {
+  width: 150px;
+  height: auto;
 }
 
 footer {
@@ -22,7 +30,7 @@ footer {
   padding: 10px;
   color: black;
   position: fixed;
-  height: min-content;
+  height: 50px;
   width: 100%;
   bottom: 0;
 }
