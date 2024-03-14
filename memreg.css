@@ -1,0 +1,85 @@
+body {
+  background-color: #c4fbff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: white;
+  padding: 10px;
+  color: black;
+  height: 80px;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 1000; /* Add z-index to keep the header above other elements */
+}
+
+header img {
+  width: 150px;
+  height: auto;
+}
+
+footer {
+  background-color: white;
+  padding: 10px;
+  color: black;
+  height: 50px;
+  width: 100%;
+  bottom: 0;
+  z-index: 1000; /* Add z-index to keep the footer above other elements */
+}
+
+.container {
+  width: 1000px;
+  margin: 130px auto 80px; /* Adjust margin to leave space for header and footer */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #c4fbff;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
