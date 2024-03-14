@@ -26,56 +26,39 @@
     <h2>Financial Details</h2>
     <form action="memreg.php" method="post">
         <div class="form-group">
-            <label for="first_name">First Name:</label>
-            <input type="text" id="first_name" name="first_name" required>
+            <label for="annual">1 - Annual Income:</label>
+            <input type="text" id="a" name="first_name" required>
         </div>
         <br>
         <div class="form-group">
-            <label for="last_name">Last Name:</label>
-            <input type="text" id="last_name" name="last_name" required>
+          <label for="addinc">2 - Recieve Additional Income?:</label>
+          <select id="addinc" name="addinc">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+          </select>
         </div>
         <br>
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <label for="ammount">2.1 - Amount of Additional Income?</label>
+            <input type="text" id="amount" name="amount" required>
         </div>
         <br>
         <div class="form-group">
-            <label for="phone_number">Phone Number:</label>
-            <input type="tel" id="phone_number" name="phone_number" required>
+            <label for="duration">3 - Mortgage Duration?</label>
+            <input type="text" id="duration" name="duration" required>
         </div>
         <br>
         <div class="form-group">
-            <label for="country">Country:</label>
-            <input type="text" id="country" name="country" required>
+            <label for="balance">4 - Total Balance held by User:</label>
+            <input type="text" id="balance" name="balance" required>
         </div>
         <br>
         <div class="form-group">
-            <label for="county">County:</label>
-            <input type="text" id="county" name="county">
+            <label for="commit">5 - Other Major Monthly Commitments?</label>
+            <input type="text" id="commit" name="commit">
         </div>
         <br>
-        <div class="form-group">
-            <label for="city">City:</label>
-            <input type="text" id="city" name="city" required>
-        </div>
-        <br>
-        <div class="form-group">
-            <label for="postcode">Postcode:</label>
-            <input type="text" id="postcode" name="postcode" required>
-        </div>
-       <br>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <br>
-        <div class="form-group">
-            <label for="confirm_password">Confirm Password:</label>
-            <input type="password" id="confirm_password" name="confirm_password" required>
-        </div>
-        <br>
-        <button type="submit">Register</button>
+        <button type="submit">Submit</button>
     </form>
 </div>
 
