@@ -18,7 +18,7 @@ header {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  z-index: 1000; /* Add z-index to keep the header above other elements */
+  /*z-index: 1000; /* Add z-index to keep the header above other elements */
 }
 
 header img {
