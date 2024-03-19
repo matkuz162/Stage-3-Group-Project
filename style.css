@@ -132,4 +132,5 @@ button:hover {
   transition: 0.7s;
 }
 .nav-links li:hover::after{
-  width: 100%;
+  width: 100%
+}
