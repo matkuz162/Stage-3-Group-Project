@@ -108,3 +108,28 @@ button:hover {
 .dropdown{
   width: 100px;
 }
+
+.nav-links li{
+  display: inline-block;
+  position: relative;
+  margin: 0 15px;
+}
+.nav-links li a{
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.nav-links li::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #000;
+  display: block;
+  margin: auto;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
+  transition: 0.7s;
+}
+.nav-links li:hover::after{
+  width: 100%;
