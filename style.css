@@ -54,6 +54,11 @@ footer {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
 h2 {
   text-align: center;
 }
