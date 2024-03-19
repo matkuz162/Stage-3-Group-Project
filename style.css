@@ -1,17 +1,21 @@
-body {
-  font-family: 'Questrial';
-  background-color: #c4fbff;
+* {
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  list-style: none;
 }
-
+a {
+  color: #000;
+  text-decoration: none;
+}
+/*Navigation section*/
 header {
   background-color: #98CFED;
   padding: 10px;
   color: black;
+  position: sticky;
   height: 100px;
   width: 100%;
   top: 0;
@@ -20,21 +24,43 @@ header {
   align-items: center;
   z-index: 1000;
 }
-
+.nav-links li{
+  display: inline-block;
+  position: relative;
+  margin: 0 15px;
+}
+.nav-links li a{
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.nav-links li::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #000;
+  display: block;
+  margin: auto;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
+  transition: 0.7s;
+}
+.nav-links li:hover::after{
+  width: 100%
+}
 header img {
   width: 150px;
   height: auto;
 }
-
-footer {
-  background-color: white;
-  padding: 10px;
-  color: black;
-  height: 50px;
-  width: 100%;
-  bottom: 0;
-  z-index: 1000;
+body {
+  font-family: 'Questrial';
+  background-color: #c4fbff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+
 
 .container {
   width: 500px;
@@ -81,7 +107,7 @@ input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="password"],
-select {
+select{
   width: 100%;
   padding: 10px;
   border: 2px solid black;
@@ -91,7 +117,6 @@ select {
 
 button {
   display: block;
-  width: 100%;
   padding: 10px;
   background-color: #c4fbff;
   color: black;
@@ -108,29 +133,91 @@ button:hover {
 .dropdown{
   width: 100px;
 }
+/*Broker page code */
+.hero{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+form {
+  width: 40%;
+  max-width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-control{
+  border: 2px solid black;
+}
+.input-group{
+  margin-bottom: 20px;
+}
 
-.nav-links li{
-  display: inline-block;
-  position: relative;
-  margin: 0 15px;
+.product-information{
+  display: flex;
+  justify-content: center;
+  background-color: rgba(255,255,255,0.8);
+  padding: 20px;
+  border: 1px solid #9C9A9A;
+  width: 1200px;
+  max-width: 1000px;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.nav-links li a{
-  font-weight: bold;
-  font-size: 1.1rem;
+
+.product-description input{
+  width: 350px;
+  padding: 8px;
 }
-.nav-links li::after {
-  content: '';
-  width: 0%;
-  height: 2px;
-  background: #000;
-  display: block;
-  margin: auto;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%);
-  transition: 0.7s;
+.expected-description{
+  margin:20px 0 30px 30px;
 }
-.nav-links li:hover::after{
-  width: 100%
+.expected-description input{
+  width: 300px;
+  padding: 8px 20px;
+  margin: 5px;
+}
+.product-description textarea{
+  height: 250px;
+  width: 550px ;
+  resize: none;
+}
+.product-creation-btn{
+  padding: 10px 20px;
+  background-color: rgba(255,255,255,0.8);
+  margin: 0 auto;
+  cursor: pointer;
+  transition: .5s;
+  border: solid 1px #9C9A9A;
+  margin-top: 15px;
+  border-radius: 8px;
+}
+.product-creation-btn:hover{
+  background-color: rgba(200,200,200,0.8);
+}
+@media only screen and (max-width: 1000px) {
+  .product-information {
+      flex-direction: column;
+      align-items: center; 
+      text-align: center;
+      max-width: 650px;
+  }
+  .form-control{
+       margin: 0 auto;
+  }
+}
+/*Footer section*/
+footer {
+  background-color: white;
+  padding: 10px;
+  color: black;
+  height: 50px;
+  width: 100%;
+  bottom: 0;
+  z-index: 1000;
 }
