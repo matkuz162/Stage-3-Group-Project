@@ -13,26 +13,43 @@
 
 <body>
 
-  <header>
+  <header class="flex-container">
 
-      <img src="Assets/logo.png" alt="Rose Mortgage">
+        <div><img src="Assets/logo.png" alt="Rose Mortgage"></div>
 
-      <ul class="nav-links">
-        <li><a href="MemberViewProducts.html">Available Products</a></li>
-        <li><a href="MemberChosenProducts.html">Chosen Products</a></li>
-        <li><a href="MemberAccountDetails.html">Account Details</a></li>
-        <li><a href="#">Sign Out</a></li>
-    </ul>
+        <div>
+            <ul class="nav-links">
+                <li><a href="MemberViewProducts.html">Available Products</a></li>
+                <li><a href="MemberChosenProducts.html">Chosen Products</a></li>
+                <li><a href="MemberAccountDetails.html">Account Details</a></li>
+                <li><a href="#">Sign Out</a></li>
+            </ul>
+        </div>
 
   </header>
 
 
 
   <div class="largecontainer">
+    <div class="flex-container">
+        <div><h3><b>Chosen Products:</b></h3></div>
 
-    <h3>Account Details:</h3>
+        <div class="flex-container">
+            <div>
+                <a>Sort By:</a>
+            </div>
+            <div>
+                <select>
+                    <option>Highest Price</option>
+                    <option>Lowest Price</option>
+                    <option>Oldest Product</option>
+                    <option>Newest Product</option>
+                </select>
+            </div>
+        </div>
+    
 
-
+    </div>
 </div>
 
 
