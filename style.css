@@ -58,6 +58,10 @@ h2 {
   text-align: center;
 }
 
+h3 {
+  text-align: left;
+}
+
 .form-group {
   margin-bottom: 20px;
 }
