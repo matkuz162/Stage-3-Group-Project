@@ -45,8 +45,27 @@ footer {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.largecontainer {
+  width: 1000px;
+  margin: 100px auto 80px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+
 h2 {
   text-align: center;
+}
+
+h3 {
+  text-align: left;
 }
 
 .form-group {
@@ -84,4 +103,8 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+.dropdown{
+  width: 100px;
 }
