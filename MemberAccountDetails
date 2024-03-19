@@ -22,20 +22,7 @@
 
 
   <div class="largecontainer">
-    <div class="flex-container">
-        <div><h3>Available Products:</h3></div>
-
-        <div>
-            <select>
-            <option>Highest Price</option>
-            <option>Lowest Price</option>
-            <option>Oldest Product</option>
-            <option>Newest Product</option>
-            </select>
-        </div>
     
-
-    </div>
 </div>
 
 
