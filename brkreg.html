@@ -20,23 +20,21 @@
 
 
 
-
-
   <div class="container">
-    <h2>Broker Registration</h2>
+    <h2>Member Registration</h2>
     <form action="memreg.php" method="post">
         <div class="form-group">
-            <label for="annual">Annual Income:</label>
-            <input type="text" id="a" name="first_name" required>
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required>
         </div>
         <br>
         <div class="form-group">
-            <label for="addinc">Recieve Additionla Income?:</label>
-            <input type="text" id="addinc" name="addinc" required>
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required>
         </div>
         <br>
         <div class="form-group">
-            <label for="email">Emai:</label>
+            <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
         </div>
         <br>
@@ -75,9 +73,17 @@
             <input type="password" id="confirm_password" name="confirm_password" required>
         </div>
         <br>
+
+<br>
+<h2>Broker <Details></Details></h2>
+
+
         <button type="submit">Register</button>
     </form>
 </div>
+
+
+
 
 
 
@@ -114,7 +120,5 @@
 
 
 </body>
-
-
 
 </html>
