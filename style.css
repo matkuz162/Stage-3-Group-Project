@@ -62,15 +62,6 @@ body {
 }
 
 
-.container {
-  width: 500px;
-  margin: 130px auto 80px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
 .largecontainer {
   width: 1000px;
   margin: 100px auto 80px;
@@ -94,41 +85,12 @@ h3 {
   text-align: left;
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
 
 label {
   display: block;
   font-weight: bold;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="password"],
-select{
-  width: 100%;
-  padding: 10px;
-  border: 2px solid black;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-button {
-  display: block;
-  padding: 10px;
-  background-color: #c4fbff;
-  color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
 
 .dropdown{
   width: 100px;
