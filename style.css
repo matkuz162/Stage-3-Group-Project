@@ -76,6 +76,13 @@ body {
   justify-content:space-between;
 }
 
+.flex-table {
+  display:flex;
+  flex-direction: row;
+  align-items: space-between;
+  justify-content: space-around;
+}
+
 h2 {
   text-align: center;
 }
@@ -181,4 +188,5 @@ footer {
   width: 100%;
   bottom: 0;
   z-index: 1000;
+  position: absolute;
 }
