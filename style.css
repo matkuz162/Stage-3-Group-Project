@@ -103,7 +103,6 @@ body {
 .flex-table {
   display:flex;
   flex-direction: row;
-  flex-wrap: wrap;
   align-content: flex-start;
   justify-content: space-around;
   margin-right: 20px;
@@ -184,6 +183,41 @@ form {
   width: 550px ;
   resize: none;
 }
+.product-layout{
+  background-color: #fff;
+  margin: 40px auto;
+  max-width: 900px;
+  height: 300px;
+}
+.product-header{
+  background-color: #98CFED;
+  padding: 20px;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+.edit-product-btn{
+  padding: 10px 20px;
+  background-color: #5CF574;
+  margin-right: 20px;
+  border-radius: 3px;
+  border: solid 1px #5CA004;
+}
+.delete-product-btn{
+  padding: 10px 20px;
+  background-color: #F55546;
+  border-radius: 3px;
+  border: solid 1px #F51546;
+}
+.manage-product-information{
+  padding: 20px;
+}
+.product-section{
+  display: flex;
+  flex-direction: column;
+}
 .product-creation-btn{
   padding: 10px 20px;
   background-color: rgba(255,255,255,0.8);
@@ -191,7 +225,7 @@ form {
   cursor: pointer;
   transition: .5s;
   border: solid 1px #9C9A9A;
-  margin-top: 15px;
+  margin: 15px 20px 0 0;
   border-radius: 8px;
 }
 .product-creation-btn:hover{
