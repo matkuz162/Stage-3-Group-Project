@@ -76,6 +76,12 @@ body {
   justify-content:space-between;
 }
 
+.flex-table {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 h2 {
   text-align: center;
 }
