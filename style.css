@@ -79,6 +79,7 @@ body {
 .flex-table {
   display:flex;
   flex-direction: row;
+  align-items: space-between;
   justify-content: space-around;
 }
 
