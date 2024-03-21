@@ -1,16 +1,41 @@
+/*Navigation section*/
 header {
-    background-color: #98CFED;
-    padding: 10px;
-    color: black;
-    height: 100px;
-    width: 100%;
-    top: 0;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    z-index: 1000;
-    margin-bottom: 100px;
-  }
+  background-color: #98CFED;
+  padding: 10px;
+  color: black;
+  height: 100px;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 1000;
+}
+.nav-links li{
+  display: inline-block;
+  position: relative;
+  margin: 0 25px;
+}
+.nav-links li a{
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.nav-links li::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #000;
+  display: block;
+  margin: auto;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
+  transition: 0.7s;
+}
+.nav-links li:hover::after{
+  width: 100%
+}
   
 header img {
     width: 150px;
