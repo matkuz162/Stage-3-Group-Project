@@ -52,13 +52,31 @@ header img {
   width: 150px;
   height: auto;
 }
+
 body {
-  font-family: 'Questrial';
   background-color: #c4fbff;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
+
+
+/* form css*/
+
+.brkreg {
+  background-color: white;
+  width: 500px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* form css*/
 
 
 .largecontainer {
