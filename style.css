@@ -225,7 +225,7 @@ form {
   cursor: pointer;
   transition: .5s;
   border: solid 1px #9C9A9A;
-  margin-top: 15px;
+  margin: 15px 20px 0 0;
   border-radius: 8px;
 }
 .product-creation-btn:hover{
