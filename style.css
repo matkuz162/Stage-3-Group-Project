@@ -183,6 +183,41 @@ form {
   width: 550px ;
   resize: none;
 }
+.product-layout{
+  background-color: #fff;
+  margin: 40px auto;
+  max-width: 900px;
+  height: 300px;
+}
+.product-header{
+  background-color: #98CFED;
+  padding: 20px;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+.edit-product-btn{
+  padding: 10px 20px;
+  background-color: #5CF574;
+  margin-right: 20px;
+  border-radius: 3px;
+  border: solid 1px #5CA004;
+}
+.delete-product-btn{
+  padding: 10px 20px;
+  background-color: #F55546;
+  border-radius: 3px;
+  border: solid 1px #F51546;
+}
+.product-information{
+  padding: 20px;
+}
+.product-section{
+  display: flex;
+  flex-direction: column;
+}
 .product-creation-btn{
   padding: 10px 20px;
   background-color: rgba(255,255,255,0.8);
