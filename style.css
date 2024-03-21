@@ -10,6 +10,12 @@ a {
   color: #000;
   text-decoration: none;
 }
+
+main{
+  margin-top: 60px;
+  margin-bottom: 100px;
+}
+
 /*Navigation section*/
 header {
   background-color: #98CFED;
@@ -188,5 +194,4 @@ footer {
   width: 100%;
   bottom: 0;
   z-index: 1000;
-  position: absolute;
 }
