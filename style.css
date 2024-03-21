@@ -10,6 +10,12 @@ a {
   color: #000;
   text-decoration: none;
 }
+
+main{
+  margin-top: 60px;
+  margin-bottom: 100px;
+}
+
 /*Navigation section*/
 header {
   background-color: #98CFED;
@@ -93,6 +99,18 @@ body {
   flex-direction: row;
   justify-content:space-between;
 }
+
+.flex-table {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: space-around;
+  margin-right: 20px;
+  margin-bottom: 1em;
+  border: 1px solid black;
+}
+
 
 h2 {
   text-align: center;
