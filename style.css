@@ -85,9 +85,11 @@ body {
 .flex-table {
   display:flex;
   flex-direction: row;
-  align-items: space-between;
-  justify-content: space-around;
+  margin-right: 20px;
+  margin-bottom: 1em;
+  border: 1px solid black;
 }
+
 
 h2 {
   text-align: center;
