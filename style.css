@@ -27,7 +27,7 @@ header {
 .nav-links li{
   display: inline-block;
   position: relative;
-  margin: 0 15px;
+  margin: 0 25px;
 }
 .nav-links li a{
   font-weight: bold;
