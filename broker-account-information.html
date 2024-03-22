@@ -32,7 +32,7 @@
     <main>
 
       <div class="reg">
-        <h2 class="mb-4">Account Details</h2>
+        <h2 class="mb-4">Account Details:</h2>
         <form id="editForm" action="update_details.php" method="post">
             <div class="form-group">
                 <label for="first_name" class="form-label">First Name:</label>
@@ -70,7 +70,7 @@
                 <label for="password" class="form-label">New Password:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
               </div>
-              <h2 class="mt-5">Broker Details</h2><br>
+              <h2 class="mt-5">Broker Details:</h2><br>
       
               <div class="form-group">
                 <label for="broker_name" class="form-label">Broker Name:</label>
@@ -81,7 +81,7 @@
                 <input type="text" class="form-control" id="broker_license_number" name="broker_license_number">
               </div>
               
-              <h2 class="mt-5">Company Details</h2><br>
+              <h2 class="mt-5">Company Details:</h2><br>
               
               <div class="form-group">
                 <label for="company_name" class="form-label">Company Name:</label>
@@ -107,8 +107,9 @@
                 <label for="company_postcode" class="form-label">Postcode:</label>
                 <input type="text" class="form-control" id="company_postcode" name="company_postcode" required>
               </div>
-              <button type="button" id="editBtn" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Edit Details</button>
-              <button type="submit" id="saveBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save</button>
+              <button type="button" id="editFinancialBtn" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Edit Financial Details</button>
+              <button type="submit" id="saveFinancialBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save Financial Details</button>
+              
           </form>
       </div>
 
