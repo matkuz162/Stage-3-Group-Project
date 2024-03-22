@@ -113,7 +113,7 @@ ul li {
     margin: auto;
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 15px;
   }
   
 .form-group {
@@ -171,6 +171,8 @@ label {
 .dropdown{
   width: 100px;
 }
+
+
 /*Broker page code */
 .hero{
   width: 100%;
@@ -181,7 +183,7 @@ label {
   display: flex;
   flex-direction: column;
 }
-form {
+form.product {
   width: 40%;
   max-width: 60%;
   display: flex;
@@ -282,6 +284,88 @@ form {
        margin: 0 auto;
   }
 }
+
+
+
+
+/* reset password css */
+
+.reset {
+  background-color: white;
+  width: 500px;
+  height: 500px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form.reset-password {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.otp-field {
+  display: flex;
+  justify-content: center;
+}
+
+.otp-field input {
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  margin: 2px;
+  border: 2px solid gray;
+  background: white;
+  font-weight: bold;
+  color: black;
+  outline: none;
+  transition: all 0.1s;
+}
+
+.otp-field input:focus{
+  border:2px solid green;
+  box-shadow: 0 0 2px 2px green;
+}
+
+.disabled{
+  opacity:0.5s;
+}
+
+.space{
+  margin-right: 1rem !important;
+}
+
+.confirm-btn {
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: 0.5s;
+  border: solid 1px #9c9a9a;
+  margin-top: 50px;
+  border-radius: 8px;
+}
+
+.confirm-btn:hover {
+  background-color: rgba(200, 200, 200, 0.8);
+}
+
+.resetPass{
+  padding: 0px;
+}
+
+
+
+
 /*Footer section*/
 footer {
   background-color: #98CFED;
