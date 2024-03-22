@@ -91,3 +91,7 @@ header img {
     z-index: 1000;
     margin-top: 100px;
   }
+
+  .form-control{
+    border: 2px solid black;
+  }

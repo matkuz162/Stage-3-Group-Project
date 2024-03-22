@@ -32,7 +32,7 @@
     <main>
 
         <div class="brkreg">
-            <h2 class="mb-4">Account Settings</h2>
+            <h2 class="mb-4">Account Details</h2>
             <form action="update_details.php" method="post">
               <div class="form-group">
                 <label for="first_name" class="form-label">First Name:</label>
@@ -70,12 +70,77 @@
                 <label for="password" class="form-label">New Password:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
               </div>
-              <a href="passwordreset.html" class="btn btn-secondary btn-lg btn-block">Reset Password</a>
-              <button type="submit" class="btn btn-primary btn-lg btn-block mt-3">Update Details</button>
-            </form>
-          </div>
+              <button type="button" id="editBtn" class="btn btn-primary btn-lg btn-block">Edit Details</button>
+              <button type="submit" id="saveBtn" class="btn btn-secondary btn-lg btn-block" style="display: none;">Save</button>
+          </form>
+      </div>
+
+      <br>
+
+        <div class="brkreg">
+            <h2 class="mb-4">Account Details</h2>
+            <form action="update_details.php" method="post">
+              <div class="form-group">
+                <label for="annual">1 - Annual Income:</label>
+                <input type="text" id="a" name="first_name" required>
+              </div><br>
+              <div class="form-group">
+                <label for="addinc">2 - Recieve Additional Income?:</label>
+                <select id="addinc" name="addinc">
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </div><br>
+              <div class="form-group">
+      <label for="ammount">2.1 - Amount of Additional Income?</label>
+      <input type="text" id="amount" name="amount" required>
+  </div>
+  <br>
+  <div class="form-group">
+      <label for="duration">3 - Mortgage Duration?</label>
+      <input type="text" id="duration" name="duration" required>
+  </div>
+  <br>
+  <div class="form-group">
+      <label for="balance">4 - Total Balance held by User:</label>
+      <input type="text" id="balance" name="balance" required>
+  </div>
+  <br>
+  <div class="form-group">
+      <label for="commit">5 - Major Monthly Commitments?</label>
+      <input type="text" id="commit" name="commit">
+  </div>
+  <br>
+  <div class="form-group">
+      <label for="credit">6 - Credit Score</label>
+      <input type="text" id="commit" name="commit">
+  </div>
+  <br>
+  <div class="form-group">
+      <label for="deposit">7 - Deposit</label>
+      <input type="text" id="commit" name="commit">
+  </div>
+  <br>
+  <div class="form-group">
+      <label for="disposable">8 - Disposable Income</label>
+      <input type="text" id="commit" name="commit">
+  </div>
+  <button type="button" id="editBtn" class="btn btn-primary btn-lg btn-block">Edit Details</button>
+  <button type="submit" id="saveBtn" class="btn btn-secondary btn-lg btn-block" style="display: none;">Save</button>
+</form>
+</div>
 
 
+
+
+
+
+  </main>
+      
+
+
+
+  <script src="script.js"></script>
 
 
 
