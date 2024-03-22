@@ -13,11 +13,25 @@
 <body>
 
 
-    <header class="flex-container">
-
-      <img src="Assets/logo.png" alt="Rose Mortgage">
-
-  </header>
+  <header class="flex-container">
+    <div>
+        <img src="Assets/logo.png" alt="Rose Mortgage">
+    </div>
+    <div>
+        <ul class="nav-links">
+            <li class="dropdown">
+                <a class="dropdown-toggle" href="#" role="button" id="registerDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Register
+                </a>
+                <div class="dropdown-menu" aria-labelledby="registerDropdown">
+                    <a class="dropdown-item" href="memreg.html">Register as Member</a>
+                    <a class="dropdown-item" href="brkreg.html">Register as Broker</a>
+                </div>
+            </li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </div>
+</header>
 
 
     <main>
@@ -65,8 +79,7 @@
                 <label for="confirm_password" class="form-label">Confirm Password:</label>
                 <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
             </div>
-              <button type="submit" id="editBtn" class="btn btn-primary btn-lg btn-block">Register</button>
-              <button type="submit" id="saveBtn" class="btn btn-secondary btn-lg btn-block">Sign Up</button>
+              <button type="submit" id="register" class="btn btn-primary btn-lg btn-block">Register</button>
           </form>
       </div>
 
@@ -90,7 +103,9 @@
 
 
 
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
 

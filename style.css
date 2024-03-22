@@ -12,9 +12,12 @@ a {
 }
 
 main{
-  margin-top: 60px;
-  margin-bottom: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
+
+
+
 
 /*Navigation section*/
 header {
@@ -69,23 +72,6 @@ body {
 }
 
 
-/* form css*/
-
-.reg {
-  background-color: white;
-  width: 500px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-/* form css*/
-
 
 /* home page */
 
@@ -117,7 +103,27 @@ ul li {
 }
 
 
-/* home page */
+
+
+/* css for registration forms */
+
+.reg {
+    background-color: white;
+    width: 500px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+.form-group {
+    margin-bottom: 20px;
+  }
+
+.form-control{
+    border: 2px solid black;
+  }
+
 
 
 .largecontainer {
@@ -144,6 +150,7 @@ ul li {
   margin-bottom: 1em;
   border: 1px solid black;
 }
+
 
 
 h2 {
@@ -181,9 +188,7 @@ form {
   flex-direction: column;
   align-items: center;
 }
-.form-control{
-  border: 2px solid black;
-}
+
 .input-group{
   margin-bottom: 20px;
 }
