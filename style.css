@@ -37,6 +37,8 @@ header {
 .nav-links li a{
   font-weight: bold;
   font-size: 1.1rem;
+  text-decoration: none;
+  color: black;
 }
 .nav-links li::after {
   content: '';
@@ -69,7 +71,7 @@ body {
 
 /* form css*/
 
-.brkreg {
+.reg {
   background-color: white;
   width: 500px;
   margin: auto;
@@ -244,11 +246,12 @@ form {
 }
 /*Footer section*/
 footer {
-  background-color: white;
+  background-color: #98CFED;
   padding: 10px;
   color: black;
-  height: 50px;
+  height: 100px;
   width: 100%;
   bottom: 0;
   z-index: 1000;
+  margin-top: 100px;
 }
