@@ -10,7 +10,7 @@
 <body>
     <header class="flex-container">
         
-            <a href="Home.html"> <img src="Assets/logo.png" alt="Rose Mortgage"> </a>
+            <a href="Home.php"> <img src="Assets/logo.png" alt="Rose Mortgage"> </a>
         
         <div>
             <ul class="nav-links">
@@ -19,11 +19,11 @@
                         Register
                     </a>
                     <div class="dropdown-menu" aria-labelledby="registerDropdown">
-                        <a class="dropdown-item" href="memreg.html">Register as Member</a>
-                        <a class="dropdown-item" href="brkreg.html">Register as Broker</a>
+                        <a class="dropdown-item" href="memreg.php">Register as Member</a>
+                        <a class="dropdown-item" href="brkreg.php">Register as Broker</a>
                     </div>
                 </li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="login.php">Login</a></li>
             </ul>
         </div>
     </header>
@@ -58,7 +58,7 @@
                                 <li>Priority assistance from dedicated customer support team</li>
                                 <li>Community engagement and networking opportunities with fellow homebuyers</li>
                             </ul>
-                            <a href="memreg.html" class="btn btn-primary">Register</a>
+                            <a href="memreg.php" class="btn btn-primary">Register</a>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                                 <li>Exclusive training sessions and updates on industry regulations</li>
                                 <li>Streamlined communication channels for transparent and trustworthy interactions with clients</li>
                             </ul>
-                            <a href="brkreg.html" class="btn btn-primary">Register</a>
+                            <a href="brkreg.php" class="btn btn-primary">Register</a>
                         </div>
                     </div>
                 </div>

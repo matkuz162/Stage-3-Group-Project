@@ -15,14 +15,14 @@
 
     <header class="flex-container">
 
-      <a href="MemberViewProducts.html"> <img src="Assets/logo.png" alt="Rose Mortgage"> </a>
+      <a href="MemberViewProducts.php"> <img src="Assets/logo.png" alt="Rose Mortgage"> </a>
 
         <div>
             <ul class="nav-links">
-                <li><a href="MemberViewProducts.html">Available Products</a></li>
-                <li><a href="MemberChosenProducts.html">Chosen Products</a></li>
-                <li><a href="MemberAccountDetails.html">Account Details</a></li>
-                <li><a href="LogIn.html">Sign Out</a></li>
+                <li><a href="MemberViewProducts.php">Available Products</a></li>
+                <li><a href="MemberChosenProducts.php">Chosen Products</a></li>
+                <li><a href="MemberAccountDetails.php">Account Details</a></li>
+                <li><a href="LogIn.php">Sign Out</a></li>
             </ul>
         </div>
 

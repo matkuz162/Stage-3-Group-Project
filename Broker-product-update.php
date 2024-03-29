@@ -9,20 +9,20 @@
     <link href="style.css" rel="stylesheet"></link> 
 </head>
 <body>
-    <header class="flex-container">
+<header class="flex-container">
 
-        <a href="broker-manage-product.html"> <img src="Assets/logo.png" alt="Rose Mortgage"> </a>
+<a href="broker-manage-product.php"> <img src="Assets/logo.png" alt="Rose Mortgage"> </a>
 
-        <div>
-            <ul class="nav-links">
-                <li><a href="Broker-product-creation.html">Create Product</a></li>
-                <li><a href="broker-manage-product.html">Manage Product</a></li>
-                <li><a href="broker-account-information.html">Account Details</a></li>
-                <li><a href="LogIn.html">Sign Out</a></li>
-            </ul>
-        </div>
+<div>
+    <ul class="nav-links">
+        <li><a href="Broker-product-creation.php">Create Product</a></li>
+        <li><a href="broker-manage-product.php">Manage Product</a></li>
+        <li><a href="broker-account-information.php">Account Details</a></li>
+        <li><a href="LogIn.php">Sign Out</a></li>
+    </ul>
+</div>
 
-  </header>
+</header>
     <main>
         <div class="hero">
             <h1>Alter Product Information</h1>
