@@ -13,47 +13,44 @@
 include 'connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $firstname = $_POST["first_name"];
-    $lastname = $_POST["last_name"];
+    $first_name = $_POST["first_name"];
+    $last_name = $_POST["last_name"];
     $email = $_POST["email"];
-    $phonenumber = $_POST["phone_number"];
-    $password = $_POST["password"];
-    $confirmPassword = $_POST["confirm_password"];
+    $phone_number = $_POST["phone_number"];
     $country = $_POST["country"];
     $county = $_POST["county"];
     $city = $_POST["city"];
     $postcode = $_POST["postcode"];
+    $password = $_POST["password"];
+    $confirm_password = $_POST["confirm_password"];
 
-    if ($password == $confirmPassword) {
+    if ($password == $confirm_password) {
         try {
             // Begin transaction
             $db->beginTransaction();
 
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-            $defaultRole = 'User';
-
-            $sql = "INSERT INTO User (FirstName, LastName, Email, PhoneNumber, Password, Country, County, City, Postcode, Role) 
-            VALUES (:firstname, :lastname, :email, :phonenumber, :password, :country, :county, :city, :postcode, :role)";
+            $sql = "INSERT INTO RegisteredUser (first_name, last_name, email, phone_number, country, county, city, postcode, password) 
+            VALUES (:first_name, :last_name, :email, :phone_number, :country, :county, :city, :postcode, :password)";
 
             $stmt = $db->prepare($sql);
-            $stmt->bindParam(':firstname', $firstname);
-            $stmt->bindParam(':lastname', $lastname);
+            $stmt->bindParam(':first_name', $first_name);
+            $stmt->bindParam(':last_name', $last_name);
             $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':phonenumber', $phonenumber);
-            $stmt->bindParam(':password', $hashedPassword);
+            $stmt->bindParam(':phone_number', $phone_number);
             $stmt->bindParam(':country', $country);
             $stmt->bindParam(':county', $county);
             $stmt->bindParam(':city', $city);
             $stmt->bindParam(':postcode', $postcode);
-            $stmt->bindParam(':role', $defaultRole);
+            $stmt->bindParam(':password', $hashedPassword);
 
             $stmt->execute();
 
             // Commit transaction
             $db->commit();
 
-            header('Location: sign-up-successful.html');
+            header('Location: financial.php');
             exit();
         } catch (Exception $e) {
             // Rollback transaction
@@ -65,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 <header class="flex-container">
     <a href="Home.php"> <img src="Assets/logo.png" alt="Rose Mortgage"> </a>
     <div>
