@@ -17,7 +17,7 @@
         <li><a href="Broker-product-creation.php">Create Product</a></li>
         <li><a href="broker-manage-product.php">Manage Product</a></li>
         <li><a href="broker-account-information.php">Account Details</a></li>
-        <li><a href="LogIn.php">Sign Out</a></li>
+        <li><a href="home.php">Sign Out</a></li>
     </ul>
 </div>
 

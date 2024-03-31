@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register as Member</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet"> 
-</head>
-<body>
 <?php
 include 'connection.php';
+
+// Start the session
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $first_name = $_POST["first_name"];
@@ -26,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($password == $confirm_password) {
         try {
-            // Begin transaction
+           
             $db->beginTransaction();
 
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -47,13 +39,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $stmt->execute();
 
-            // Commit transaction
+        
+            $_SESSION['RegisteredUser_ID'] = $db->lastInsertId();
+
+           
+            var_dump($_SESSION);
+
             $db->commit();
 
             header('Location: financial.php');
             exit();
         } catch (Exception $e) {
-            // Rollback transaction
+           
             $db->rollBack();
             echo "Error: " . $e->getMessage();
         }
@@ -62,6 +59,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register as Member</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet"> 
+</head>
+<body>
+
 
 <header class="flex-container">
     <a href="Home.php"> <img src="Assets/logo.png" alt="Rose Mortgage"> </a>

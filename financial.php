@@ -4,6 +4,13 @@ session_start();
 // Include database connection
 include 'connection.php';
 
+// Check if user is not logged in
+if (!isset($_SESSION['RegisteredUser_ID'])) {
+    // Redirect to login page
+    header('Location: login.html');
+    exit();
+}
+
 // Process form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
@@ -45,7 +52,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Commit transaction
         $db->commit();
 
-        echo "<p>Financial details submitted successfully!</p>";
+        // Redirect to home.php after successful submission
+        header('Location: memberviewproducts.php');
+        exit();
     } catch (Exception $e) {
         // Rollback transaction
         $db->rollBack();
@@ -53,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

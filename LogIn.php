@@ -1,3 +1,45 @@
+<?php
+include 'connection.php'; 
+
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $enteredemail = $_POST["email"];
+    $enteredpassword = $_POST["password"];
+
+    try {
+   
+        if(isset($db)) {
+            $stmt = $db->prepare("SELECT * FROM RegisteredUser WHERE email = :email");
+            $stmt->bindParam(':email', $enteredemail, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($row) {
+                $password = $row["password"];
+
+                if (password_verify($enteredpassword, $password)) {
+                    $_SESSION["email"] = $enteredemail;
+                    $_SESSION["'RegisteredUser_ID'"] = $row["'RegisteredUser_ID'"];
+                    header("Location: memberviewproducts.php");
+                    exit();
+                } else {
+                    echo "Incorrect password";
+                }
+            } else {
+                echo "User not found";
+            }
+        } else {
+            echo "Database connection not established.";
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 

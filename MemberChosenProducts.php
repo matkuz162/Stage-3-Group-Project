@@ -22,7 +22,7 @@
           <li><a href="MemberViewProducts.php">Available Products</a></li>
           <li><a href="MemberChosenProducts.php">Chosen Products</a></li>
           <li><a href="MemberAccountDetails.php">Account Details</a></li>
-          <li><a href="LogIn.php">Sign Out</a></li>
+          <li><a href="home.php">Sign Out</a></li>
       </ul>
   </div>
 
