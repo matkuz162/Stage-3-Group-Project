@@ -1,7 +1,7 @@
 <?php
 include 'connection.php';
 
-// Start the session
+
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -22,9 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $db->beginTransaction();
 
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $role = "Member";
 
-            $sql = "INSERT INTO RegisteredUser (first_name, last_name, email, phone_number, country, county, city, postcode, password) 
-            VALUES (:first_name, :last_name, :email, :phone_number, :country, :county, :city, :postcode, :password)";
+            $sql = "INSERT INTO RegisteredUser (first_name, last_name, email, phone_number, country, county, city, postcode, password, role) 
+            VALUES (:first_name, :last_name, :email, :phone_number, :country, :county, :city, :postcode, :password, :role)";
 
             $stmt = $db->prepare($sql);
             $stmt->bindParam(':first_name', $first_name);
@@ -36,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(':city', $city);
             $stmt->bindParam(':postcode', $postcode);
             $stmt->bindParam(':password', $hashedPassword);
+            $stmt->bindParam(':role', $role);
 
             $stmt->execute();
 
@@ -59,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 
 
 <!DOCTYPE html>
