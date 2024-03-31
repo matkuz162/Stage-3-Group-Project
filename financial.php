@@ -1,13 +1,6 @@
 <?php
 session_start();
 
-// Check if the user is logged in (RegisteredUser_ID is set in session)
-if (!isset($_SESSION['RegisteredUser_ID'])) {
-    // Redirect the user to the login page or handle appropriately
-    header("Location: login.php");
-    exit; // Stop further execution
-}
-
 // Include database connection
 include 'connection.php';
 
