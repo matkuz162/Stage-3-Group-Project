@@ -51,11 +51,11 @@
 
     </div>
 
-    <div class="flex-table">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
+    <div>
+        <div class="flex-table">1</div>
+        <div class="flex-table">2</div>
+        <div class="flex-table">3</div>
+        <div class="flex-table">4</div>
     </div>
 
 </div>
