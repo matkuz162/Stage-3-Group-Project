@@ -16,11 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
     $annual_income = $_POST["annual_income"];
     $additional_income_amount = $_POST["additional_income_amount"];
-    $mortgage_duration = $_POST["mortgage_duration"];
     $total_balance = $_POST["total_balance"];
     $other_commitments = $_POST["other_commitments"];
     $monthly_spending_amounts = $_POST["monthly_spending_amounts"];
-    $deposit_amounts = $_POST["deposit_amounts"];
     $credit_score = $_POST["credit_score"];
 
     // Retrieve RegisteredUser_ID from session
@@ -31,8 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $db->beginTransaction();
 
         // SQL query to insert financial details
-        $sql = "INSERT INTO financialdetails (RegisteredUser_ID, annual_income, additional_income_amount, mortgage_duration, total_balance, other_commitments, monthly_spending_amounts, deposit_amounts, credit_score) 
-                VALUES (:RegisteredUser_ID, :annual_income, :additional_income_amount, :mortgage_duration, :total_balance, :other_commitments, :monthly_spending_amounts, :deposit_amounts, :credit_score)";
+        $sql = "INSERT INTO financialdetails (RegisteredUser_ID, annual_income, additional_income_amount, total_balance, other_commitments, monthly_spending_amounts, credit_score) 
+                VALUES (:RegisteredUser_ID, :annual_income, :additional_income_amount, :total_balance, :other_commitments, :monthly_spending_amounts, :credit_score)";
 
         $stmt = $db->prepare($sql);
 
@@ -40,11 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':RegisteredUser_ID', $RegisteredUser_ID);
         $stmt->bindParam(':annual_income', $annual_income);
         $stmt->bindParam(':additional_income_amount', $additional_income_amount);
-        $stmt->bindParam(':mortgage_duration', $mortgage_duration);
         $stmt->bindParam(':total_balance', $total_balance);
         $stmt->bindParam(':other_commitments', $other_commitments);
         $stmt->bindParam(':monthly_spending_amounts', $monthly_spending_amounts);
-        $stmt->bindParam(':deposit_amounts', $deposit_amounts);
         $stmt->bindParam(':credit_score', $credit_score);
 
         $stmt->execute();
@@ -96,10 +92,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text" class="form-control" id="additional_income_amount" name="additional_income_amount" required>
                 </div>
                 <div class="mb-3">
-                    <label for="mortgage_duration" class="form-label">Mortgage Duration:</label>
-                    <input type="text" class="form-control" id="mortgage_duration" name="mortgage_duration" required>
-                </div>
-                <div class="mb-3">
                     <label for="total_balance" class="form-label">Total Balance:</label>
                     <input type="text" class="form-control" id="total_balance" name="total_balance" required>
                 </div>
@@ -110,10 +102,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="mb-3">
                     <label for="monthly_spending_amounts" class="form-label">Monthly Spending Amounts:</label>
                     <input type="text" class="form-control" id="monthly_spending_amounts" name="monthly_spending_amounts" required>
-                </div>
-                <div class="mb-3">
-                    <label for="deposit_amounts" class="form-label">Deposit Amounts:</label>
-                    <input type="text" class="form-control" id="deposit_amounts" name="deposit_amounts" required>
                 </div>
                 <div class="mb-3">
                     <label for="credit_score" class="form-label">Credit Score:</label>
