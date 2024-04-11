@@ -17,20 +17,20 @@
 
 <a href="MemberViewProducts.php"> <img src="Assets/logo.png" alt="Rose Mortgage"> </a>
 
-  <div>
-      <ul class="nav-links">
-          <li><a href="MemberViewProducts.php">Available Products</a></li>
-          <li><a href="MemberChosenProducts.php">Chosen Products</a></li>
-          <li><a href="MemberAccountDetails.php">Account Details</a></li>
-          <li><a href="home.php">Sign Out</a></li>
-      </ul>
-  </div>
+    <div>
+        <ul class="nav-links">
+            <li><a href="MemberViewProducts.php">Available Products</a></li>
+            <li><a href="MemberChosenProducts.php">Chosen Products</a></li>
+            <li><a href="MemberAccountDetails.php">Account Details</a></li>
+            <li><a href="home.php">Sign Out</a></li>
+        </ul>
+    </div>
 
 </header>
 
 
 
-  <div class="largecontainer">
+<div class="largecontainer">
     <div class="flex-container">
         <div><h3><b>Available Products:</b></h3></div>
 
@@ -51,19 +51,12 @@
 
     </div>
 
-<<<<<<< HEAD
     <div>
-        <div class="flex-table">1</div>
+        <div class="flex-table">11</div>
         <div class="flex-table">22</div>
         <div class="flex-table">test</div>
-        <div class="flex-table">4</div>
-=======
-    <div class="flex-table">
-        <div>test</div>
-        <div>sda</div>
-        <div>3</div>
-        <div>4</div>
->>>>>>> 729f4f6049a45e9ba2802024e7047ccc9843d50b
+        <div class="flex-table">4
+        
     </div>
 
 </div>
