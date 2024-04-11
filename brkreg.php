@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <a class="dropdown-item" href="brkreg.php">Register as Broker</a>
                 </div>
             </li>
-            <li><a href="login.html">Login</a></li>
+            <li><a href="login.php">Login</a></li>
         </ul>
     </div>
 </header>
