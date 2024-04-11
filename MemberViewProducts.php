@@ -52,7 +52,7 @@
     </div>
 
     <div class="flex-table">
-        <div>21</div>
+        <div>test</div>
         <div>sda</div>
         <div>3</div>
         <div>4</div>
