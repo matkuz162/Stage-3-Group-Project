@@ -108,36 +108,24 @@ if ($result->num_rows > 0) {
                 <input type="text" class="form-control" id="annual_income" name="annual_income" required>
               </div>
               <div class="form-group">
-                <label for="additional_income_bool" class="form-label">Receive Additional Income?:</label>
-                <input type="text" class="form-control" id="additional_income_bool" name="additional_income_bool" required>
-              </div>
-              <div class="form-group">
                 <label for="additional_income" class="form-label">Amount of Additional Income:</label>
                 <input type="text" class="form-control" id="additional_income" name="additional_income" required>
               </div>
               <div class="form-group">
-                <label for="mortgage_duration" class="form-label">Mortgage Duration:</label>
-                <input type="text" class="form-control" id="mortgage_duration" name="mortgage_duration" required>
-              </div>
-              <div class="form-group">
-                <label for="total_balance" class="form-label">Total Balance held by User:</label>
+                <label for="total_balance" class="form-label">Total Balance:</label>
                 <input type="text" class="form-control" id="total_balance" name="total_balance" required>
               </div>
               <div class="form-group">
-                <label for="major_monthly_commitments_bool" class="form-label">Major Monthly Commitments?</label>
+                <label for="major_monthly_commitments_bool" class="form-label">Other Commitments:</label>
                 <input type="text" class="form-control" id="major_monthly_commitments_bool" name="major_monthly_commitments_bool" required>
+              </div>
+              <div class="form-group">
+                <label for="disposable_income" class="form-label">Monthly Spending Amounts:</label>
+                <input type="text" class="form-control" id="monthly_spending_amounts" name="monthly_spending_amounts" required>
               </div>
               <div class="form-group">
                 <label for="credit_score" class="form-label">Credit Score:</label>
                 <input type="text" class="form-control" id="credit_score" name="credit_score" required>
-              </div>
-              <div class="form-group">
-                <label for="deposit" class="form-label">Deposit:</label>
-                <input type="text" class="form-control" id="deposit" name="deposit" required>
-              </div>
-              <div class="form-group">
-                <label for="disposable_income" class="form-label">Disposable Income:</label>
-                <input type="text" class="form-control" id="disposable_income" name="disposable_income" required>
               </div>
               <button type="button" id="editFinancialBtn" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Edit Financial Details</button>
               <button type="submit" id="saveFinancialBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save Financial Details</button>              
