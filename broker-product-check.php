@@ -20,7 +20,7 @@
         $expectedOutg = validate($_POST['expected-outgoings']);
         $expectedCredit = validate($_POST['expected-credit']);
         $expectedOcc = validate($_POST['expected-occupation']);
-        $loanRatio = validate($_POST['loan-ratio']);
+        $loanRatio = validate($_POST['mtv-ratio']);
         $IsDraft = isset($_POST['isDraft']) ? 1 : 0;
 
         function createProduct($pname,$pdesc,$baseInt,$expectedInc,$expectedOutg,$expectedCredit,$expectedOcc,$loanRatio,$isDraft){

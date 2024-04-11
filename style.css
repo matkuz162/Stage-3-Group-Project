@@ -194,7 +194,9 @@ form.product {
 .input-group{
   margin-bottom: 20px;
 }
-
+.label-group{
+  padding: 10px 0 10px 0;
+}
 .product-information{
   display: flex;
   justify-content: center;
