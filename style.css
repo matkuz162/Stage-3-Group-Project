@@ -144,12 +144,12 @@ ul li {
 .flex-table {
   display:flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-content: flex-start;
   justify-content: space-between;
   margin-right: 20px;
   margin-bottom: 1em;
 }
-
 
 
 h2 {
