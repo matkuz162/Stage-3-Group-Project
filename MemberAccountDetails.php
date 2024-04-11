@@ -18,7 +18,7 @@ $result = $db->query($sql);
 
 foreach ( $result as $row ) {
   echo "<strong>first_name:</strong> " . $row["first_name"] . "<br>";
-  echo "<strong>last_name :</strong> " . $row["last_name "] . "<br>";
+  echo "<strong>last_name :</strong> " . $row["last_name"] . "<br>";
 }
 ?>
 <!DOCTYPE html>
