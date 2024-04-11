@@ -55,7 +55,7 @@ include 'connection.php';
             <div class="product-header">
                 <h3>Product name</h3>
                 <div>
-                    <a href="broker-product-update.html" class="edit-product-btn">Edit</a>
+                    <a href="broker-product-update.php" class="edit-product-btn">Edit</a>
                     <a href="#" class="delete-product-btn">Delete</a>
                 </div>
             </div>
