@@ -1,3 +1,7 @@
+<?php
+include 'connection.php'; 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,6 +38,11 @@
     <div class="flex-container">
         <div><h3><b>Available Products:</b></h3></div>
 
+        <div>
+            test
+        </div>
+
+
         <div class="flex-container">
             <div>
                 <a>Sort By:</a>
@@ -50,6 +59,7 @@
     
 
     </div>
+    
 
     <div>
         <div class="flex-table">11</div>
