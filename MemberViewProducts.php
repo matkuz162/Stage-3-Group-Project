@@ -70,11 +70,11 @@ include 'connection.php';
     </div>
 
 </div>
-
+</div>
 
 
 <footer>
-    
+
 </footer>
 
 
