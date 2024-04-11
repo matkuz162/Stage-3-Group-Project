@@ -65,7 +65,6 @@ include 'connection.php';
     <div class="flex-table">
 
         <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="Product Image">
             <div class="card-body">
                 <h5 class="card-title">Product Name</h5>
                 <p class="card-text">Product Description</p>
@@ -81,7 +80,21 @@ include 'connection.php';
         </div>
 
         <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="Product Image">
+            <div class="card-body">
+                <h5 class="card-title">Product Name</h5>
+                <p class="card-text">Product Description</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Broker Company</li>
+                <li class="list-group-item">Expected Income</li>
+                <li class="list-group-item">Expected Credit Score</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="btn btn-primary">Favourite Product</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Product Name</h5>
                 <p class="card-text">Product Description</p>
