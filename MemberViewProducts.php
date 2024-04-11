@@ -51,11 +51,19 @@
 
     </div>
 
+<<<<<<< HEAD
     <div>
         <div class="flex-table">1</div>
         <div class="flex-table">22</div>
         <div class="flex-table">test</div>
         <div class="flex-table">4</div>
+=======
+    <div class="flex-table">
+        <div>test</div>
+        <div>sda</div>
+        <div>3</div>
+        <div>4</div>
+>>>>>>> 729f4f6049a45e9ba2802024e7047ccc9843d50b
     </div>
 
 </div>
