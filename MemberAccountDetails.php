@@ -16,9 +16,9 @@ $sql = "SELECT first_name, last_name
         WHERE RegisteredUser_ID='$RegisteredUser_ID'";
 $result = $db->query($sql);
 
-if ($result->num_rows > 0) {
+foreach ( $result as $row ) {
   echo "<strong>first_name:</strong> " . $row["first_name"] . "<br>";
-  echo "<strong>last_name :</strong> " . $row["last_name "] . "<br>";
+  echo "<strong>last_name :</strong> " . $row["last_name"] . "<br>";
 }
 ?>
 <!DOCTYPE html>

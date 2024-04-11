@@ -7,7 +7,7 @@ include 'connection.php';
 // Check if user is not logged in
 if (!isset($_SESSION['RegisteredUser_ID'])) {
     // Redirect to login page
-    header('Location: login.html');
+    header('Location: login.php');
     exit();
 }
 

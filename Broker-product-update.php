@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+include 'connection.php';
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,31 +34,40 @@
     <main>
         <div class="hero">
             <h1>Alter Product Information</h1>
-            <form class="product">
+            <form class="product" action="broker-product-check.php" method="post">
                 <div class="product-information">
                     <div class="product-description">
-                        <label class="label-group" for="product-name">Product Name</label><br>
-                        <input class="form-control" type="text" id="product-name" name="product-name"><br>
-                        <label  class="label-group" for="product-desc">Product Description</label><br>
-                        <textarea class="form-control"row="10" id="product-desc" name="product-desc"></textarea>
-                        <label class="label-group" for="product-interest">Base Interest Rate</label><br>
-                        <input class="form-control" type="text" id="base-interest" name="expected-occupation"><br>
-                    </div>
-                
-                    <div class="expected-description">
-                        <label  class="label-group" for="expected-income">Expected Income</label><br>
-                        <input class="form-control" type="text" id="expected-income" name="expected-income"><br>
-                        <label  class="label-group" for="expected-outgoings">Expected Outgoings</label><br>
-                        <input class="form-control" type="text" id="expected-outgoings" name="expected-outgoings"><br>
-                        <label  class="label-group" for="expected-credit">Expected Credit Score</label><br>
-                        <input class="form-control" type="text" id="expected-credit" name="expected-credit"><br>
-                        <label  class="label-group" for="expected-occupation">Expected Type of Employment</label><br>
-                        <input class="form-control" type="text" id="expected-occupation" name="expected-occupation"><br>
-                        <label  class="label-group" for="expected-occupation">Expected Deposit</label><br>
-                        <input class="form-control" type="text" id="expected-occupation" name="expected-occupation"><br>
-                    </div>
+                        <?php if (isset($_GET['error'])) { ?>
+                            <p class ="error-field"><?php echo $_GET['error']; ?></p>
+                        <?php }?>
+
+                        <?php if (isset($_GET['success'])) { ?>
+                            <p class ="success-field"><?php echo $_GET['success']; ?></p>
+                        <?php }?>
+
+                            <label class="label-group" for="product-name">Product Name</label>
+                            <input class="form-control" type="text" id="product-name" name="product-name"><br>
+                            <label  class="label-group" for="product-desc">Product Description</label>
+                            <textarea class="form-control"row="10" id="product-desc" name="product-desc"></textarea>
+                            <label class="label-group" for="product-interest">Base Interest Rate</label>
+                            <input class="form-control" type="text" id="base-interest" name="base-interest"><br>
+                        </div>
+
+                        <div class="expected-description">
+                            <label  class="label-group" for="expected-income">Expected Income</label>
+                            <input class="form-control" type="text" id="expected-income" name="expected-income"><br>
+                            <label  class="label-group" for="expected-outgoings">Expected Outgoings</label>
+                            <input class="form-control" type="text" id="expected-outgoings" name="expected-outgoings"><br>
+                            <label  class="label-group" for="expected-credit">Expected Credit Score</label>
+                            <input class="form-control" type="text" id="expected-credit" name="expected-credit"><br>
+                            <label  class="label-group" for="expected-occupation">Expected Type of Employment</label>
+                            <input class="form-control" type="text" id="expected-occupation" name="expected-occupation"><br>
+                            <label  class="label-group" for="loan-ratio">Maximum loan to value ratio</label>
+                            <input class="form-control" type="text" id="loan-ratio"><br>
+                        </div>
+                    <input type="hidden" name="product-id" value="<?php echo $productId; ?>">
                 </div>
-                <button class="product-creation-btn" type="submit">Update Product</button>
+                <button class="product-creation-btn" type="submit" name="UpdateProduct">Update Product</button>
             </form>
         </div>  
         
