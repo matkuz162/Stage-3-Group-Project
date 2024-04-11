@@ -31,24 +31,30 @@
 
   <div class="largecontainer">
     <div class="flex-container">
-        <div><h3><b>Chosen Products:</b></h3></div>
+            <div><h1><b>Chosen Products:</b></h1></div>
 
-        <div class="flex-container">
+
             <div>
-                <a>Sort By:</a>
+
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping">Search:</span>
+                    <input type="text" class="form-control" placeholder="..." aria-label="Username" aria-describedby="addon-wrapping">
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupSelect01">Sort By:</label>
+                    <select class="form-select" id="inputGroupSelect01">
+                        <option selected>Highest Price:</option>
+                        <option value="1">Lowest Price</option>
+                        <option value="2">Oldest Product</option>
+                        <option value="3">Newest Product</option>
+                    </select>
+                </div>
+
             </div>
-            <div>
-                <select>
-                    <option>Highest Price</option>
-                    <option>Lowest Price</option>
-                    <option>Oldest Product</option>
-                    <option>Newest Product</option>
-                </select>
-            </div>
+
         </div>
-    
-
-    </div>
 </div>
 
 
