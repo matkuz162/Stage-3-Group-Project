@@ -1,3 +1,26 @@
+<?php
+include 'connection.php'; 
+
+session_start();
+
+if (!isset($_SESSION['RegisteredUser_ID'])) {
+  // Redirect to login page
+  header('Location: login.html');
+  exit();
+}
+
+$RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
+
+$sql = "SELECT first_name, last_name 
+        FROM RegisteredUser
+        WHERE RegisteredUser_ID='$RegisteredUser_ID'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  echo "<strong>first_name:</strong> " . $row["first_name"] . "<br>";
+  echo "<strong>last_name :</strong> " . $row["last_name "] . "<br>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
