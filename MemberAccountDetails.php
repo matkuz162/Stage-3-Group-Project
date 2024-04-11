@@ -14,7 +14,7 @@ $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
 $sql = "SELECT first_name, last_name 
         FROM RegisteredUser
         WHERE RegisteredUser_ID='$RegisteredUser_ID'";
-$result = $conn->query($sql);
+$result = $db->query($sql);
 
 if ($result->num_rows > 0) {
   echo "<strong>first_name:</strong> " . $row["first_name"] . "<br>";
