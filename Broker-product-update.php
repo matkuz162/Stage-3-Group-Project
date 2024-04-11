@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+include 'connection.php';
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,9 +34,18 @@
     <main>
         <div class="hero">
             <h1>Alter Product Information</h1>
-            <form class="product">
+            <form class="product" action="broker-product-check.php" method="post">
                 <div class="product-information">
                     <div class="product-description">
+
+                        <?php if (isset($_GET['error'])) { ?>
+                            <p class ="error-field"><?php echo $_GET['error']; ?></p>
+                        <?php }?>
+
+                        <?php if (isset($_GET['success'])) { ?>
+                            <p class ="success-field"><?php echo $_GET['success']; ?></p>
+                        <?php }?>
+
                         <label class="label-group" for="product-name">Product Name</label><br>
                         <input class="form-control" type="text" id="product-name" name="product-name"><br>
                         <label  class="label-group" for="product-desc">Product Description</label><br>
@@ -49,8 +66,9 @@
                         <label  class="label-group" for="expected-occupation">Expected Deposit</label><br>
                         <input class="form-control" type="text" id="expected-occupation" name="expected-occupation"><br>
                     </div>
+                    <input type="hidden" name="product-id" value="<?php echo $productId; ?>">
                 </div>
-                <button class="product-creation-btn" type="submit">Update Product</button>
+                <button class="product-creation-btn" type="submit" name="UpdateProduct">Update Product</button>
             </form>
         </div>  
         

@@ -9,7 +9,7 @@
 <body>
     <header>
 
-        <a href="Home.php"> <img src="Assets/logo.png" alt="Rose Mortgage"> </a>
+        <a href="Home.php"><img src="Assets/logo.png" alt="Rose Mortgage"></a>
   
     </header>
 

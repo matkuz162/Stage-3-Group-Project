@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+include 'connection.php';
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
