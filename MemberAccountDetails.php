@@ -1,17 +1,17 @@
 <?php
-include 'connection.php'; 
+include 'connection.php';
 
 session_start();
 
 if (!isset($_SESSION['RegisteredUser_ID'])) {
   // Redirect to login page
-  header('Location: login.php');
+  header('Location: login.html');
   exit();
 }
 
 $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
 
-$sql = "SELECT first_name, last_name 
+$sql = "SELECT  first_name, last_name, email, phone_number, country, county, city, postcode
         FROM RegisteredUser
         WHERE RegisteredUser_ID='$RegisteredUser_ID'";
 $result = $db->query($sql);
@@ -20,6 +20,7 @@ foreach ( $result as $row ) {
   echo "<strong>first_name:</strong> " . $row["first_name"] . "<br>";
   echo "<strong>last_name :</strong> " . $row["last_name"] . "<br>";
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +30,7 @@ foreach ( $result as $row ) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Update Account Information</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet"></link> 
+    <link href="style.css" rel="stylesheet"></link>
 </head>
 
 
@@ -59,35 +60,35 @@ foreach ( $result as $row ) {
             <form action="update_details.php" method="post">
               <div class="form-group">
                 <label for="first_name" class="form-label">First Name:</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" required>
+                <input type="text" class="form-control" id="first_name" name="first_name"  value="<?php echo $row['first_name']; ?>" required>
               </div>
               <div class="form-group">
                 <label for="last_name" class="form-label">Last Name:</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" required>
+                <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo $row['last_name']; ?>" required>
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" name="email"  value="<?php echo $row['email']; ?>" required>
               </div>
               <div class="form-group">
                 <label for="phone_number" class="form-label">Phone Number:</label>
-                <input type="tel" class="form-control" id="phone_number" name="phone_number" required>
+                <input type="tel" class="form-control" id="phone_number" name="phone_number"  value="<?php echo $row['phone_number']; ?>"required>
               </div>
               <div class="form-group">
                 <label for="country" class="form-label">Country:</label>
-                <input type="text" class="form-control" id="country" name="country" required>
+                <input type="text" class="form-control" id="country" name="country"  value="<?php echo $row['country']; ?>" required>
               </div>
               <div class="form-group">
                 <label for="county" class="form-label">County:</label>
-                <input type="text" class="form-control" id="county" name="county">
+                <input type="text" class="form-control" id="county" name="county" value="<?php echo $row['county']; ?>">
               </div>
               <div class="form-group">
                 <label for="city" class="form-label">City:</label>
-                <input type="text" class="form-control" id="city" name="city" required>
+                <input type="text" class="form-control" id="city" name="city" value="<?php echo $row['city']; ?>" required>
               </div>
               <div class="form-group">
                 <label for="postcode" class="form-label">Postcode:</label>
-                <input type="text" class="form-control" id="postcode" name="postcode" required>
+                <input type="text" class="form-control" id="postcode" name="postcode" value="<?php echo $row['postcode']; ?>" required>
               </div>
               <div class="form-group">
                 <label for="password" class="form-label">New Password:</label>
