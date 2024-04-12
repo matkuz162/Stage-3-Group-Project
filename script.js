@@ -7,12 +7,17 @@
         });
     }
 
-    // Event listener for the Edit button in the Account Details section
-    document.getElementById('editBtn').addEventListener('click', function () {
-        toggleEditable(false); // Enable editing
-        this.style.display = 'none'; // Hide Edit button
-        document.getElementById('saveBtn').style.display = 'block'; // Show Save button
+   // Event listener for the Edit button in the Account Details section
+   document.getElementById('editBtn').addEventListener('click', function () {
+    toggleEditable(false); // Enable editing
+    this.style.display = 'none'; // Hide Edit button
+    document.getElementById('saveBtn').style.display = 'block'; // Show Save button
+    var inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="password"]');
+    inputs.forEach(function(input) {
+        input.removeAttribute('disabled');
     });
+});
+
 
     // Event listener for the Save button in the Account Details section
     document.getElementById('saveBtn').addEventListener('click', function () {
