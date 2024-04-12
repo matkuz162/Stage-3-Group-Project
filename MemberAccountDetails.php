@@ -60,39 +60,39 @@ foreach ( $result as $row ) {
             <form action="update_details.php" method="post">
               <div class="form-group">
                 <label for="first_name" class="form-label">First Name:</label>
-                <input type="text" class="form-control" id="first_name" name="first_name"  value="<?php echo $row['first_name']; ?>" required>
+                <input type="text" class="form-control" id="first_name" name="first_name"  value="<?php echo $row['first_name']; ?>" required disabled>
               </div>
               <div class="form-group">
                 <label for="last_name" class="form-label">Last Name:</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo $row['last_name']; ?>" required>
+                <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo $row['last_name']; ?>" required disabled>
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="email" name="email"  value="<?php echo $row['email']; ?>" required>
+                <input type="email" class="form-control" id="email" name="email"  value="<?php echo $row['email']; ?>" required disabled>
               </div>
               <div class="form-group">
                 <label for="phone_number" class="form-label">Phone Number:</label>
-                <input type="tel" class="form-control" id="phone_number" name="phone_number"  value="<?php echo $row['phone_number']; ?>"required>
+                <input type="tel" class="form-control" id="phone_number" name="phone_number"  value="<?php echo $row['phone_number']; ?>"required disabled>
               </div>
               <div class="form-group">
                 <label for="country" class="form-label">Country:</label>
-                <input type="text" class="form-control" id="country" name="country"  value="<?php echo $row['country']; ?>" required>
+                <input type="text" class="form-control" id="country" name="country"  value="<?php echo $row['country']; ?>" required disabled>
               </div>
               <div class="form-group">
                 <label for="county" class="form-label">County:</label>
-                <input type="text" class="form-control" id="county" name="county" value="<?php echo $row['county']; ?>">
+                <input type="text" class="form-control" id="county" name="county" value="<?php echo $row['county']; ?>" disabled>
               </div>
               <div class="form-group">
                 <label for="city" class="form-label">City:</label>
-                <input type="text" class="form-control" id="city" name="city" value="<?php echo $row['city']; ?>" required>
+                <input type="text" class="form-control" id="city" name="city" value="<?php echo $row['city']; ?>" required disabled>
               </div>
               <div class="form-group">
                 <label for="postcode" class="form-label">Postcode:</label>
-                <input type="text" class="form-control" id="postcode" name="postcode" value="<?php echo $row['postcode']; ?>" required>
+                <input type="text" class="form-control" id="postcode" name="postcode" value="<?php echo $row['postcode']; ?>" required disabled>
               </div>
               <div class="form-group">
                 <label for="password" class="form-label">New Password:</label>
-                <input type="password" class="form-control" id="password" name="password" required>
+                <input type="password" class="form-control" id="password" name="password" required disabled>
               </div>
               <button type="button" id="editBtn" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Edit Details</button>
               <button type="submit" id="saveBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save</button>
