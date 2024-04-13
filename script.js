@@ -32,6 +32,10 @@
         toggleEditable(false); // Enable editing
         this.style.display = 'none'; // Hide Edit button
         document.getElementById('saveFinancialBtn').style.display = 'block'; // Show Save button
+        var inputs = document.querySelectorAll('input[type="text"]');
+        inputs.forEach(function(input) {
+            input.removeAttribute('disabled');
+        });
     });
 
     // Event listener for the Save button in the Financial section
@@ -40,5 +44,9 @@
         this.style.display = 'none'; // Hide Save button
         document.getElementById('editFinancialBtn').style.display = 'block'; // Show Edit button
         // Additional logic to submit the financial form if needed
+        var inputs = document.querySelectorAll('input[type="text"]');
+        inputs.forEach(function(input) {
+            input.removeAttribute('disabled');
+        });
     });
 
