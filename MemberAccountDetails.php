@@ -48,6 +48,21 @@ if(isset($_POST['submit'])){
  
 }
 
+if(isset($_POST['finance-submit'])){
+
+  $annual_income = $_POST['annual_income'];
+  $total_balance = $_POST['total_balance'];
+  $credit_score = $_POST['credit_score'];
+  
+  $financialsubmit = "UPDATE financialdetails AS fd
+  INNER JOIN RegisteredUser AS ru ON fd.RegisteredUser_ID = ru.RegisteredUser_ID
+  SET fd.annual_income = '$annual_income',
+      fd.total_balance = '$total_balance',
+      fd.credit_score = '$credit_score'
+  WHERE ru.RegisteredUser_ID='$RegisteredUser_ID'";
+
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,7 +145,7 @@ if(isset($_POST['submit'])){
 
         <div class="reg">
             <h2 class="mb-4"><b>Financial Details:</b></h2>
-                       <form action="update_details.php" method="post">
+                       <form action="MemberAccountDetails.php" method="post">
               <div class="form-group">
                 <label for="annual_income" class="form-label">Annual Income:</label>
                 <input type="text" class="form-control" id="annual_income" name="annual_income" value="<?php echo $row['annual_income']; ?>" required disabled>
@@ -168,7 +183,7 @@ if(isset($_POST['submit'])){
                 <input type="text" class="form-control" id="disposable_income" name="disposable_income" value="<?php echo $row['']; ?>" required disabled>
               </div>
               <button type="button" id="editFinancialBtn" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Edit Financial Details</button>
-              <button type="submit" id="saveFinancialBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save Financial Details</button>              
+              <button type="submit" name="finance-submit" id="saveFinancialBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save Financial Details</button>              
           </form>
 </div>
 
