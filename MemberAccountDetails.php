@@ -1,7 +1,7 @@
 <?php
-include 'connection.php';
 
 session_start();
+include 'connection.php'; 
 
 if (!isset($_SESSION['RegisteredUser_ID'])) {
   // Redirect to login page
@@ -11,14 +11,41 @@ if (!isset($_SESSION['RegisteredUser_ID'])) {
 
 $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
 
-$sql = "SELECT  first_name, last_name, email, phone_number, country, county, city, postcode
-        FROM RegisteredUser
-        WHERE RegisteredUser_ID='$RegisteredUser_ID'";
+
+$sql = "SELECT ru.first_name, ru.last_name, ru.email, ru.phone_number, ru.country, ru.county, ru.city, ru.postcode, ud.annual_income , ud.additional_income_amount, ud.total_balance, ud.other_commitments, ud.monthly_spending_amounts, ud.credit_score
+        FROM RegisteredUser ru
+        INNER JOIN financialdetails ud ON ru.RegisteredUser_ID = ud.RegisteredUser_ID
+        WHERE ru.RegisteredUser_ID='$RegisteredUser_ID'";
+
+        
 $result = $db->query($sql);
 
 foreach ( $result as $row ) {
-  echo "<strong>first_name:</strong> " . $row["first_name"] . "<br>";
-  echo "<strong>last_name :</strong> " . $row["last_name"] . "<br>";
+}
+
+if(isset($_POST['submit'])){
+
+
+  $first_name = $_POST['first_name'];
+  $last_name = $_POST['last_name'];
+  $email = $_POST['email'];
+  $phone_number = $_POST['phone_number'];
+  $country = $_POST['country'];
+  $county = $_POST['county'];
+  $city = $_POST['city'];
+  $postcode = $_POST['postcode'];
+  
+  $sqlsubmit = "UPDATE RegisteredUser
+                SET first_name ='$first_name',last_name ='$last_name', email = '$email', phone_number = '$phone_number', country ='$country', county ='$county', city ='$city', postcode='$postcode' 
+                WHERE RegisteredUser_ID='$RegisteredUser_ID'";
+  
+  if ($db->query($sqlsubmit) === TRUE) {
+    echo "";
+  } else {
+    echo "";
+  }
+
+ 
 }
 
 ?>
@@ -30,7 +57,7 @@ foreach ( $result as $row ) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Update Account Information</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet"></link>
+    <link href="style.css" rel="stylesheet"></link> 
 </head>
 
 
@@ -57,7 +84,7 @@ foreach ( $result as $row ) {
 
         <div class="reg">
             <h2 class="mb-4"><b>Personal Details:</b></h2>
-            <form action="update_details.php" method="post">
+            <form action="MemberAccountDetails.php" method="post">
               <div class="form-group">
                 <label for="first_name" class="form-label">First Name:</label>
                 <input type="text" class="form-control" id="first_name" name="first_name"  value="<?php echo $row['first_name']; ?>" required disabled>
@@ -80,7 +107,7 @@ foreach ( $result as $row ) {
               </div>
               <div class="form-group">
                 <label for="county" class="form-label">County:</label>
-                <input type="text" class="form-control" id="county" name="county" value="<?php echo $row['county']; ?>" disabled>
+                <input type="text" class="form-control" id="county" name="county" value="<?php echo $row['county']; ?>"disabled> 
               </div>
               <div class="form-group">
                 <label for="city" class="form-label">City:</label>
@@ -95,7 +122,7 @@ foreach ( $result as $row ) {
                 <input type="password" class="form-control" id="password" name="password" required disabled>
               </div>
               <button type="button" id="editBtn" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Edit Details</button>
-              <button type="submit" id="saveBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save</button>
+              <button type="submit" name="submit" id="saveBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save</button>
           </form>
       </div>
       <br></br>
@@ -106,27 +133,39 @@ foreach ( $result as $row ) {
                        <form action="update_details.php" method="post">
               <div class="form-group">
                 <label for="annual_income" class="form-label">Annual Income:</label>
-                <input type="text" class="form-control" id="annual_income" name="annual_income" required>
+                <input type="text" class="form-control" id="annual_income" name="annual_income" value="<?php echo $row['annual_income']; ?>" required disabled>
+              </div>
+              <div class="form-group">
+                <label for="additional_income_bool" class="form-label">Receive Additional Income?:</label>
+                <input type="text" class="form-control" id="additional_income_bool" name="additional_income_bool" value="<?php echo $row['']; ?>" required disabled>
               </div>
               <div class="form-group">
                 <label for="additional_income" class="form-label">Amount of Additional Income:</label>
-                <input type="text" class="form-control" id="additional_income" name="additional_income" required>
+                <input type="text" class="form-control" id="additional_income" name="additional_income" value="<?php echo $row['additional_income_amount']; ?>" required disabled>
               </div>
               <div class="form-group">
-                <label for="total_balance" class="form-label">Total Balance:</label>
-                <input type="text" class="form-control" id="total_balance" name="total_balance" required>
+                <label for="mortgage_duration" class="form-label">Mortgage Duration:</label>
+                <input type="text" class="form-control" id="mortgage_duration" name="mortgage_duration" value="<?php echo $row['']; ?>" required disabled>
               </div>
               <div class="form-group">
-                <label for="major_monthly_commitments_bool" class="form-label">Other Commitments:</label>
-                <input type="text" class="form-control" id="major_monthly_commitments_bool" name="major_monthly_commitments_bool" required>
+                <label for="total_balance" class="form-label">Total Balance held by User:</label>
+                <input type="text" class="form-control" id="total_balance" name="total_balance" value="<?php echo $row['total_balance']; ?>" required disabled>
               </div>
               <div class="form-group">
-                <label for="disposable_income" class="form-label">Monthly Spending Amounts:</label>
-                <input type="text" class="form-control" id="monthly_spending_amounts" name="monthly_spending_amounts" required>
+                <label for="major_monthly_commitments_bool" class="form-label">Major Monthly Commitments?</label>
+                <input type="text" class="form-control" id="major_monthly_commitments_bool" name="major_monthly_commitments_bool" value="<?php echo $row['other_commitments']; ?>" required disabled>
               </div>
               <div class="form-group">
                 <label for="credit_score" class="form-label">Credit Score:</label>
-                <input type="text" class="form-control" id="credit_score" name="credit_score" required>
+                <input type="text" class="form-control" id="credit_score" name="credit_score" value="<?php echo $row['credit_score']; ?>" required disabled>
+              </div>
+              <div class="form-group">
+                <label for="deposit" class="form-label">Deposit:</label>
+                <input type="text" class="form-control" id="deposit" name="deposit" value="<?php echo $row['']; ?>" required disabled>
+              </div>
+              <div class="form-group">
+                <label for="disposable_income" class="form-label">Disposable Income:</label>
+                <input type="text" class="form-control" id="disposable_income" name="disposable_income" value="<?php echo $row['']; ?>" required disabled>
               </div>
               <button type="button" id="editFinancialBtn" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Edit Financial Details</button>
               <button type="submit" id="saveFinancialBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save Financial Details</button>              
