@@ -106,8 +106,8 @@ if(isset($_POST['submit'])){
         </div>
         <h2 class="mt-5">Broker Details:</h2><br>
         <div class="form-group">
-            <label for="broker_name" class="form-label">Broker Name:</label>
-            <input type="text" class="form-control" id="broker_name" name="broker_name" value="<?php echo $row['brokage_name']; ?>" required>
+            <label for="brokage_name" class="form-label">Broker Name:</label>
+            <input type="text" class="form-control" id="brokage_name" name="brokage_name" value="<?php echo $row['brokage_name']; ?>" required>
         </div>
         <div class="form-group">
             <label for="broker_license_number" class="form-label">Broker License Number:</label>
