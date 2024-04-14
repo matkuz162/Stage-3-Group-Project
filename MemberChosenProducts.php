@@ -1,3 +1,31 @@
+<?php
+session_start();
+include 'connection.php'; 
+
+if (!isset($_SESSION['RegisteredUser_ID'])) {
+    // Redirect to login page
+    header('Location: login.html');
+    exit();
+  }
+  
+  $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
+  
+  $sql = "SELECT qu.Quote_ID
+  FROM Quote qu
+  INNER JOIN RegisteredUser ru ON qu.RegisteredUser_ID = ru.Quote_ID
+  INNER JOIN Product pu ON qu.Product_ID = pu.Quote_ID
+  WHERE ru.RegisteredUser_ID='$RegisteredUser_ID'";
+
+  $result = mysqli_query($db,$sql);
+  $resultCheck = mysqli_num_rows($result);
+
+  if ($resultCheck > 0) {
+    while ($row = mysqli_fetch_assoc($result)){
+        echo $row['Quote_ID'];
+    }
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
