@@ -1,7 +1,8 @@
 <?php
+session_start();
 include 'connection.php'; 
 
-session_start();
+
 
 if (!isset($_SESSION['Broker_ID'])) {
   // Redirect to login page
@@ -17,6 +18,36 @@ $sql = "SELECT  first_name, last_name, email, phone_number, country, city, postc
 $result = $db->query($sql);
 
 foreach ( $result as $row ) {
+}
+
+
+if(isset($_POST['submit'])){
+
+
+  $first_name = $_POST['first_name'];
+  $last_name = $_POST['last_name'];
+  $email = $_POST['email'];
+  $phone_number = $_POST['phone_number'];
+  $country = $_POST['country'];
+  $city = $_POST['city'];
+  $postcode = $_POST['postcode'];
+  $postcode = $_POST['brokage_name'];
+  $postcode = $_POST['broker_license_number'];
+  $postcode = $_POST['company_name'];
+  $postcode = $_POST['company_registration_number'];
+  $postcode = $_POST['company_country'];
+  
+  $sqlsubmit = "UPDATE Broker
+                SET first_name ='$first_name',last_name ='$last_name', email = '$email', phone_number = '$phone_number', country ='$country', county ='$county', city ='$city', postcode='$postcode' 
+                WHERE Broker_ID='$Broker_ID'";
+  
+  if ($db->query($sqlsubmit) === TRUE) {
+    echo "";
+  } else {
+    echo "";
+  }
+
+ 
 }
 ?>
 <!DOCTYPE html>
@@ -128,7 +159,7 @@ foreach ( $result as $row ) {
                 <input type="text" class="form-control" id="company_postcode" name="company_postcode" value="<?php echo $row['']; ?>" required disabled>
               </div>
               <button type="button" id="editFinancialBtn" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Edit Financial Details</button>
-              <button type="submit" id="saveFinancialBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save Financial Details</button>
+              <button type="submit" name="submit" id="saveFinancialBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save Financial Details</button>
               
           </form>
       </div>

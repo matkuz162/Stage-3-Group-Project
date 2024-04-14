@@ -43,10 +43,5 @@
         toggleEditable(true); // Disable editing
         this.style.display = 'none'; // Hide Save button
         document.getElementById('editFinancialBtn').style.display = 'block'; // Show Edit button
-        // Additional logic to submit the financial form if needed
-        var inputs = document.querySelectorAll('input[type="text"]');
-        inputs.forEach(function(input) {
-            input.removeAttribute('disabled');
-        });
     });
 
