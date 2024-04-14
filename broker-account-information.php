@@ -85,7 +85,7 @@ if(isset($_POST['submit'])){
 
       <div class="reg">
         <h2 class="mb-4">Account Details:</h2>
-        <form id="editForm" action="broker-account-information.php" method="post">
+        <form action="broker-account-information.php" method="post">
             <div class="form-group">
                 <label for="first_name" class="form-label">First Name:</label>
                 <input type="text" class="form-control" id="first_name" name="first_name"  value="<?php echo $row['first_name']; ?>" required disabled>
@@ -105,10 +105,6 @@ if(isset($_POST['submit'])){
               <div class="form-group">
                 <label for="country" class="form-label">Country:</label>
                 <input type="text" class="form-control" id="country" name="country"  value="<?php echo $row['country']; ?>" required disabled>
-              </div>
-              <div class="form-group">
-                <label for="county" class="form-label">County:</label>
-                <input type="text" class="form-control" id="county" name="county" value="<?php echo $row['county']; ?>"disabled> 
               </div>
               <div class="form-group">
                 <label for="city" class="form-label">City:</label>
@@ -145,18 +141,6 @@ if(isset($_POST['submit'])){
               <div class="form-group">
                 <label for="company_country" class="form-label">Country:</label>
                 <input type="text" class="form-control" id="company_country" name="company_country" value="<?php echo $row['company_country']; ?>" required disabled>
-              </div>
-              <div class="form-group">
-                <label for="company_county" class="form-label">County:</label>
-                <input type="text" class="form-control" id="company_county" name="company_county" value="<?php echo $row['']; ?>" required disabled>
-              </div>
-              <div class="form-group">
-                <label for="company_city" class="form-label">City:</label>
-                <input type="text" class="form-control" id="company_city" name="company_city" value="<?php echo $row['']; ?>" required disabled>
-              </div>
-              <div class="form-group">
-                <label for="company_postcode" class="form-label">Postcode:</label>
-                <input type="text" class="form-control" id="company_postcode" name="company_postcode" value="<?php echo $row['']; ?>" required disabled>
               </div>
               <button type="button" id="editbrokerBtn" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Edit Financial Details</button>
               <button type="submit" name="submit" id="savebrokerBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save Financial Details</button>
