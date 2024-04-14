@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // Update broker details in the database
         $db->beginTransaction();
-        $sql = "UPDATE `Broker` SET first_name = :first_name, last_name = :last_name, email = :email, phone_number = :phone_number, country = :country, city = :city, postcode = :postcode, password = :password, brokage_name = :broker_name, broker_license_number = :broker_license_number, company_name = :company_name, company_registration_number = :company_registration_number, company_country = :company_country, company_county = :company_county, company_city = :company_city, company_postcode = :company_postcode WHERE Broker_ID = :broker_id";
+        $sql = "UPDATE `Broker` SET first_name = :first_name, last_name = :last_name, email = :email, phone_number = :phone_number, country = :country, city = :city, postcode = :postcode, password = :password, broker_name = :broker_name, broker_license_number = :broker_license_number, company_name = :company_name, company_registration_number = :company_registration_number, company_country = :company_country, company_county = :company_county, company_city = :company_city, company_postcode = :company_postcode WHERE Broker_ID = :broker_id";
         $stmt = $db->prepare($sql);
         $stmt->execute($broker);
         $db->commit();
@@ -125,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <div class="form-group">
                     <label for="broker_name" class="form-label">Broker Name:</label>
-                    <input type="text" class="form-control" id="broker_name" name="broker_name" value="<?php echo $broker['brokage_name']; ?>" required>
+                    <input type="text" class="form-control" id="broker_name" name="broker_name" value="<?php echo $broker['broker_name']; ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="broker_license_number" class="form-label">Broker License Number:</label>
