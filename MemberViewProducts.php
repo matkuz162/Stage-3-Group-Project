@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'connection.php'; 
 ?>
 
@@ -63,51 +64,30 @@ include 'connection.php';
     
 
     <div class="flex-table">
+        <?php
+            $sql = "SELECT * FROM Product";
+            $result = mysqli_query($conn,$sql);
+            $queryResults = mysqli_num_rows($result);
 
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Product Description</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Broker Company</li>
-                <li class="list-group-item">Expected Income</li>
-                <li class="list-group-item">Expected Credit Score</li>
-            </ul>
-            <div class="card-body">
-                <a href="#" class="btn btn-primary">Favourite Product</a>
-            </div>
-        </div>
+            if($queryResults > 0){
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<div>
+                        <h3>".$row['name']."</h3>
+                        <p>".$row['description']."</p>
+                        <p>".$row['expected_income']."</p>
+                        <p>".$row['expected_outgoings']."</p>
+                        <p>".$row['expected_credit_score']."</p>
+                        <p>".$row['expected_employment_type']."</p>
+                        <p>".$row['interest_rate']."</p>
+                        <p>".$row['mtv_ratio']."</p>
+                    </div>";
+                }
+            }
+        ?>
 
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Product Description</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Broker Company</li>
-                <li class="list-group-item">Expected Income</li>
-                <li class="list-group-item">Expected Credit Score</li>
-            </ul>
-            <div class="card-body">
-                <a href="#" class="btn btn-primary">Favourite Product</a>
-            </div>
-        </div>
 
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Product Description</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Broker Company</li>
-                <li class="list-group-item">Expected Income</li>
-                <li class="list-group-item">Expected Credit Score</li>
-            </ul>
-            <div class="card-body">
-                <a href="#" class="btn btn-primary">Favourite Product</a>
-            </div>
-        </div>
+
+
         
 
     </div>
