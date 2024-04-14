@@ -153,16 +153,8 @@ if(isset($_POST['finance-submit'])){
                 <input type="text" class="form-control" id="annual_income" name="annual_income" value="<?php echo $row['annual_income']; ?>" required disabled>
               </div>
               <div class="form-group">
-                <label for="additional_income_bool" class="form-label">Receive Additional Income?:</label>
-                <input type="text" class="form-control" id="additional_income_bool" name="additional_income_bool" value="<?php echo $row['']; ?>" required disabled>
-              </div>
-              <div class="form-group">
                 <label for="additional_income" class="form-label">Amount of Additional Income:</label>
                 <input type="text" class="form-control" id="additional_income" name="additional_income" value="<?php echo $row['additional_income_amount']; ?>" required disabled>
-              </div>
-              <div class="form-group">
-                <label for="mortgage_duration" class="form-label">Mortgage Duration:</label>
-                <input type="text" class="form-control" id="mortgage_duration" name="mortgage_duration" value="<?php echo $row['']; ?>" required disabled>
               </div>
               <div class="form-group">
                 <label for="total_balance" class="form-label">Total Balance held by User:</label>
@@ -175,14 +167,6 @@ if(isset($_POST['finance-submit'])){
               <div class="form-group">
                 <label for="credit_score" class="form-label">Credit Score:</label>
                 <input type="text" class="form-control" id="credit_score" name="credit_score" value="<?php echo $row['credit_score']; ?>" required disabled>
-              </div>
-              <div class="form-group">
-                <label for="deposit" class="form-label">Deposit:</label>
-                <input type="text" class="form-control" id="deposit" name="deposit" value="<?php echo $row['']; ?>" required disabled>
-              </div>
-              <div class="form-group">
-                <label for="disposable_income" class="form-label">Disposable Income:</label>
-                <input type="text" class="form-control" id="disposable_income" name="disposable_income" value="<?php echo $row['']; ?>" required disabled>
               </div>
               <button type="button" id="editFinancialBtn" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Edit Financial Details</button>
               <button type="submit" name="finance-submit" id="saveFinancialBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save Financial Details</button>              
