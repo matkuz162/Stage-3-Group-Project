@@ -4,7 +4,7 @@ include 'connection.php';
 
 if (!isset($_SESSION['Broker_ID'])) {
   // Redirect to login page
-  header('Location: login.html');
+  header('Location: LogIn.php');
   exit();
 }
 
