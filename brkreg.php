@@ -1,7 +1,7 @@
 <?php
 include 'connection.php';
 
-
+updated
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
