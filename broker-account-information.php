@@ -158,8 +158,8 @@ if(isset($_POST['submit'])){
                 <label for="company_postcode" class="form-label">Postcode:</label>
                 <input type="text" class="form-control" id="company_postcode" name="company_postcode" value="<?php echo $row['']; ?>" required disabled>
               </div>
-              <button type="button" id="editFinancialBtn" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Edit Financial Details</button>
-              <button type="submit" name="submit" id="saveFinancialBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save Financial Details</button>
+              <button type="button" id="editbrokerBtn" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Edit Financial Details</button>
+              <button type="submit" name="submit" id="savebrokerBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save Financial Details</button>
               
           </form>
       </div>
