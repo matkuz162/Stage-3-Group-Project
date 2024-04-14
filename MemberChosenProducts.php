@@ -66,7 +66,7 @@ $statement = $db->query($sql); // Assuming $db is your PDO connection
       </div>
 
     </div>
-    <div>
+    <div class="flex-table">
       <?php
       while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
       ?>
