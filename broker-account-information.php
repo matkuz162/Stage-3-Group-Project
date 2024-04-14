@@ -4,15 +4,9 @@ session_start();
 
 // Check if the user is logged in
 if (!isset($_SESSION['Broker_ID'])) {
-<<<<<<< HEAD
-    // Redirect to login page
-    header('Location: login.php');
-    exit();
-=======
   // Redirect to login page
   header('Location: LogIn.php');
   exit();
->>>>>>> 62e3585883079e2c6db4c4c14a1810fdaefb81e4
 }
 
 // Fetch broker details from the database
