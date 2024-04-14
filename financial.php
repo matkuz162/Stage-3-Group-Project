@@ -53,14 +53,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt->execute();
 
-        // Commit transaction
+       
         $db->commit();
 
-        // Redirect to home.php after successful submission
+        
         header('Location: memberviewproducts.php');
         exit();
     } catch (Exception $e) {
-        // Rollback transaction
+      
         $db->rollBack();
         echo "Error: " . $e->getMessage();
     }
