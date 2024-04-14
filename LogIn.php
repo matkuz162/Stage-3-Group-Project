@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
         if(isset($db)) {
             
+            // Check if the user exists in the RegisteredUser table
             $stmt = $db->prepare("SELECT * FROM RegisteredUser WHERE email = :email");
             $stmt->bindParam(':email', $enteredemail, PDO::PARAM_STR);
             $stmt->execute();
@@ -22,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 if (password_verify($enteredpassword, $password)) {
                     $_SESSION["email"] = $enteredemail;
+                    $_SESSION["role"] = "registered_user";
                     $_SESSION["RegisteredUser_ID"] = $row["RegisteredUser_ID"];
                     
                     header("Location: memberviewproducts.php");
@@ -30,8 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo "Incorrect password";
                 }
             } else {
-                
-                $stmt = $db->prepare("SELECT * FROM `Broker`Broker WHERE email = :email");
+                // Check if the user exists in the Broker table
+                $stmt = $db->prepare("SELECT * FROM Broker WHERE email = :email");
                 $stmt->bindParam(':email', $enteredemail, PDO::PARAM_STR);
                 $stmt->execute();
 
@@ -42,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     if (password_verify($enteredpassword, $password)) {
                         $_SESSION["email"] = $enteredemail;
+                        $_SESSION["role"] = "broker";
                         $_SESSION["Broker_ID"] = $row["Broker_ID"];
                         
                         header("Location: broker-manage-product.php");
@@ -61,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 
 
 
