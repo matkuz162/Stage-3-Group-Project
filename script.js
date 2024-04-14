@@ -45,4 +45,21 @@ document.getElementById('saveFinancialBtn').addEventListener('click', function (
     document.getElementById('editFinancialBtn').style.display = 'block'; // Show Edit button
 });
 
+// Event listener for the Edit button in the broker Details section
+document.getElementById('editbrokerBtn').addEventListener('click', function () {
+    toggleEditable(false); // Enable editing
+    this.style.display = 'none'; // Hide Edit button
+    document.getElementById('savebrokerBtn').style.display = 'block'; // Show Save button
+    var inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="password"]');
+    inputs.forEach(function(input) {
+        input.removeAttribute('disabled');
+    });
+});
+
+document.getElementById('savebrokerBtn').addEventListener('click', function () {
+    toggleEditable(true); // Disable editing
+    this.style.display = 'none'; // Hide Save button
+    document.getElementById('editFinancialBtn').style.display = 'block'; // Show Edit button
+});
+
 
