@@ -14,10 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $postcode = $_POST["postcode"];
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
-    $broker_name = $_POST["broker_name"];
+    $brokage_name = $_POST['brokage_name'];
     $broker_license_number = $_POST["broker_license_number"];
     $company_name = $_POST["company_name"];
-    $company_registration_number = $_POST["company_registration_number"];
+    $company_registration_number = $_POST['company_registration_number'];
     $company_country = $_POST["company_country"];
     $company_county = $_POST["company_county"];
 
