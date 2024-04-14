@@ -65,6 +65,28 @@ $all_quote = $conn->query($sql);
             </div>
 
         </div>
+    <div>
+        <?php
+        while($row = my_sqli_fetch_assoc($all_quote)){
+        ?>
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+             <?php echo $row["Quote_ID"]; ?>
+        </div>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item"><?php echo $row["loan_amount"]; ?></li>
+            <li class="list-group-item"><?php echo $row["term"]; ?></li>
+            <li class="list-group-item"><?php echo $row["interest"]; ?></li>
+            <li class="list-group-item"><?php echo $row["rate"]; ?></li>
+            <li class="list-group-item"><?php echo $row["total"]; ?></li>
+            </ul>
+        </div>
+        <?php
+        }
+        ?>
+
+
+    </div>
 </div>
 
 
