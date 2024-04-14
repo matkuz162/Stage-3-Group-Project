@@ -1,7 +1,12 @@
 <?php
-session_start();
-include 'connection.php'; 
+
+require_once 'connection.php';
+
+$sql = "SELECT * FROM Product";
+$statement = $db->query($sql); // Assuming $db is your PDO connection
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,31 +74,26 @@ include 'connection.php';
 
     <div class="flex-table">
         <?php
-            $sql = "SELECT * FROM Product";
-            $result = mysqli_query($conn,$sql);
-            $queryResults = mysqli_num_rows($result);
-
-            if($queryResults > 0){
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<div>
-                        <h3>".$row['name']."</h3>
-                        <p>".$row['description']."</p>
-                        <p>".$row['expected_income']."</p>
-                        <p>".$row['expected_outgoings']."</p>
-                        <p>".$row['expected_credit_score']."</p>
-                        <p>".$row['expected_employment_type']."</p>
-                        <p>".$row['interest_rate']."</p>
-                        <p>".$row['mtv_ratio']."</p>
-                    </div>";
-                }
-            }
+        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
         ?>
-
-
-
-
-        
-
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title"><b><?php echo $row["name"]; ?></b></h5>
+                <p class="card-text"><?php echo $row["description"]; ?></p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Expected Income:</b><?php echo $row["expected_income"]; ?></li>
+                    <li class="list-group-item"><b>Expected Outgoings:</b><?php echo $row["expected_outgoings"]; ?></li>
+                    <li class="list-group-item"><b>Expected Credit Score:</b><?php echo $row["expected_credit_score"]; ?></li>
+                    <li class="list-group-item"><b>Expected Employment Type:</b><?php echo $row["expected_employment_type"]; ?></li>
+                    <li class="list-group-item"><b>Interest Rate:</b><?php echo $row["interest_rate"]; ?></li>
+                    <li class="list-group-item"><b>MtV Ratio:</b><?php echo $row["mtv_ratio"]; ?></li>
+                </ul>
+                <a href="#" class="btn btn-primary">Favourite</a>
+            </div>
+        </div>
+        <?php
+        }
+        ?>
     </div>
 
 </div>
