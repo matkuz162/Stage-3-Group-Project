@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $role = "Broker";
 
             $sql = "INSERT INTO `Broker` (first_name, last_name, email, phone_number, country, city, postcode, password, brokage_name, broker_license_number, company_name, company_registration_number, company_country, company_county, role) 
-            VALUES (:first_name, :last_name, :email, :phone_number, :country, :city, :postcode, :password, :broker_name, :broker_license_number, :company_name, :company_registration_number, :company_country, :company_county, :role)";
+            VALUES (:first_name, :last_name, :email, :phone_number, :country, :city, :postcode, :password, :brokege_name, :broker_license_number, :company_name, :company_registration_number, :company_country, :company_county, :role)";
 
             $stmt = $db->prepare($sql);
             $stmt->bindParam(':first_name', $first_name);
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(':city', $city);
             $stmt->bindParam(':postcode', $postcode);
             $stmt->bindParam(':password', $hashedPassword);
-            $stmt->bindParam(':broker_name', $broker_name);
+            $stmt->bindParam(':brokage_name', $broker_name);
             $stmt->bindParam(':broker_license_number', $broker_license_number);
             $stmt->bindParam(':company_name', $company_name);
             $stmt->bindParam(':company_registration_number', $company_registration_number);
@@ -158,8 +158,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <h2 class="mt-5">Broker Details</h2><br>
       
       <div class="form-group">
-        <label for="broker_name" class="form-label">Broker Name:</label>
-        <input type="text" class="form-control" id="broker_name" name="broker_name" required>
+        <label for="brokage_name" class="form-label">Broker Name:</label>
+        <input type="text" class="form-control" id="broker_name" name="brokage_name" required>
       </div>
       <div class="form-group">
         <label for="broker_license_number" class="form-label">Broker License Number:</label>
