@@ -37,37 +37,39 @@ include 'connection.php';
             <form class="product" action="broker-product-check.php" method="post">
                 <div class="product-information">
                     <div class="product-description">
-                        <?php if (isset($_GET['error'])) { ?>
-                            <p class ="error-field"><?php echo $_GET['error']; ?></p>
-                        <?php }?>
 
-                        <?php if (isset($_GET['success'])) { ?>
-                            <p class ="success-field"><?php echo $_GET['success']; ?></p>
-                        <?php }?>
+                    <?php if (isset($_GET['error'])) { ?>
+                        <p class ="error-field"><?php echo $_GET['error']; ?></p>
+                    <?php }?>
 
-                            <label class="label-group" for="product-name">Product Name</label>
-                            <input class="form-control" type="text" id="product-name" name="product-name"><br>
-                            <label  class="label-group" for="product-desc">Product Description</label>
-                            <textarea class="form-control"row="10" id="product-desc" name="product-desc"></textarea>
-                            <label class="label-group" for="product-interest">Base Interest Rate</label>
-                            <input class="form-control" type="text" id="base-interest" name="base-interest"><br>
-                        </div>
+                    <?php if (isset($_GET['success'])) { ?>
+                        <p class ="success-field"><?php echo $_GET['success']; ?></p>
+                    <?php }?>
 
-                        <div class="expected-description">
-                            <label  class="label-group" for="expected-income">Expected Income</label>
-                            <input class="form-control" type="text" id="expected-income" name="expected-income"><br>
-                            <label  class="label-group" for="expected-outgoings">Expected Outgoings</label>
-                            <input class="form-control" type="text" id="expected-outgoings" name="expected-outgoings"><br>
-                            <label  class="label-group" for="expected-credit">Expected Credit Score</label>
-                            <input class="form-control" type="text" id="expected-credit" name="expected-credit"><br>
-                            <label  class="label-group" for="expected-occupation">Expected Type of Employment</label>
-                            <input class="form-control" type="text" id="expected-occupation" name="expected-occupation"><br>
-                            <label  class="label-group" for="loan-ratio">Maximum loan to value ratio</label>
-                            <input class="form-control" type="text" id="loan-ratio"><br>
-                        </div>
-                    <input type="hidden" name="product-id" value="<?php echo $productId; ?>">
+                        <label class="label-group" for="product-name">Product Name *</label>
+                        <input class="form-control" type="text" id="product-name" name="product-name"><br>
+                        <label  class="label-group" for="product-desc">Product Description *</label>
+                        <textarea class="form-control"row="10" id="product-desc" name="product-desc"></textarea>
+                        <label class="label-group" for="product-interest">Base Interest Rate *</label>
+                        <input class="form-control" type="text" id="base-interest" name="base-interest"><br>
+                    </div>
+                
+                    <div class="expected-description">
+                        <label  class="label-group" for="expected-income">Expected Income *</label>
+                        <input class="form-control" type="text" id="expected-income" name="expected-income"><br>
+                        <label  class="label-group" for="expected-outgoings">Expected Outgoings *</label>
+                        <input class="form-control" type="text" id="expected-outgoings" name="expected-outgoings"><br>
+                        <label  class="label-group" for="expected-credit">Expected Credit Score *</label>
+                        <input class="form-control" type="text" id="expected-credit" name="expected-credit"><br>
+                        <label  class="label-group" for="expected-occupation">Expected Type of Employment *</label>
+                        <input class="form-control" type="text" id="expected-occupation" name="expected-occupation"><br>
+                        <label  class="label-group" for="loan-ratio">Maximum loan to value ratio *</label>
+                        <input class="form-control" type="text" id="loan-ratio"><br>
+                    </div>
                 </div>
-                <button class="product-creation-btn" type="submit" name="UpdateProduct">Update Product</button>
+                <div>
+                    <button class="product-creation-btn" type="submit" name="updateProduct">Update Product</button>
+                </div>
             </form>
         </div>  
         
