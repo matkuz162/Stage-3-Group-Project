@@ -85,7 +85,7 @@ if(isset($_POST['submit'])){
 
       <div class="reg">
         <h2 class="mb-4">Account Details:</h2>
-        <form id="editForm" action="broker-account-information.php" method="post">
+        <form action="broker-account-information.php" method="post">
             <div class="form-group">
                 <label for="first_name" class="form-label">First Name:</label>
                 <input type="text" class="form-control" id="first_name" name="first_name"  value="<?php echo $row['first_name']; ?>" required disabled>

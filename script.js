@@ -59,7 +59,7 @@ document.getElementById('editbrokerBtn').addEventListener('click', function () {
 document.getElementById('savebrokerBtn').addEventListener('click', function () {
     toggleEditable(true); // Disable editing
     this.style.display = 'none'; // Hide Save button
-    document.getElementById('editFinancialBtn').style.display = 'block'; // Show Edit button
+    document.getElementById('editbrokerBtn').style.display = 'block'; // Show Edit button
 });
 
 
