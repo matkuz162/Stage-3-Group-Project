@@ -33,17 +33,21 @@
             <h2>Mortgage Calculator</h2><br><br>
             <div class="form-group">
                 <label for="monthlyPayments">Monthly Payments:</label>
-                <input type="text" class="form-control" id="monthlyPayments" name="monthlyPayments" required>
+                <input type="text" class="form-control" id="monthlyPayments" value="0" name="monthlyPayments" required>
             </div>
             <div class="form-group">
                 <label for="interestRate">Interest Rate:</label>
-                <input type="text" class="form-control" id="interestRate" name="interestRate" required>
+                <input type="text" class="form-control" id="interestRate" value="0" name="interestRate" required>
             </div>
             <div class="form-group">
-                <label for="mortgagePeriod">Mortgage Period:</label>
-                <input type="text" class="form-control" id="mortgagePeriod" name="mortgagePeriod" required>
+                <label for="mortgagePeriod">Mortgage Period (years):</label>
+                <input type="text" class="form-control" id="mortgagePeriod" value="0" name="mortgagePeriod" required>
             </div>
-            <button type="submit" class="btn btn-primary">Calculate</button>
+            <div class="form-group">
+                <label for="results">Results:</label>
+                <input type="text" class="form-control" id="result" value="0" readonly>
+            </div>
+            <button type="submit"  onclick="addition()" value="addition"class="btn btn-primary">Calculate</button>
         </form>
         
         <div class="container mt-5">

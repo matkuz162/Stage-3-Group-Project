@@ -62,4 +62,12 @@ document.getElementById('savebrokerBtn').addEventListener('click', function () {
     document.getElementById('editbrokerBtn').style.display = 'block'; // Show Edit button
 });
 
+//Mortgage calculator
+function addition(){
+    var num1 = document.getElementById('monthlyPayments').value;
+    var num2 =  document.getElementById('mortgagePeriod').value;
+    document.getElementById('result').value = monthlyPayments * (mortgagePeriod * 12);
+    document.forms.calculator.submit()
+}
+
 
