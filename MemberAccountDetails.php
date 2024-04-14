@@ -54,13 +54,15 @@ if(isset($_POST['finance-submit'])){
   $total_balance = $_POST['total_balance'];
   $credit_score = $_POST['credit_score'];
   
-  $financialsubmit = "UPDATE financialdetails AS fd
-  INNER JOIN RegisteredUser AS ru ON fd.RegisteredUser_ID = ru.RegisteredUser_ID
-  SET fd.annual_income = '$annual_income',
-      fd.total_balance = '$total_balance',
-      fd.credit_score = '$credit_score'
-  WHERE ru.RegisteredUser_ID='$RegisteredUser_ID'";
+  $financialsubmit = "UPDATE financialdetails 
+  SET annual_income = '$annual_income',
+      total_balance = '$total_balance',
+      credit_score = '$credit_score'
+  WHERE RegisteredUser_ID IN (SELECT RegisteredUser_ID FROM RegisteredUser WHERE RegisteredUser_ID='$RegisteredUser_ID')";
 
+  if ($db->query($financialsubmit) === TRUE) {
+  } else {
+  }
 }
 
 ?>
