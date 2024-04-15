@@ -2,14 +2,14 @@
 include 'connection.php';
 session_start();
 
-// Check if the user is logged in
+
 if (!isset($_SESSION['Broker_ID'])) {
-  // Redirect to login page
+ 
   header('Location: LogIn.php');
   exit();
 }
 
-// Fetch broker details from the database
+
 $broker_id = $_SESSION['Broker_ID'];
 $sql = "SELECT * FROM `Broker` WHERE Broker_ID = :broker_id";
 $stmt = $db->prepare($sql);
@@ -17,9 +17,9 @@ $stmt->bindParam(':broker_id', $broker_id);
 $stmt->execute();
 $broker = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Check if form is submitted
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Update broker details
+   
     $broker['first_name'] = $_POST['first_name'];
     $broker['last_name'] = $_POST['last_name'];
     $broker['email'] = $_POST['email'];
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $broker['city'] = $_POST['city'];
     $broker['postcode'] = $_POST['postcode'];
     $broker['password'] = $_POST['password'];
-    $broker['broker_name'] = $_POST['broker_name'];
+    $broker['brokage_name'] = $_POST['brokage_name'];
     $broker['broker_license_number'] = $_POST['broker_license_number'];
     $broker['company_name'] = $_POST['company_name'];
     $broker['company_registration_number'] = $_POST['company_registration_number'];
@@ -38,23 +38,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $broker['company_postcode'] = $_POST['company_postcode'];
 
     try {
-        // Update broker details in the database
+        
         $db->beginTransaction();
-        $sql = "UPDATE `Broker` SET first_name = :first_name, last_name = :last_name, email = :email, phone_number = :phone_number, country = :country, city = :city, postcode = :postcode, password = :password, broker_name = :broker_name, broker_license_number = :broker_license_number, company_name = :company_name, company_registration_number = :company_registration_number, company_country = :company_country, company_county = :company_county, company_city = :company_city, company_postcode = :company_postcode WHERE Broker_ID = :broker_id";
+        $sql = "UPDATE `Broker` SET first_name = :first_name, last_name = :last_name, email = :email, phone_number = :phone_number, country = :country, city = :city, postcode = :postcode, password = :password, brokage_name = :brokage_name, broker_license_number = :broker_license_number, company_name = :company_name, company_registration_number = :company_registration_number, company_country = :company_country, company_county = :company_county, company_city = :company_city, company_postcode = :company_postcode WHERE Broker_ID = :broker_id";
         $stmt = $db->prepare($sql);
-        $stmt->execute($broker);
+        $stmt->execute([
+            ':first_name' => $broker['first_name'],
+            ':last_name' => $broker['last_name'],
+            ':email' => $broker['email'],
+            ':phone_number' => $broker['phone_number'],
+            ':country' => $broker['country'],
+            ':city' => $broker['city'],
+            ':postcode' => $broker['postcode'],
+            ':password' => $broker['password'],
+            ':brokage_name' => $broker['brokage_name'],
+            ':broker_license_number' => $broker['broker_license_number'],
+            ':company_name' => $broker['company_name'],
+            ':company_registration_number' => $broker['company_registration_number'],
+            ':company_country' => $broker['company_country'],
+            ':company_county' => $broker['company_county'],
+            ':company_city' => $broker['company_city'],
+            ':company_postcode' => $broker['company_postcode'],
+            ':broker_id' => $broker_id,
+        ]);
         $db->commit();
 
-        // Redirect to broker manage product page
+        
         header('Location: broker-manage-product.php');
         exit();
     } catch (Exception $e) {
-        // Rollback and display error message
+        
+
         $db->rollBack();
         echo "Error: " . $e->getMessage();
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -114,18 +134,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="form-group">
                     <label for="password" class="form-label">Password:</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirm_password" class="form-label">Confirm Password:</label>
-                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                    <input type="password" class="form-control" id="password" name="password">
                 </div>
 
                 <h2 class="mt-5">Broker Details</h2><br>
 
                 <div class="form-group">
-                    <label for="broker_name" class="form-label">Broker Name:</label>
-                    <input type="text" class="form-control" id="broker_name" name="broker_name" value="<?php echo $broker['broker_name']; ?>" required>
+                    <label for="brokage_name" class="form-label">Broker Name:</label>
+                    <input type="text" class="form-control" id="brokage_name" name="brokage_name" value="<?php echo $broker['brokage_name']; ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="broker_license_number" class="form-label">Broker License Number:</label>
@@ -169,11 +185,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <footer>
 
     </footer>
+    
+<script>
+    // Broker Details
+    const editbrkBtn = document.getElementById('editbrkBtn');
+    const savebrkBtn = document.getElementById('savebrkBtn');
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+    // Function to toggle between edit and save buttons
+    function toggleButtons(editBtn, saveBtn) {
+      editBtn.style.display = 'none';
+      saveBtn.style.display = 'block';
+    }
+
+    // Function to enable editing of form fields
+    function enableEditing(fields) {
+      fields.forEach(field => {
+        field.removeAttribute('readonly');
+      });
+    }
+
+    editbrkBtn.addEventListener('click', function() {
+        toggleButtons(editbrkBtn, savebrkBtn);
+        enableEditing(document.querySelectorAll('#first_name, #last_name, #email, #phone_number, #country, #county, #city, #postcode, #broker_license_number, #company_name, #company_registration_number, #company_country, #company_county, #company_city, #company_postcode'));
+    });
+
+</script>
 
 </body>
 

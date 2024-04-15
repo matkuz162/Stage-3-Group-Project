@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const saveFinancialBtn = document.getElementById('saveFinancialBtn');
     const editLoanBtn = document.getElementById('editLoanBtn');
     const saveLoanBtn = document.getElementById('saveLoanBtn');
-    const editbrkBtn = document.getElementById('editbrkBtn');
-    const savebrkBtn = document.getElementById('savebrkBtn');
 
     // Function to toggle between edit and save buttons
     function toggleButtons(editBtn, saveBtn) {
@@ -39,11 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
       enableEditing(document.querySelectorAll('#mortgage_reason, #estimated_property_value, #borrow_amount, #mortgage_term'));
     });
 
-    // Broker Details
-    editbrkBtn.addEventListener('click', function() {
-        toggleButtons(editbrkBtn, savebrkBtn);
-        enableEditing(document.querySelectorAll('#first_name, #last_name, #email, #phone_number, #country, #county, #city, #postcode, #broker_license_number, #company_name, #company_registration_number, #company_country, #company_county, #company_city, #company_postcode'));
-    });
   });
 
 
