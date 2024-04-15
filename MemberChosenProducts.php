@@ -2,8 +2,8 @@
 
 require_once 'connection.php';
 
-$sql = "SELECT * FROM Quote";
-$statement = $db->query($sql); // Assuming $db is your PDO connection
+$sql = "SELECT * FROM Quote WHERE product_starred = 1";
+$statement = $db->query($sql);
 
 ?>
 

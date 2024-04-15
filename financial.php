@@ -20,6 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $other_commitments = $_POST["other_commitments"];
     $monthly_spending_amounts = $_POST["monthly_spending_amounts"];
     $credit_score = $_POST["credit_score"];
+    $mortgage_reason = $_POST["mortgage_reason"];
+    $estimated_property_value = $_POST["estimated_property_value"];
+    $borrow_amount = $_POST["borrow_amount"];
+    $mortgage_term = $_POST["mortgage_term"];
 
     // Retrieve RegisteredUser_ID from session
     $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
@@ -29,8 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $db->beginTransaction();
 
         // SQL query to insert financial details
-        $sql = "INSERT INTO financialdetails (RegisteredUser_ID, annual_income, additional_income_amount, total_balance, other_commitments, monthly_spending_amounts, credit_score) 
-                VALUES (:RegisteredUser_ID, :annual_income, :additional_income_amount, :total_balance, :other_commitments, :monthly_spending_amounts, :credit_score)";
+        $sql = "INSERT INTO financialdetails (RegisteredUser_ID, annual_income, additional_income_amount, total_balance, other_commitments, monthly_spending_amounts, credit_score, mortgage_reason, estimated_property_value, borrow_amount, mortgage_term) 
+                VALUES (:RegisteredUser_ID, :annual_income, :additional_income_amount, :total_balance, :other_commitments, :monthly_spending_amounts, :credit_score, :mortgage_reason, :estimated_property_value, :borrow_amount, :mortgage_term)";
 
         $stmt = $db->prepare($sql);
 
@@ -42,22 +46,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':other_commitments', $other_commitments);
         $stmt->bindParam(':monthly_spending_amounts', $monthly_spending_amounts);
         $stmt->bindParam(':credit_score', $credit_score);
+        $stmt->bindParam(':mortgage_reason', $mortgage_reason);
+        $stmt->bindParam(':estimated_property_value', $estimated_property_value);
+        $stmt->bindParam(':borrow_amount', $borrow_amount);
+        $stmt->bindParam(':mortgage_term', $mortgage_term);
 
         $stmt->execute();
 
-        // Commit transaction
+       
         $db->commit();
 
-        // Redirect to home.php after successful submission
+        
         header('Location: memberviewproducts.php');
         exit();
     } catch (Exception $e) {
-        // Rollback transaction
+      
         $db->rollBack();
         echo "Error: " . $e->getMessage();
     }
 }
 ?>
+
 
 
 <!DOCTYPE html>
@@ -79,37 +88,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <main>
 
-        <div class="reg">
-            <h2>Financial Details</h2>
-            <br>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <div class="mb-3">
-                    <label for="annual_income" class="form-label">Annual Income:</label>
-                    <input type="text" class="form-control" id="annual_income" name="annual_income" required>
-                </div>
-                <div class="mb-3">
-                    <label for="additional_income_amount" class="form-label">Additional Income Amount:</label>
-                    <input type="text" class="form-control" id="additional_income_amount" name="additional_income_amount" required>
-                </div>
-                <div class="mb-3">
-                    <label for="total_balance" class="form-label">Total Balance:</label>
-                    <input type="text" class="form-control" id="total_balance" name="total_balance" required>
-                </div>
-                <div class="mb-3">
-                    <label for="other_commitments" class="form-label">Other Commitments:</label>
-                    <input type="text" class="form-control" id="other_commitments" name="other_commitments" required>
-                </div>
-                <div class="mb-3">
-                    <label for="monthly_spending_amounts" class="form-label">Monthly Spending Amounts:</label>
-                    <input type="text" class="form-control" id="monthly_spending_amounts" name="monthly_spending_amounts" required>
-                </div>
-                <div class="mb-3">
-                    <label for="credit_score" class="form-label">Credit Score:</label>
-                    <input type="text" class="form-control" id="credit_score" name="credit_score" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+    <div class="reg">
+    <h2>Financial Details</h2>
+    <br>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <div class="mb-3">
+            <label for="annual_income" class="form-label">Annual Income:</label>
+            <input type="number" class="form-control" id="annual_income" name="annual_income" required>
         </div>
+        <div class="mb-3">
+            <label for="additional_income_amount" class="form-label">Additional Income Amount:</label>
+            <input type="number" class="form-control" id="additional_income_amount" name="additional_income_amount" required>
+        </div>
+        <div class="mb-3">
+            <label for="total_balance" class="form-label">Total Balance:</label>
+            <input type="number" class="form-control" id="total_balance" name="total_balance" required>
+        </div>
+        <div class="mb-3">
+            <label for="other_commitments" class="form-label">Other Commitments:</label>
+            <input type="number" class="form-control" id="other_commitments" name="other_commitments" required>
+        </div>
+        <div class="mb-3">
+            <label for="monthly_spending_amounts" class="form-label">Monthly Spending Amounts:</label>
+            <input type="number" class="form-control" id="monthly_spending_amounts" name="monthly_spending_amounts" required>
+        </div>
+        <div class="mb-3">
+            <label for="credit_score" class="form-label">Credit Score:</label>
+            <input type="number" class="form-control" id="credit_score" name="credit_score" required>
+        </div>
+<br> <h2>Loan Details</h2><br>
+        <div class="mb-3">
+            <label for="mortgage_reason" class="form-label">Reason for Mortgage:</label>
+            <select class="form-select" id="mortgage_reason" name="mortgage_reason" required>
+                <option value="" selected disabled>Select reason</option>
+                <option value="first_house">First House</option>
+                <option value="moving_home">Moving Home</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="estimated_property_value" class="form-label">Estimated Property Value:</label>
+            <input type="number" class="form-control" id="estimated_property_value" name="estimated_property_value" required>
+        </div>
+        <div class="mb-3">
+            <label for="borrow_amount" class="form-label">Amount to Borrow (minimum £6000):</label>
+            <input type="number" class="form-control" id="borrow_amount" name="borrow_amount" min="6000" required>
+        </div>
+        <div class="mb-3">
+            <label for="mortgage_term" class="form-label">Mortgage Term (years):</label>
+            <input type="number" class="form-control" id="mortgage_term" name="mortgage_term" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
 
     </main>
 

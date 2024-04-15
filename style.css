@@ -245,7 +245,6 @@ form.product {
   background-color: #ECD5D5;
   color: #732B2B;
   padding: 10px;
-  width: 90%;
   border-radius: 10px;
   margin: 20px auto;
 }
@@ -275,10 +274,19 @@ form.product {
   resize: none;
 }
 .product-layout{
-  background-color: #fff;
+  background-color: #c4fbff;
   margin: 40px auto;
   max-width: 900px;
   height: 300px;
+}
+.no-products-text{
+  background-color: #fff;
+  font-size: 24px;
+  text-align: center;
+  padding-top: 30px;
+}
+.no-products-text p {
+  padding: 10px;
 }
 .product-header{
   background-color: #98CFED;
