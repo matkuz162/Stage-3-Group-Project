@@ -1,8 +1,31 @@
 <?php
 session_start();
-
 include 'connection.php';
+include 'broker-product-check.php';
+//Check if form was submitted
+if( $_SERVER["REQUEST_METHOD"] == "POST") {
+    $productId = validate($_POST['product-id']);
+    $pname = validate($_POST['product-name']);
+    $pdesc = validate($_POST['product-desc']);
+    $baseInt = validate($_POST['base-interest']);
+    $expectedInc = validate($_POST['expected-income']);
+    $expectedOutg = validate($_POST['expected-outgoings']);
+    $expectedCredit = validate($_POST['expected-credit']);
+    $expectedOcc = validate($_POST['expected-occupation']);
+    $loanRatio = validate($_POST['mtv-ratio']);
+    $IsDraft = isset($_POST['isDraft']) ? 1 : 0;
 
+    updateProduct($productId, $pname, $pdesc, $baseInt, $expectedInc, $expectedOutg, $expectedCredit, $expectedOcc, $loanRatio, $isDraft, $db);
+
+} else {
+    //check if ID is provided
+    if (isset($_GET['id'])) {
+        $productId = $_GET['id'];
+        $stmt = $db->prepare("SELECT * FROM Product WHERE Product_ID=?");
+        $stmt->execute([$productId]);
+        $product = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+}
 
 ?>
 
@@ -47,24 +70,24 @@ include 'connection.php';
                     <?php }?>
 
                         <label class="label-group" for="product-name">Product Name *</label>
-                        <input class="form-control" type="text" id="product-name" name="product-name"><br>
+                        <input class="form-control" type="text" id="product-name" name="product-name" value="<?php echo $product['name']; ?>"><br>
                         <label  class="label-group" for="product-desc">Product Description *</label>
-                        <textarea class="form-control"row="10" id="product-desc" name="product-desc"></textarea>
-                        <label class="label-group" for="product-interest">Base Interest Rate *</label>
-                        <input class="form-control" type="text" id="base-interest" name="base-interest"><br>
+                        <textarea class="form-control"row="10" id="product-desc" name="product-desc"><?php echo $product['description']; ?></textarea>
+                        <label class="label-group" for="product-interest">Base Interest Rate (in %) *</label>
+                        <input class="form-control" type="text" id="base-interest" name="base-interest" value="<?php echo $product['interest_rate']; ?>"><br>
                     </div>
                 
                     <div class="expected-description">
-                        <label  class="label-group" for="expected-income">Expected Income *</label>
-                        <input class="form-control" type="text" id="expected-income" name="expected-income"><br>
-                        <label  class="label-group" for="expected-outgoings">Expected Outgoings *</label>
-                        <input class="form-control" type="text" id="expected-outgoings" name="expected-outgoings"><br>
+                        <label  class="label-group" for="expected-income">Expected annual income *</label>
+                        <input class="form-control" type="text" id="expected-income" name="expected-income" value="<?php echo $product['expected_income']; ?>"><br>
+                        <label  class="label-group" for="expected-outgoings">Expected monthly outgoings *</label>
+                        <input class="form-control" type="text" id="expected-outgoings" name="expected-outgoings" value="<?php echo $product['expected_outgoings']; ?>"><br>
                         <label  class="label-group" for="expected-credit">Expected Credit Score *</label>
-                        <input class="form-control" type="text" id="expected-credit" name="expected-credit"><br>
+                        <input class="form-control" type="text" id="expected-credit" name="expected-credit" value="<?php echo $product['expected_credit_score']; ?>"><br>
                         <label  class="label-group" for="expected-occupation">Expected Type of Employment *</label>
-                        <input class="form-control" type="text" id="expected-occupation" name="expected-occupation"><br>
-                        <label  class="label-group" for="loan-ratio">Maximum loan to value ratio *</label>
-                        <input class="form-control" type="text" id="loan-ratio"><br>
+                        <input class="form-control" type="text" id="expected-occupation" name="expected-occupation" value="<?php echo $product['expected_employment_type']; ?>"><br>
+                        <label  class="label-group" for="loan-ratio">Maximum loan to value ratio (in %) *</label>
+                        <input class="form-control" type="text" id="loan-ratio" value="<?php echo $product['mtv-ratio']; ?>"><br>
                     </div>
                 </div>
                 <div>

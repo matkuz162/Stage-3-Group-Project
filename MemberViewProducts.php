@@ -2,7 +2,12 @@
 
 require_once 'connection.php';
 
-$sql = "SELECT * FROM Product";
+$sql = "SELECT * 
+        FROM Quote
+        INNER JOIN RegisteredUser ON (Quote.RegisteredUser_ID = RegisteredUser.RegisteredUser_ID)
+        INNER JOIN Product ON (Quote.Product_ID = Product.Product_ID)
+        INNER JOIN financialdetails ON (financialdetails.RegisteredUser_ID = RegisteredUser.RegisteredUser_ID)";
+
 $statement = $db->query($sql); // Assuming $db is your PDO connection
 
 ?>
