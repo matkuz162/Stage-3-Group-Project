@@ -28,7 +28,7 @@
             <input type="text" maxlength="1">
             <input type="text" maxlength="1">
         </div>
-        <button class="confirm-btn" type="submit">Confirm</button>
+        <button class="passwordreset-btn" type="submit">Confirm</button>
     </form>
     </div>
 

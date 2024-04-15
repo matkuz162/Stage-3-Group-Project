@@ -420,6 +420,16 @@ form.reset-password {
   padding: 0px;
 }
 
+.passwordreset-btn {
+  padding: 10px 20px;
+  background-color: blue;
+  cursor: pointer;
+  transition: 0.5s;
+  border: solid 1px #9c9a9a;
+  margin-top: 50px;
+  border-radius: 8px;
+}
+
 
 
 
