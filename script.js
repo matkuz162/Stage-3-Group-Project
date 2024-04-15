@@ -63,11 +63,20 @@ document.getElementById('savebrokerBtn').addEventListener('click', function () {
 });
 
 //Mortgage calculator
-function addition(){
-    var num1 = document.getElementById('monthlyPayments').value;
-    var num2 =  document.getElementById('mortgagePeriod').value;
-    document.getElementById('result').value = monthlyPayments * (mortgagePeriod * 12);
-    document.forms.calculator.submit()
+
+function calculate() {
+    var principal = parseFloat(document.getElementById("principal").value);
+    var annualInterestRate = parseFloat(document.getElementById("interest").value);
+    var years = parseInt(document.getElementById("years").value);
+
+    var monthlyInterestRate = annualInterestRate / 100 / 12;
+    var months = years * 12;
+
+   
+    var monthlyPayment = principal * (monthlyInterestRate * Math.pow((1 + monthlyInterestRate), months)) / (Math.pow((1 + monthlyInterestRate), months) - 1);  // formula for monthly mortgage payment
+
+   
+    document.getElementById("result").innerHTML = "£" + monthlyPayment.toFixed(2);  // result
 }
 
 

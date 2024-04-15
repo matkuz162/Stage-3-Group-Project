@@ -29,27 +29,25 @@
     </header>
 
     <main>
-        <form class="reg">
-            <h2>Mortgage Calculator</h2><br><br>
-            <div class="form-group">
-                <label for="monthlyPayments">Monthly Payments:</label>
-                <input type="text" class="form-control" id="monthlyPayments" value="0" name="monthlyPayments" required>
+        <div class="calculator-container"> 
+            <div class="calculator">
+                <h2>Mortgage Calculator</h2>
+                
+                <label for="principal">Loan Amount:</label>
+                <input type="number" id="principal" placeholder="Enter loan amount">
+
+                <label for="interest">Annual Interest Rate:</label>
+                <input type="number" id="interest" placeholder="Enter annual interest rate">
+
+                <label for="years">Loan duration (years):</label>
+                <input type="number" id="years" placeholder="Enter loan term">
+
+                <button onclick="calculate()">Calculate</button>
+
+                <h3>Monthly Mortgage Payment:</h3>
+                <p id="result">£0.00</p>
             </div>
-            <div class="form-group">
-                <label for="interestRate">Interest Rate:</label>
-                <input type="text" class="form-control" id="interestRate" value="0" name="interestRate" required>
-            </div>
-            <div class="form-group">
-                <label for="mortgagePeriod">Mortgage Period (years):</label>
-                <input type="text" class="form-control" id="mortgagePeriod" value="0" name="mortgagePeriod" required>
-            </div>
-            <div class="form-group">
-                <label for="results">Results:</label>
-                <input type="text" class="form-control" id="result" value="0" readonly>
-            </div>
-            <button type="submit"  onclick="addition()" value="addition"class="btn btn-primary">Calculate</button>
-        </form>
-        
+        </div>
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-6">
@@ -87,7 +85,7 @@
     <footer>
     </footer>   
 
-
+    <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

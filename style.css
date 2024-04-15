@@ -75,6 +75,38 @@ body {
 
 /* home page */
 
+/*mortgage calculator*/
+.calculator-container{
+  display: flex;
+  justify-content: center;
+}
+.calculator {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 500px;
+}
+
+input[type="number"], button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #007BFF;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4287d1;
+}
+/* end */
+
 .card {
   height: 100%;
   display: flex;
