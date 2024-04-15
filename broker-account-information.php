@@ -143,24 +143,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text" class="form-control" id="company_registration_number" name="company_registration_number" value="<?php echo $broker['company_registration_number']; ?>">
                 </div>
                 <div class="form-group">
-                    <label for="company_country" class="form-label">Country:</label>
+                    <label for="company_country" class="form-label">Company Country:</label>
                     <input type="text" class="form-control" id="company_country" name="company_country" value="<?php echo $broker['company_country']; ?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="company_county" class="form-label">County:</label>
+                    <label for="company_county" class="form-label">Company County:</label>
                     <input type="text" class="form-control" id="company_county" name="company_county" value="<?php echo $broker['company_county']; ?>">
                 </div>
                 <div class="form-group">
-                    <label for="company_city" class="form-label">City:</label>
+                    <label for="company_city" class="form-label">Company City:</label>
                     <input type="text" class="form-control" id="company_city" name="company_city" value="<?php echo $broker['company_city']; ?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="company_postcode" class="form-label">Postcode:</label>
+                    <label for="company_postcode" class="form-label">Company Postcode:</label>
                     <input type="text" class="form-control" id="company_postcode" name="company_postcode" value="<?php echo $broker['company_postcode']; ?>" required>
                 </div>
 
-                <button type="button" id="editFinancialBtn" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Edit Details</button>
-                <button type="submit" name="finance-submit" id="saveFinancialBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save Details</button>
+                <button type="button" id="editbrkBtn" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Edit Loan Details</button>
+                <button type="submit" name="loan-submit" id="savebrkBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save Loan Details</button>
             </form>
         </div>
 
@@ -173,6 +173,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
 
 </body>
 

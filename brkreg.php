@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Hash the password
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-            $sql = "INSERT INTO Broker (first_name, last_name, email, phone_number, country, city, postcode, password, broker_name, broker_license_number, company_name, company_registration_number, company_country, company_county, company_city, company_postcode, role) 
+            $sql = "INSERT INTO Broker (first_name, last_name, email, phone_number, country, city, postcode, password, brokage_name, broker_license_number, company_name, company_registration_number, company_country, company_county, company_city, company_postcode, role) 
                     VALUES (:first_name, :last_name, :email, :phone_number, :country, :city, :postcode, :password, :broker_name, :broker_license_number, :company_name, :company_registration_number, :company_country, :company_county, :company_city, :company_postcode, :role)";
 
             $stmt = $db->prepare($sql);
@@ -238,6 +238,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
 
 
 

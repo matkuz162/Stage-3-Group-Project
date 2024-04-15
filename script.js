@@ -1,66 +1,52 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const editPersonalBtn = document.getElementById('editPersonalBtn');
+    const savePersonalBtn = document.getElementById('savePersonalBtn');
+    const editFinancialBtn = document.getElementById('editFinancialBtn');
+    const saveFinancialBtn = document.getElementById('saveFinancialBtn');
+    const editLoanBtn = document.getElementById('editLoanBtn');
+    const saveLoanBtn = document.getElementById('saveLoanBtn');
+    const editbrkBtn = document.getElementById('editbrkBtn');
+    const savebrkBtn = document.getElementById('savebrkBtn');
 
-// Function to toggle between read-only and editable states
-function toggleEditable(state) {
-    var inputs = document.querySelectorAll('.form-control');
-    inputs.forEach(function (input) {
-        input.readOnly = state;
+    // Function to toggle between edit and save buttons
+    function toggleButtons(editBtn, saveBtn) {
+      editBtn.style.display = 'none';
+      saveBtn.style.display = 'block';
+    }
+
+    // Function to enable editing of form fields
+    function enableEditing(fields) {
+      fields.forEach(field => {
+        field.removeAttribute('readonly');
+      });
+    }
+
+    // Personal Details
+    editPersonalBtn.addEventListener('click', function() {
+      toggleButtons(editPersonalBtn, savePersonalBtn);
+      enableEditing(document.querySelectorAll('#first_name, #last_name, #email, #phone_number, #country, #county, #city, #postcode'));
     });
-}
 
-// Event listener for the Edit button in the Account Details section
-document.getElementById('editBtn').addEventListener('click', function () {
-    toggleEditable(false); // Enable editing
-    this.style.display = 'none'; // Hide Edit button
-    document.getElementById('saveBtn').style.display = 'block'; // Show Save button
-    var inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="password"]');
-    inputs.forEach(function(input) {
-        input.removeAttribute('disabled');
+    // Financial Details
+    editFinancialBtn.addEventListener('click', function() {
+      toggleButtons(editFinancialBtn, saveFinancialBtn);
+      enableEditing(document.querySelectorAll('#annual_income, #additional_income, #total_balance, #major_monthly_commitments_bool, #credit_score'));
     });
-}); 
 
-
-// Event listener for the Save button in the Account Details section
-document.getElementById('saveBtn').addEventListener('click', function () {
-    toggleEditable(true); // Disable editing
-    this.style.display = 'none'; // Hide Save button
-    document.getElementById('editBtn').style.display = 'block'; // Show Edit button
-    document.getElementById('editForm').submit(); // Submit the form
-});
-
-// Event listener for the Edit button in the Financial section
-document.getElementById('editFinancialBtn').addEventListener('click', function () {
-    toggleEditable(false); // Enable editing
-    this.style.display = 'none'; // Hide Edit button
-    document.getElementById('saveFinancialBtn').style.display = 'block'; // Show Save button
-    var inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="password"]');
-    inputs.forEach(function(input) {
-        input.removeAttribute('disabled');
+    // Loan Details
+    editLoanBtn.addEventListener('click', function() {
+      toggleButtons(editLoanBtn, saveLoanBtn);
+      enableEditing(document.querySelectorAll('#mortgage_reason, #estimated_property_value, #borrow_amount, #mortgage_term'));
     });
-});
 
-// Event listener for the Save button in the Financial section
-document.getElementById('saveFinancialBtn').addEventListener('click', function () {
-    toggleEditable(true); // Disable editing
-    this.style.display = 'none'; // Hide Save button
-    document.getElementById('editFinancialBtn').style.display = 'block'; // Show Edit button
-});
-
-// Event listener for the Edit button in the broker Details section
-document.getElementById('editbrokerBtn').addEventListener('click', function () {
-    toggleEditable(false); // Enable editing
-    this.style.display = 'none'; // Hide Edit button
-    document.getElementById('savebrokerBtn').style.display = 'block'; // Show Save button
-    var inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="password"]');
-    inputs.forEach(function(input) {
-        input.removeAttribute('disabled');
+    // Broker Details
+    editbrkBtn.addEventListener('click', function() {
+        toggleButtons(editbrkBtn, savebrkBtn);
+        enableEditing(document.querySelectorAll('#first_name, #last_name, #email, #phone_number, #country, #county, #city, #postcode, #broker_license_number, #company_name, #company_registration_number, #company_country, #company_county, #company_city, #company_postcode'));
     });
-});
+  });
 
-document.getElementById('savebrokerBtn').addEventListener('click', function () {
-    toggleEditable(true); // Disable editing
-    this.style.display = 'none'; // Hide Save button
-    document.getElementById('editbrokerBtn').style.display = 'block'; // Show Edit button
-});
+
 
 //Mortgage calculator
 

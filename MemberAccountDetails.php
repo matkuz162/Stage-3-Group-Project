@@ -262,47 +262,12 @@ if (isset($_POST['loan-submit'])) {
 
 </footer>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const editPersonalBtn = document.getElementById('editPersonalBtn');
-    const savePersonalBtn = document.getElementById('savePersonalBtn');
-    const editFinancialBtn = document.getElementById('editFinancialBtn');
-    const saveFinancialBtn = document.getElementById('saveFinancialBtn');
-    const editLoanBtn = document.getElementById('editLoanBtn');
-    const saveLoanBtn = document.getElementById('saveLoanBtn');
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
 
-    // Function to toggle between edit and save buttons
-    function toggleButtons(editBtn, saveBtn) {
-      editBtn.style.display = 'none';
-      saveBtn.style.display = 'block';
-    }
 
-    // Function to enable editing of form fields
-    function enableEditing(fields) {
-      fields.forEach(field => {
-        field.removeAttribute('readonly');
-      });
-    }
-
-    // Personal Details
-    editPersonalBtn.addEventListener('click', function() {
-      toggleButtons(editPersonalBtn, savePersonalBtn);
-      enableEditing(document.querySelectorAll('#first_name, #last_name, #email, #phone_number, #country, #county, #city, #postcode'));
-    });
-
-    // Financial Details
-    editFinancialBtn.addEventListener('click', function() {
-      toggleButtons(editFinancialBtn, saveFinancialBtn);
-      enableEditing(document.querySelectorAll('#annual_income, #additional_income, #total_balance, #major_monthly_commitments_bool, #credit_score'));
-    });
-
-    // Loan Details
-    editLoanBtn.addEventListener('click', function() {
-      toggleButtons(editLoanBtn, saveLoanBtn);
-      enableEditing(document.querySelectorAll('#mortgage_reason, #estimated_property_value, #borrow_amount, #mortgage_term'));
-    });
-  });
-</script>
 
 </body>
 
