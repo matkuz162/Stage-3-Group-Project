@@ -69,7 +69,7 @@ function calculate() {
     var annualInterestRate = parseFloat(document.getElementById("interest").value);
     var years = parseInt(document.getElementById("years").value);
 
-    var monthlyInterestRate = annualInterestRate / 100 / 12;
+    var monthlyInterestRate = annualInterestRate / 100 / 12;//converts interest rate from percentage to decimal
     var months = years * 12;
 
    
