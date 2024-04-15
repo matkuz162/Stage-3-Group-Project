@@ -84,7 +84,6 @@ $statement = $db->query($sql); // Assuming $db is your PDO connection
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title"><b><?php echo $row["name"]; ?></b></h5>
-                <p class="card-text"><?php echo $row["description"]; ?></p>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><b>Expected Income:</b><?php echo $row["expected_income"]; ?></li>
                     <li class="list-group-item"><b>Expected Outgoings:</b><?php echo $row["expected_outgoings"]; ?></li>
@@ -100,6 +99,7 @@ $statement = $db->query($sql); // Assuming $db is your PDO connection
         }
         ?>
     </div>
+</div>
 
 </div>
 </div>
