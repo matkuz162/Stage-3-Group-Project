@@ -100,6 +100,7 @@ $statement = $db->query($sql); // Assuming $db is your PDO connection
         }
         ?>
     </div>
+</div>
 
 </div>
 </div>
