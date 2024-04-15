@@ -40,7 +40,7 @@
                 <input type="number" id="interest" placeholder="Enter annual interest rate">
 
                 <label for="years">Loan duration (years):</label>
-                <input type="number" id="years" placeholder="Enter loan term">
+                <input type="number" id="years" placeholder="Enter loan duration">
 
                 <button onclick="calculate()">Calculate</button>
 
