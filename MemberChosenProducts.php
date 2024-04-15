@@ -78,7 +78,7 @@ $statement = $db->query($sql);
           <li class="list-group-item"><b>Loan Amount:</b><?php echo $row["loan_amount"]; ?></li>
           <li class="list-group-item"><b>Term (Months):</b><?php echo $row["term"]; ?></li>
           <li class="list-group-item"><b>Interest (%):</b><?php echo $row["interest"]; ?></li>
-          <li class="list-group-item"><b>Rate :</b><?php echo $row["rate"]; ?></li>
+          <li class="list-group-item"><b>Rate:</b><?php echo $row["rate"]; ?></li>
           <li class="list-group-item"><b>Total:</b><?php echo $row["total"]; ?></li>
         </ul>
       </div>
