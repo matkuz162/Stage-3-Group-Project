@@ -53,14 +53,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt->execute();
 
-        // Commit transaction
+       
         $db->commit();
 
-        // Redirect to home.php after successful submission
+        
         header('Location: memberviewproducts.php');
         exit();
     } catch (Exception $e) {
-        // Rollback transaction
+      
         $db->rollBack();
         echo "Error: " . $e->getMessage();
     }
@@ -94,27 +94,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="mb-3">
             <label for="annual_income" class="form-label">Annual Income:</label>
-            <input type="text" class="form-control" id="annual_income" name="annual_income" required>
+            <input type="number" class="form-control" id="annual_income" name="annual_income" required>
         </div>
         <div class="mb-3">
             <label for="additional_income_amount" class="form-label">Additional Income Amount:</label>
-            <input type="text" class="form-control" id="additional_income_amount" name="additional_income_amount" required>
+            <input type="number" class="form-control" id="additional_income_amount" name="additional_income_amount" required>
         </div>
         <div class="mb-3">
             <label for="total_balance" class="form-label">Total Balance:</label>
-            <input type="text" class="form-control" id="total_balance" name="total_balance" required>
+            <input type="number" class="form-control" id="total_balance" name="total_balance" required>
         </div>
         <div class="mb-3">
             <label for="other_commitments" class="form-label">Other Commitments:</label>
-            <input type="text" class="form-control" id="other_commitments" name="other_commitments" required>
+            <input type="number" class="form-control" id="other_commitments" name="other_commitments" required>
         </div>
         <div class="mb-3">
             <label for="monthly_spending_amounts" class="form-label">Monthly Spending Amounts:</label>
-            <input type="text" class="form-control" id="monthly_spending_amounts" name="monthly_spending_amounts" required>
+            <input type="number" class="form-control" id="monthly_spending_amounts" name="monthly_spending_amounts" required>
         </div>
         <div class="mb-3">
             <label for="credit_score" class="form-label">Credit Score:</label>
-            <input type="text" class="form-control" id="credit_score" name="credit_score" required>
+            <input type="number" class="form-control" id="credit_score" name="credit_score" required>
         </div>
 <br> <h2>Loan Details</h2><br>
         <div class="mb-3">
