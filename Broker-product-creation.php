@@ -53,7 +53,7 @@ include 'connection.php';
 
                             <label class="label-group" for="product-name">Product Name *</label>
                             <input class="form-control" type="text" id="product-name" name="product-name"><br>
-                            <label class="label-group" for="base-interest">Base Interest Rate (in %) *</label>
+                            <label class="label-group" for="base-interest">Base Interest Rate *</label>
                             <input class="form-control" type="text" id="base-interest" name="base-interest"><br>
                             <label for="isDraft">Set as Draft *</label>
                             <input type="checkbox" name="isDraft" style="width:25px;height:25px"/>
@@ -68,7 +68,7 @@ include 'connection.php';
                             <input class="form-control" type="text" id="expected-credit" name="expected-credit"><br>
                             <label  class="label-group" for="expected-occupation">Expected Type of Employment *</label>
                             <input class="form-control" type="text" id="expected-occupation" name="expected-occupation"><br>
-                            <label  class="label-group" for="mtv-ratio">Maximum loan to value ratio (in %) *</label>
+                            <label  class="label-group" for="mtv-ratio">Maximum loan to value ratio *</label>
                             <input class="form-control" type="text" id="mtv-ratio" name="mtv-ratio"><br>
                         </div>
                     </div>
