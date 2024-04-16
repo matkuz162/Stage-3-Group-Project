@@ -85,14 +85,13 @@ $statement = $db->query($sql); // Assuming $db is your PDO connection
             <div class="card-body">
                 <h5 class="card-title"><b><?php echo $row["name"]; ?></b></h5>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Expected Income:</b><?php echo $row["expected_income"]; ?></li>
-                    <li class="list-group-item"><b>Expected Outgoings:</b><?php echo $row["expected_outgoings"]; ?></li>
-                    <li class="list-group-item"><b>Expected Credit Score:</b><?php echo $row["expected_credit_score"]; ?></li>
-                    <li class="list-group-item"><b>Expected Employment Type:</b><?php echo $row["expected_employment_type"]; ?></li>
-                    <li class="list-group-item"><b>Interest Rate:</b><?php echo $row["interest_rate"]; ?></li>
-                    <li class="list-group-item"><b>MtV Ratio:</b><?php echo $row["mtv_ratio"]; ?></li>
+                    <li class="list-group-item"><b>Years:</b><?php echo $row["YearRate"]; ?></li>
+                    <li class="list-group-item"><b>Type of Rate:</b><?php echo $row["ProductType"]; ?></li>
+                    <li class="list-group-item"><b>Product fee:</b><?php echo $row["ProductFee"]; ?></li>
+                    <li class="list-group-item"><b>Initial rate:</b><?php echo $row["initial_interest_rate"]; ?></li>
+                    <li class="list-group-item"><b>Monthly cost:</b><?php echo $row["interest_rate"]; ?></li>
                 </ul>
-                <a href="#" class="btn btn-primary">Favourite</a>
+                <a href="#" class="btn btn-primary">Compare</a>
             </div>
         </div>
         <?php
