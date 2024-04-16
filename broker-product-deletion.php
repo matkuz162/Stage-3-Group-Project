@@ -11,7 +11,7 @@ if (isset($_GET['id'])){
 
 
     //Redirect back to products page
-    header("Location: broker-manage-product.php");
+    header("Location: broker-manage-product.php?success=Product successfully deleted");
     exit();
 } else {
     header("Location: broker-manage-product.php?error=Product ID could not be retrieved for product");

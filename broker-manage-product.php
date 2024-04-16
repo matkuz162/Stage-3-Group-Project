@@ -2,7 +2,7 @@
 session_start();
 include 'connection.php';
 
-//if (isset($_SESSION['Broker_ID'])){
+if (isset($_SESSION['Broker_ID'])){
 
     //fetching products associated with the current broker
     $brokerId = $_SESSION['Broker_ID'];
@@ -56,13 +56,20 @@ include 'connection.php';
                     </div>
                 </div>
             </div>
+                        <?php if (isset($_GET['error'])) { ?>
+                            <p class ="error-field-manage-prod"><?php echo $_GET['error']; ?></p>
+                        <?php }?>
+
+                        <?php if (isset($_GET['success'])) { ?>
+                            <p class ="success-field-manage-prod"><?php echo $_GET['success']; ?></p>
+                        <?php }?>
             <div class="product-layout">
                 <?php if (!empty($products)) : ?>
                     <?php foreach ($products as $product) : ?>
                     <div class="product-header">
                         <h3><?php echo $product['name']; ?></h3>
                         <div>
-                            <a href="broker-product-update.php?id=<?php echo $product['Product_ID']; ?>" class="edit-product-btn">Edit</a>
+                            <a href="Broker-product-update.php?id=<?php echo $product['Product_ID']; ?>" class="edit-product-btn">Edit</a>
                             <a href="broker-product-deletion.php?id=<?php echo $product['Product_ID']; ?>" class="delete-product-btn">Delete</a>
                         </div>
                     </div>
@@ -74,7 +81,7 @@ include 'connection.php';
                     <?php endforeach; ?>
                 <?php else : ?>
                     <div class ="no-products-text">
-                        <p>No products Created.</p>
+                        <p>No Products Created</p>
                     </div>
                 <?php endif; ?>
             </div>
@@ -84,8 +91,8 @@ include 'connection.php';
     </body>
     </html>
 <?php
-/*} else {
+} else {
     header("Location: LogIn.php");
     exit();
-}*/
+}
 ?>
