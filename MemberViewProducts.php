@@ -2,17 +2,32 @@
 
 require_once 'connection.php';
 
+session_start();
+include 'connection.php'; 
+
+if (!isset($_SESSION['RegisteredUser_ID'])) {
+    
+  header('Location: login.php');
+  exit();
+}
+
+$RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
+
 $sql = "SELECT *
         FROM Product
         LEFT JOIN financialdetails ON (financialdetails.RegisteredUser_ID = Product.Broker_ID)
         LEFT JOIN RegisteredUser ON (RegisteredUser.RegisteredUser_ID = financialdetails.RegisteredUser_ID)
-        LEFT JOIN Quote ON (Quote.Product_ID = Product.Product_ID);";
-
-
+        LEFT JOIN Quote ON (Quote.Product_ID = Product.Product_ID)
+        WHERE Product.expected_income <= (SELECT annual_income FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID)
+        AND Product.expected_outgoings <= (SELECT monthly_spending_amounts FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID)
+        AND Product.expected_credit_score <= (SELECT credit_score FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID);";
 
 $statement = $db->query($sql);
 
 ?>
+
+
+
 
 
 <!DOCTYPE html>
@@ -83,14 +98,15 @@ $statement = $db->query($sql);
         <?php
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
         ?>
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 18rem; margin-bottom: 50px;">
             <div class="card-body">
-            <h5 class="card-title"><b><?php echo $row["YearRate"] . " " . $row["ProductType"]; ?></b></h5>
+            <h5 class="card-title"><b><?php echo $row["YearRate"] . " Year " . $row["ProductType"]; ?></b></h5>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><b>Monthly Cost:</b><?php echo $row["monthly_repayments"]; ?></li>
                     <li class="list-group-item"><b>Initial rate:</b><?php echo $row["initial_interest_rate"]; ?></li>
                     <li class="list-group-item"><b>Product fee:</b><?php echo $row["ProductFee"]; ?></li>
                 </ul>
+                <br>
                 <a href="#" class="btn btn-primary">Compare</a>
             </div>
         </div>
