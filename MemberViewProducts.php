@@ -2,13 +2,15 @@
 
 require_once 'connection.php';
 
-$sql = "SELECT * 
-        FROM Quote
-        INNER JOIN RegisteredUser ON (Quote.RegisteredUser_ID = RegisteredUser.RegisteredUser_ID)
-        INNER JOIN Product ON (Quote.Product_ID = Product.Product_ID)
-        INNER JOIN financialdetails ON (financialdetails.RegisteredUser_ID = RegisteredUser.RegisteredUser_ID)";
+$sql = "SELECT *
+        FROM Product
+        LEFT JOIN financialdetails ON (financialdetails.RegisteredUser_ID = Product.Broker_ID)
+        LEFT JOIN RegisteredUser ON (RegisteredUser.RegisteredUser_ID = financialdetails.RegisteredUser_ID)
+        LEFT JOIN Quote ON (Quote.Product_ID = Product.Product_ID);";
 
-$statement = $db->query($sql); // Assuming $db is your PDO connection
+
+
+$statement = $db->query($sql);
 
 ?>
 
@@ -83,13 +85,11 @@ $statement = $db->query($sql); // Assuming $db is your PDO connection
         ?>
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title"><b><?php echo $row["name"]; ?></b></h5>
+            <h5 class="card-title"><b><?php echo $row["YearRate"] . " " . $row["ProductType"]; ?></b></h5>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Years:</b><?php echo $row["YearRate"]; ?></li>
-                    <li class="list-group-item"><b>Type of Rate:</b><?php echo $row["ProductType"]; ?></li>
-                    <li class="list-group-item"><b>Product fee:</b><?php echo $row["ProductFee"]; ?></li>
+                    <li class="list-group-item"><b>Monthly Cost:</b><?php echo $row["monthly_repayments"]; ?></li>
                     <li class="list-group-item"><b>Initial rate:</b><?php echo $row["initial_interest_rate"]; ?></li>
-                    <li class="list-group-item"><b>Monthly cost:</b><?php echo $row["interest_rate"]; ?></li>
+                    <li class="list-group-item"><b>Product fee:</b><?php echo $row["ProductFee"]; ?></li>
                 </ul>
                 <a href="#" class="btn btn-primary">Compare</a>
             </div>
@@ -97,6 +97,7 @@ $statement = $db->query($sql); // Assuming $db is your PDO connection
         <?php
         }
         ?>
+
     </div>
 </div>
 
