@@ -409,14 +409,15 @@ form.reset-password {
 .otp-field {
   display: flex;
   justify-content: center;
+  margin-bottom: 25px;
 }
 
 .captch_box {
   display: flex;
   justify-content: center;
   height: 40px;
+  margin-bottom: 25px;
 }
-
 
 .otp-field input {
   width: 200px;
