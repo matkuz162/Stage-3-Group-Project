@@ -90,7 +90,10 @@
             $query .= "mtv_ratio=?, ";
             $params[] = $loanRatio;
         }
-        
+        if (isset($isDraft)){
+            $query .= "aDraft=?, ";
+            $params[] = $isDraft;
+        }
         // Check if any fields were provided to update
         if (empty($params)) {
             header("Location: Broker-product-update.php?id=$productId&error=No fields to update");
