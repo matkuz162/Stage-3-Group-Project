@@ -63,6 +63,30 @@ if (isset($_SESSION['Broker_ID'])){
                         <?php if (isset($_GET['success'])) { ?>
                             <p class ="success-field-manage-prod"><?php echo $_GET['success']; ?></p>
                         <?php }?>
+                    <h4 class="products-type">Active Products</h4>
+            <div class="product-layout">
+                <?php if (!empty($products)) : ?>
+                    <?php foreach ($products as $product) : ?>
+                    <div class="product-header">
+                        <h3><?php echo $product['name']; ?></h3>
+                        <div>
+                            <a href="Broker-product-update.php?id=<?php echo $product['Product_ID']; ?>" class="edit-product-btn">Edit</a>
+                            <a href="broker-product-deletion.php?id=<?php echo $product['Product_ID']; ?>" class="delete-product-btn">Delete</a>
+                        </div>
+                    </div>
+                    <div class="product-section">
+                        <div class="manage-product-information">
+                        
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <div class ="no-products-text">
+                        <p>No Products Created</p>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <h4 class="products-type">Drafted Products</h4>
             <div class="product-layout">
                 <?php if (!empty($products)) : ?>
                     <?php foreach ($products as $product) : ?>

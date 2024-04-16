@@ -36,11 +36,7 @@
             header("Location: broker-product-creation.php?error=unable to retrieve form");
             exit();
             die();
-<<<<<<< HEAD
-        }
-=======
     }
->>>>>>> c68d1b248ca55622e4705c9a7a7192d85a7d6460
 } else {
     header("Location: LogIn.php");
     exit();
@@ -61,24 +57,6 @@
 
     }
     function updateProduct($productId,$pname,$expectedInc,$expectedOutg,$expectedCredit,$expectedOcc,$baseInt,$loanRatio,$isDraft, $db){
-<<<<<<< HEAD
-        if (empty($pname)|| empty($baseInt)|| empty($expectedInc)||empty($expectedOutg)|| empty($expectedCredit)||empty($expectedOcc)|| empty($loanRatio)){
-            header("Location: Broker-product-creation.php?error=All required fields must be entered");
-            exit();
-        }
-        try {
-            $stmt = $db->prepare("UPDATE Product SET 
-                                    name=?, 
-                                    expected_income=?, 
-                                    expected_outgoings=?, 
-                                    expected_credit_score=?, 
-                                    expected_employment_type=?, 
-                                    interest_rate=?, 
-                                    mtv_ratio=?, 
-                                    aDraft=? WHERE Product_ID=?"); 
-            $stmt->execute([$pname, $expectedInc, $expectedOutg, $expectedCredit, $expectedOcc, $baseInt, $loanRatio, $isDraft, $productId]);
-            return true;
-=======
         try {
             // Constructing the SQL Query based on non-empty fields
         $query = "UPDATE Product SET ";
@@ -130,7 +108,6 @@
         $stmt = $db->prepare($query);
         $stmt->execute($params);
 
->>>>>>> c68d1b248ca55622e4705c9a7a7192d85a7d6460
             header("Location: broker-manage-product.php?success=Product updated successfully");
             exit();
         } catch(PDOException $e) {

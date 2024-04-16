@@ -1,26 +1,6 @@
 <?php
 session_start();
 include 'connection.php';
-<<<<<<< HEAD
-include 'broker-product-check.php';
-//Check if form was submitted
-if( $_SERVER["REQUEST_METHOD"] == "POST") {
-    $productId = validate($_POST['product-id']);
-    $pname = validate($_POST['product-name']);
-    $pdesc = validate($_POST['product-desc']);
-    $baseInt = validate($_POST['base-interest']);
-    $expectedInc = validate($_POST['expected-income']);
-    $expectedOutg = validate($_POST['expected-outgoings']);
-    $expectedCredit = validate($_POST['expected-credit']);
-    $expectedOcc = validate($_POST['expected-occupation']);
-    $loanRatio = validate($_POST['loan-ratio']);
-    $isDraft = isset($_POST['isDraft']) ? 1 : 0;
-
-    updateProduct($productId, $pname, $pdesc, $baseInt, $expectedInc, $expectedOutg, $expectedCredit, $expectedOcc, $loanRatio, $isDraft, $db);
-
-} else {
-=======
->>>>>>> c68d1b248ca55622e4705c9a7a7192d85a7d6460
     //check if ID is provided
     if (isset($_GET['id'])) {
         $productId = $_GET['id'];
