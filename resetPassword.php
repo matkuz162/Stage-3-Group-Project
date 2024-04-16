@@ -28,8 +28,7 @@
             <div class="otp-field captch_input">
                 <input type="text" placeholder="Enter captcha"  />
             </div>
-            <div class="message"></div>
-            
+            <div class="message"></div>            
             <div class="button ">
                 <button type = "reset" onclick="(submitBtnClick)">Submit Captcha</button> 
             </div>
