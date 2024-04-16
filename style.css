@@ -276,8 +276,11 @@ form.product {
   font-weight: 600;
   margin: 0 auto;
   text-align: center;
-  border: border-box;
-  border-bottom: solid 1px#000;
+}
+.products-type h4 {
+  font-size: 20px;
+  display: inline-block;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.644);
 }
 .product-description input{
   width: 350px;
@@ -333,7 +336,20 @@ form.product {
   border: solid 1px #F51546;
 }
 .manage-product-information{
-  padding: 20px;
+  display: flex;
+  background-color: #fff;
+  padding: 40px;
+}
+.manage-product-information h5 {
+  font-size: 16px;
+  font-weight: 500;
+}
+.manage-product-information p {
+  font-size: 16px;
+  font-weight: 600;
+}
+.initial-rate-section {
+  
 }
 .product-section{
   display: flex;

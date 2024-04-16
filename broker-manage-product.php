@@ -63,10 +63,16 @@ if (isset($_SESSION['Broker_ID'])){
                         <?php if (isset($_GET['success'])) { ?>
                             <p class ="success-field-manage-prod"><?php echo $_GET['success']; ?></p>
                         <?php }?>
-                    <h4 class="products-type">Active Products</h4>
+            <div class="products-type">
+                <h4>Active Products</h4>
+            </div>
             <div class="product-layout">
-                <?php if (!empty($products)) : ?>
-                    <?php foreach ($products as $product) : ?>
+                <?php 
+                $activeProducts = array_filter($products, function ($product){
+                    return $product['aDraft'] == 0;
+                });
+                    if (!empty($activeProducts)) : ?>
+                    <?php foreach ($activeProducts as $product) : ?>
                     <div class="product-header">
                         <h3><?php echo $product['name']; ?></h3>
                         <div>
@@ -76,7 +82,10 @@ if (isset($_SESSION['Broker_ID'])){
                     </div>
                     <div class="product-section">
                         <div class="manage-product-information">
-                        
+                            <div class="initial-rate-section">
+                                <h5>Initial rate</h5>
+                                <p><?php echo $product['interest_rate']?>%</p>
+                            </div>
                         </div>
                     </div>
                     <?php endforeach; ?>
@@ -86,10 +95,16 @@ if (isset($_SESSION['Broker_ID'])){
                     </div>
                 <?php endif; ?>
             </div>
-            <h4 class="products-type">Drafted Products</h4>
+            <div class="products-type">
+                <h4>Drafted Products</h4>
+            </div>
             <div class="product-layout">
-                <?php if (!empty($products)) : ?>
-                    <?php foreach ($products as $product) : ?>
+                <?php 
+                    $draftProducts = array_filter($products, function ($product){
+                    return $product['aDraft'] == 1;
+                    });
+                    if (!empty($draftProducts)) : ?>
+                    <?php foreach ($draftProducts as $product) : ?>
                     <div class="product-header">
                         <h3><?php echo $product['name']; ?></h3>
                         <div>
@@ -99,7 +114,7 @@ if (isset($_SESSION['Broker_ID'])){
                     </div>
                     <div class="product-section">
                         <div class="manage-product-information">
-                        
+                        <p><?php echo $product['interest-rate']?></p>
                         </div>
                     </div>
                     <?php endforeach; ?>
