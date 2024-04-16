@@ -272,6 +272,13 @@ form.product {
   border-radius: 10px;
   margin: 20px 10px;
 }
+.products-type {
+  font-weight: 600;
+  margin: 0 auto;
+  text-align: center;
+  border: border-box;
+  border-bottom: solid 1px#000;
+}
 .product-description input{
   width: 350px;
   padding: 8px;
@@ -445,6 +452,20 @@ form.reset-password {
   border-radius: 8px;
 }
 
+/* delete button */
+.btn-delete {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #fff;
+  width: 100px;
+  margin-left: 85%;
+}
+
+/* delete button */
+.btn-delete:hover {
+  background-color: #ff0019;
+  border-color: #ff0019;
+}
 
 
 
