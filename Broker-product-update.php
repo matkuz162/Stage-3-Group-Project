@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'connection.php';
+<<<<<<< HEAD
 include 'broker-product-check.php';
 //Check if form was submitted
 if( $_SERVER["REQUEST_METHOD"] == "POST") {
@@ -18,6 +19,8 @@ if( $_SERVER["REQUEST_METHOD"] == "POST") {
     updateProduct($productId, $pname, $pdesc, $baseInt, $expectedInc, $expectedOutg, $expectedCredit, $expectedOcc, $loanRatio, $isDraft, $db);
 
 } else {
+=======
+>>>>>>> c68d1b248ca55622e4705c9a7a7192d85a7d6460
     //check if ID is provided
     if (isset($_GET['id'])) {
         $productId = $_GET['id'];
@@ -25,7 +28,6 @@ if( $_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute([$productId]);
         $product = $stmt->fetch(PDO::FETCH_ASSOC);
     }
-}
 
 ?>
 
@@ -74,7 +76,11 @@ if( $_SERVER["REQUEST_METHOD"] == "POST") {
                         <label class="label-group" for="product-interest">Base Interest Rate (in %) *</label>
                         <input class="form-control" type="text" id="base-interest" name="base-interest" value="<?php echo $product['interest_rate']; ?>"><br>
                         <label for="isDraft">Set as Draft *</label>
+<<<<<<< HEAD
                         <input type="checkbox" name="isDraft" <?= ($product['isDraft'] == 0) ? '': 'checked'; ?> style="width:25px;height:25px"/>
+=======
+                        <input type="checkbox" name="isDraft" <?= ($product['aDraft'] == 0) ? '': 'checked'; ?> style="width:25px;height:25px"/>
+>>>>>>> c68d1b248ca55622e4705c9a7a7192d85a7d6460
                     </div>
                 
                     <div class="expected-description">
@@ -87,7 +93,12 @@ if( $_SERVER["REQUEST_METHOD"] == "POST") {
                         <label  class="label-group" for="expected-occupation">Expected Type of Employment *</label>
                         <input class="form-control" type="text" id="expected-occupation" name="expected-occupation" value="<?php echo $product['expected_employment_type']; ?>"><br>
                         <label  class="label-group" for="mtv-ratio">Maximum loan to value ratio (in %) *</label>
+<<<<<<< HEAD
                         <input class="form-control" type="text" id="mtv-ratio" name="mtv-ratio" value="<?php echo $product['mtv-ratio']; ?>"><br>
+=======
+                        <input class="form-control" type="text" id="mtv-ratio" name="mtv-ratio" value="<?php echo $product['mtv_ratio']; ?>"><br>
+                        <input type="hidden" name="product-id" value="<?php echo $productId; ?>">
+>>>>>>> c68d1b248ca55622e4705c9a7a7192d85a7d6460
                     </div>
                 </div>
                 <div>
