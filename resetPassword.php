@@ -31,7 +31,7 @@
             <div class="message"></div>
             
             <div class="button ">
-                <button>Submit Captcha</button>
+                <button type = "reset" onclick="(submitBtnClick)">Submit Captcha</button>
             </div>
 
         </main>

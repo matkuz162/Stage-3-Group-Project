@@ -102,6 +102,7 @@ const submitBtnClick = () => {
   if (captchaInputBox.value === captchaText) {
     message.innerText = "Entered captcha is correct";
     message.style.color = "#826afb";
+    window.location.href = 'http://localhost/Stage-3-Group-Project-3/confirmPassword.php';
   } else {
     message.innerText = "Entered captcha is not correct";
     message.style.color = "#FF2525";
