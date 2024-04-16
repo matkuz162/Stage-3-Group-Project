@@ -92,7 +92,7 @@ $statement = $db->query($sql); // Assuming $db is your PDO connection
                     <li class="list-group-item"><b>Interest Rate:</b><?php echo $row["interest_rate"]; ?></li>
                     <li class="list-group-item"><b>MtV Ratio:</b><?php echo $row["mtv_ratio"]; ?></li>
                 </ul>
-                <a href="#" class="btn btn-primary">Favourite</a>
+                <a href="#" class="btn btn-primary">Compare</a>
             </div>
         </div>
         <?php

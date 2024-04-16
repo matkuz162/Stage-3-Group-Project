@@ -2,7 +2,13 @@
 
 require_once 'connection.php';
 
-$sql = "SELECT * FROM Quote WHERE product_starred = 1";
+$sql = "SELECT * 
+        FROM Quote
+        INNER JOIN RegisteredUser ON (Quote.RegisteredUser_ID = RegisteredUser.RegisteredUser_ID)
+        INNER JOIN Product ON (Quote.Product_ID = Product.Product_ID)
+        INNER JOIN financialdetails ON (financialdetails.RegisteredUser_ID = RegisteredUser.RegisteredUser_ID)
+        WHERE product_starred = 1
+        ";
 $statement = $db->query($sql);
 
 ?>
@@ -72,14 +78,12 @@ $statement = $db->query($sql);
       ?>
       <div class="card" style="width: 18rem;">
         <div class="card-header">
-          <?php echo $row["Quote_ID"]; ?>
+          <?php echo $row["Product.YearRate","Product.ProductType"]; ?>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><b>Loan Amount:</b><?php echo $row["loan_amount"]; ?></li>
-          <li class="list-group-item"><b>Term (Months):</b><?php echo $row["term"]; ?></li>
-          <li class="list-group-item"><b>Interest (%):</b><?php echo $row["interest"]; ?></li>
-          <li class="list-group-item"><b>Rate:</b><?php echo $row["rate"]; ?></li>
-          <li class="list-group-item"><b>Total:</b><?php echo $row["total"]; ?></li>
+          <li class="list-group-item"><b>Initial Rate:</b><?php echo $row["Product.interest_rate"]; ?></li>
+          <li class="list-group-item"><b>Product Fee:</b><?php echo $row["Product.ProductFee"]; ?></li>
+          <li class="list-group-item"><b>When does the Rate End:</b><?php echo $row["Product.ProductFee"]; ?></li>
         </ul>
       </div>
       <?php
