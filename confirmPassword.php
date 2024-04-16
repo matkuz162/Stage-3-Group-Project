@@ -1,3 +1,44 @@
+<?php
+include 'connection.php';
+
+
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $password = $_POST["password"];
+    $confirm_password = $_POST["confirm_password"];
+
+
+    if ($password == $confirm_password) {
+        try {
+            $db->beginTransaction();
+
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                        
+            $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
+
+            $sqlRegUser = "UPDATE RegisteredUser SET password = :password WHERE RegisteredUser_ID = :RegisteredUser_ID";
+            
+            $stmt = $db->prepare($sqlRegUser);
+                      
+            $stmt->bindParam(':password', $hashedPassword);
+            $stmt->bindParam(':RegisteredUser_ID', $RegisteredUser_ID, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $db->commit();
+            echo "Password updated successfully!";
+
+        }
+        catch (Exception $e) {
+            $db->rollBack();
+            echo "Error: " . $e->getMessage();
+        }
+    }else {
+            echo "Passwords do not match!";
+        }
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,19 +56,20 @@
     <main>
 
         <div class="reset">
-                <form class="reset-password">
+            <form class="reset-password" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <h1>Change Password</h1><br><br>
 
                 <div class="otp-field captch_input">
-                    <input type="text" placeholder="New Password"  />
+                    <input type="password" class="form-control" id="password" name="password" placeholder="New Password" required>
                 </div>
                 <div class="otp-field captch_input">
-                    <input type="text" placeholder="Confirm Password"  />
+                <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
                 </div>
                 <div class="message"></div>            
                 <div class="button ">
-                    <button type = "reset" onclick="(submitBtnClick)">Submit Captcha</button> 
+                    <button type = "submit">Submit</button> 
                 </div>
+            </form>
         </div>        
 
     </main>
