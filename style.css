@@ -452,6 +452,20 @@ form.reset-password {
   border-radius: 8px;
 }
 
+/* delete button */
+.btn-delete {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #fff;
+  width: 100px;
+  margin-left: 85%;
+}
+
+/* delete button */
+.btn-delete:hover {
+  background-color: #ff0019;
+  border-color: #ff0019;
+}
 
 
 
