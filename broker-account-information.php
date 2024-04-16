@@ -214,17 +214,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     });
   
     
-    // Broker Details
     const editbrkBtn = document.getElementById('editbrkBtn');
     const savebrkBtn = document.getElementById('savebrkBtn');
 
-    // Function to toggle between edit and save buttons
     function toggleButtons(editBtn, saveBtn) {
       editBtn.style.display = 'none';
       saveBtn.style.display = 'block';
     }
 
-    // Function to enable editing of form fields
     function enableEditing(fields) {
       fields.forEach(field => {
         field.removeAttribute('readonly');
