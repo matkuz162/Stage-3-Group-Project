@@ -182,7 +182,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     </main>
 
-    <button type="button" class="btn btn-danger btn-lg btn-block mt-4" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">Delete Account</button>
+
+
+<div class="container mt-5">
+    <button class="btn btn-delete" id="deleteBtn">Delete Account</button>
+</div>
+
 
 
 
@@ -190,8 +195,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <footer>
 
     </footer>
+
     
+  <!-- Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <script>
+     
+
+    $(document).ready(function() {
+      $('#deleteBtn').click(function() {
+        if (confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+          window.location.href = 'delete-account.php';
+        }
+      });
+    });
+  
+    
     // Broker Details
     const editbrkBtn = document.getElementById('editbrkBtn');
     const savebrkBtn = document.getElementById('savebrkBtn');
