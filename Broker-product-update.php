@@ -40,8 +40,8 @@ include 'connection.php';
         <div class="hero">
             <h1>Alter Product Information</h1>
             <form class="product" action="broker-product-check.php" method="post">
-                <div class="product-information">
-                    <div class="product-description">
+            <div class="product-information">
+                <div class="product-description">
 
                     <?php if (isset($_GET['error'])) { ?>
                         <p class ="error-field"><?php echo $_GET['error']; ?></p>
@@ -51,37 +51,39 @@ include 'connection.php';
                         <p class ="success-field"><?php echo $_GET['success']; ?></p>
                     <?php }?>
 
-                        <label class="label-group" for="product-name">Product Name *</label>
-                        <input class="form-control" type="text" id="product-name" name="product-name" value="<?php echo $product['name']; ?>"><br>
-                        <label class="label-group" for="product-interest">Base Interest Rate *</label>
-                        <input class="form-control" type="text" id="base-interest" name="base-interest" value="<?php echo $product['interest_rate']; ?>"><br>
-                        <label for="isDraft">Set as Draft *</label>
-                        <input type="checkbox" name="isDraft" <?= ($product['aDraft'] == 0) ? '': 'checked'; ?> style="width:25px;height:25px"/>
-                    </div>
-                
-                    <div class="expected-description">
-                        <label  class="label-group" for="expected-income">Expected annual income *</label>
-                        <input class="form-control" type="text" id="expected-income" name="expected-income" value="<?php echo $product['expected_income']; ?>"><br>
-                        <label  class="label-group" for="expected-outgoings">Expected monthly outgoings *</label>
-                        <input class="form-control" type="text" id="expected-outgoings" name="expected-outgoings" value="<?php echo $product['expected_outgoings']; ?>"><br>
-                        <label  class="label-group" for="expected-credit">Expected Credit Score *</label>
-                        <input class="form-control" type="text" id="expected-credit" name="expected-credit" value="<?php echo $product['expected_credit_score']; ?>"><br>
-                        <label  class="label-group" for="expected-occupation">Expected Type of Employment *</label>
-                        <input class="form-control" type="text" id="expected-occupation" name="expected-occupation" value="<?php echo $product['expected_employment_type']; ?>"><br>
-                        <label  class="label-group" for="mtv-ratio">Maximum loan to value ratio *</label>
-                        <input class="form-control" type="text" id="mtv-ratio" name="mtv-ratio" value="<?php echo $product['mtv_ratio']; ?>"><br>
-                        <input type="hidden" name="product-id" value="<?php echo $productId; ?>">
-                    </div>
+                    <label class="label-group" for="year-rate">Year Rate *</label>
+                    <input class="form-control" type="text" id="year-rate" name="year-rate" value="<?php echo $product['YearRate']; ?>"><br>
+                    <label class="label-group" for="product-type">Product Type *</label>
+                    <input class="form-control" type="text" id="product-type" name="product-type" value="<?php echo $product['ProductType']; ?>"><br>
+                    <label class="label-group" for="base-interest">Initial Interest Rate *</label>
+                    <input class="form-control" type="text" id="base-interest" name="base-interest" value="<?php echo $product['initial_interest_rate']; ?>"><br>
+                    <label class="label-group" for="secondary-interest">Secondary Interest Rate *</label>
+                    <input class="form-control" type="text" id="secondary-interest" name="secondary-interest" value="<?php echo $product['secondary_interest_rate']; ?>"><br>
+                    <label class="label-group" for="product-fee">Product Fee *</label>
+                    <input class="form-control" type="text" id="product-fee" name="product-fee" value="<?php echo $product['ProductFee']; ?>"><br>
+                    <label for="isDraft">Set as Draft *</label>
+                    <input type="checkbox" name="isDraft"  <?= ($product['aDraft'] == 0) ? '': 'checked'; ?> style="width:25px;height:25px"/>
                 </div>
-                <div>
-                    <button class="product-creation-btn" type="submit" name="updateProduct">Update Product</button>
+                    
+                <div class="expected-description">
+                    <label  class="label-group" for="expected-income">Expected annual income *</label>
+                    <input class="form-control" type="text" id="expected-income" name="expected-income" value="<?php echo $product['expected_income']; ?>"><br>
+                    <label  class="label-group" for="expected-outgoings">Expected monthly outgoings *</label>
+                    <input class="form-control" type="text" id="expected-outgoings" name="expected-outgoings" value="<?php echo $product['expected_outgoings']; ?>"><br>
+                    <label  class="label-group" for="expected-credit">Expected Credit Score *</label>
+                    <input class="form-control" type="text" id="expected-credit" name="expected-credit" value="<?php echo $product['expected_credit_score']; ?>"><br>
+                    <label  class="label-group" for="mtv-ratio">Maximum loan to value ratio *</label>
+                    <input class="form-control" type="text" id="mtv-ratio" name="mtv-ratio" value="<?php echo $product['mtv_ratio']; ?>"><br>
                 </div>
-            </form>
-        </div>  
-        
-    </main>
-    <footer>
+            </div>
+            <div>
+                <button class="product-creation-btn" type="submit" name="updateProduct">Update Product</button>
+            </div>
+        </form>
+    </div>   
+</main>
+<footer>
     
-    </footer>
+</footer>
 </body>
 </html>

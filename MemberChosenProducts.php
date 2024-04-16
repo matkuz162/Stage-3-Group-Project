@@ -77,7 +77,7 @@ $statement = $db->query($sql);
       ?>
       <div class="card" style="width: 18rem;">
         <div class="card-header">
-          <?php echo $row["YearRate"], $row["ProductType"]; ?>
+          <?php echo $row["YearRate"]."Year ". $row["ProductType"]; ?>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><b>Initial Rate:</b><?php echo $row["initial_interest_rate"]; ?></li>
