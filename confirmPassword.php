@@ -16,11 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                         
             $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
+
+            $sqlRegUser = "UPDATE RegisteredUser SET password = :password WHERE RegisteredUser_ID = :RegisteredUser_ID";
             
-            $stmt = $db->prepare("UPDATE RegisteredUser SET password = :password WHERE RegisteredUser_ID = :RegisteredUser_ID");
+            $stmt = $db->prepare($sqlRegUser);
                       
             $stmt->bindParam(':password', $hashedPassword);
-            $stmt->bindParam(':RegisteredUser_ID', $RegisteredUserID);
+            $stmt->bindParam(':RegisteredUser_ID', $RegisteredUser_ID, PDO::PARAM_INT);
             $stmt->execute();
 
             $db->commit();
