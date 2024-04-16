@@ -14,28 +14,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $db->beginTransaction();
 
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+            if(isset($_SESSION["RegisteredUser_ID"]))
+            {
+                $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
+
+                $sqlRegUser = "UPDATE RegisteredUser SET password = :password WHERE RegisteredUser_ID = :RegisteredUser_ID";
+                
+                $stmt = $db->prepare($sqlRegUser);
+                          
+                $stmt->bindParam(':password', $hashedPassword);
+                $stmt->bindParam(':RegisteredUser_ID', $RegisteredUser_ID, PDO::PARAM_INT);
+                $stmt->execute();
+    
+            }
+
+            if(isset($_SESSION["Broker_ID"]))
+            {
+                $Broker_ID = $_SESSION['Broker_ID'];
+
+                $sqlBroker = "UPDATE Broker SET password = :password WHERE Broker_ID = :Broker_ID";
+                
+                $stmt = $db->prepare($sqlBroker);
+                          
+                $stmt->bindParam(':password', $hashedPassword);
+                $stmt->bindParam(':Broker_ID', $Broker_ID, PDO::PARAM_INT);
+                $stmt->execute();
+                
+            }
                         
-            $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
-
-            $sqlRegUser = "UPDATE RegisteredUser SET password = :password WHERE RegisteredUser_ID = :RegisteredUser_ID";
-            
-            $stmt = $db->prepare($sqlRegUser);
-                      
-            $stmt->bindParam(':password', $hashedPassword);
-            $stmt->bindParam(':RegisteredUser_ID', $RegisteredUser_ID, PDO::PARAM_INT);
-            $stmt->execute();
-
             $db->commit();
             echo "Password updated successfully!";
-
-        }
+        }       
         catch (Exception $e) {
             $db->rollBack();
             echo "Error: " . $e->getMessage();
         }
-    }else {
-            echo "Passwords do not match!";
-        }
+    }
+    else
+    {
+        echo "Passwords do not match!";
+    }
 
 }
 ?>
