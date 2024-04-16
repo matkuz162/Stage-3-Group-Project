@@ -260,6 +260,9 @@ form.product {
   width: 350px;
   padding: 8px;
 }
+.product-description {
+  margin-top: 24px;
+}
 .expected-description{
   margin:20px 0 30px 30px;
 }
@@ -268,11 +271,7 @@ form.product {
   padding: 8px 20px;
   margin: 5px;
 }
-.product-description textarea{
-  height: 250px;
-  width: 550px ;
-  resize: none;
-}
+
 .product-layout{
   background-color: #c4fbff;
   margin: 40px auto;

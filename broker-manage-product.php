@@ -2,7 +2,7 @@
 session_start();
 include 'connection.php';
 
-//if (isset($_SESSION['Broker_ID'])){
+if (isset($_SESSION['Broker_ID'])){
 
     //fetching products associated with the current broker
     $brokerId = $_SESSION['Broker_ID'];
@@ -74,7 +74,7 @@ include 'connection.php';
                     <?php endforeach; ?>
                 <?php else : ?>
                     <div class ="no-products-text">
-                        <p>No products Created.</p>
+                        <p>No Products Created</p>
                     </div>
                 <?php endif; ?>
             </div>
@@ -84,8 +84,8 @@ include 'connection.php';
     </body>
     </html>
 <?php
-/*} else {
+} else {
     header("Location: LogIn.php");
     exit();
-}*/
+}
 ?>
