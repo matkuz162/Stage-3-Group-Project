@@ -49,7 +49,8 @@
         try {
             $stmt = $db->prepare("INSERT INTO Product (Broker_ID, name, expected_income, expected_outgoings, expected_credit_score, expected_employment_type, interest_rate, mtv_ratio, aDraft) VALUES (?,?,?,?,?,?,?,?,?)");
             $stmt->execute([$brokerId,$pname, $expectedInc, $expectedOutg, $expectedCredit, $expectedOcc, $baseInt, $loanRatio, $isDraft]);
-            return $db->lastInsertId();
+            header("Location: broker-manage-product.php?success=Product successfully created");
+            exit();
         } catch(PDOException $e) {
             return false;
         }

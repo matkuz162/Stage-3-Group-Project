@@ -248,6 +248,22 @@ form.product {
   border-radius: 10px;
   margin: 20px auto;
 }
+.error-field-manage-prod{
+  background-color: #e3c6c6;
+  color: #732B2B;
+  width: 400px;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 20px auto;
+}
+.success-field-manage-prod{
+  background-color: #83ffa0;
+  color: #30693d;
+  padding: 10px;
+  width: 400px;
+  border-radius: 10px;
+  margin: 20px auto;
+}
 .success-field{
   background-color: #D4EDDA;
   color: #40754C;
