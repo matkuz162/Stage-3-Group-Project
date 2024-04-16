@@ -42,7 +42,7 @@
                 <label for="years">Loan duration (years):</label>
                 <input type="number" id="years" placeholder="Enter loan duration">
 
-                <button onclick="calculate()">Calculate</button>
+                <button onclick="calculateMonthlyPayment()">Calculate</button>
 
                 <h3>Monthly Mortgage Payment:</h3>
                 <p id="result">£0.00</p>
