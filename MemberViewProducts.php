@@ -68,13 +68,6 @@ $statement = $db->query($sql);
 
 
         <div>
-
-            <div class="input-group flex-nowrap">
-                <span class="input-group-text" id="addon-wrapping">Search:</span>
-                <input type="text" class="form-control" placeholder="..." aria-label="Username" aria-describedby="addon-wrapping">
-            </div>
-
-
             <div class="input-group mb-3">
                 <label class="input-group-text" for="inputGroupSelect01">Sort By:</label>
                 <select class="form-select" id="inputGroupSelect01">
@@ -102,9 +95,9 @@ $statement = $db->query($sql);
             <div class="card-body">
             <h5 class="card-title"><b><?php echo $row["YearRate"] . " Year " . $row["ProductType"]; ?></b></h5>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Monthly Cost:</b><?php echo $row["monthly_repayments"]; ?></li>
-                    <li class="list-group-item"><b>Initial rate:</b><?php echo $row["initial_interest_rate"]; ?></li>
-                    <li class="list-group-item"><b>Product fee:</b><?php echo $row["ProductFee"]; ?></li>
+                    <li class="list-group-item"><b>Initial Monthly Cost: </b><?php echo $row["initial_monthly_repayments"]; ?></li>
+                    <li class="list-group-item"><b>Initial rate: </b><?php echo $row["initial_interest_rate"]; ?></li>
+                    <li class="list-group-item"><b>Product fee: </b><?php echo $row["ProductFee"]; ?></li>
                 </ul>
                 <br>
                 <a href="#" class="btn btn-primary">Compare</a>
