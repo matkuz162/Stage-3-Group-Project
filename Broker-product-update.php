@@ -55,8 +55,8 @@ include 'connection.php';
                     <input class="form-control" type="text" id="year-rate" name="year-rate" value="<?php echo $product['YearRate']; ?>"><br>
                     <label class="label-group" for="product-type">Product Type *</label>
                     <select class="form-control" id="product-type" name="product-type">
-                        <option value="Fixed Rate" <?= ($product['ProductType'] == 'Fixed rate') ? 'Fixed rate': 'Tracked rate'; ?>>Fixed rate</option>
-                        <option value="Tracked Rate" <?= ($product['ProductType'] == 'Tracked rate') ? 'Tracked rate': 'Fixed rate'; ?>>Tracked rate</option>
+                        <option value="Fixed Rate" <?= ($product['ProductType'] == 'Fixed rate') ? 'Fixed rate': ''; ?>>Fixed rate</option>
+                        <option value="Tracked Rate" <?= ($product['ProductType'] == 'Tracked rate') ? 'Tracked rate': ''; ?>>Tracked rate</option>
                     </select><br>
                     <label class="label-group" for="base-interest">Initial Interest Rate *</label>
                     <input class="form-control" type="text" id="base-interest" name="base-interest" value="<?php echo $product['initial_interest_rate']; ?>"><br>

@@ -47,10 +47,10 @@ if (isset($_SESSION['Broker_ID'])){
                         </div>
                         <div>
                             <select>
-                                <option>Highest Price</option>
-                                <option>Lowest Price</option>
-                                <option>Oldest Product</option>
-                                <option>Newest Product</option>
+                                <option>Highest Rate</option>
+                                <option>Lowest Rate</option>
+                                <option>Longest Period</option>
+                                <option>Shortest Period</option>
                             </select>
                         </div>
                     </div>
