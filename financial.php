@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $db->commit();
 
         
-        header('Location: memberviewproducts.php');
+        header('Location: loan-details.php');
         exit();
     } catch (Exception $e) {
       
@@ -121,7 +121,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="mortgage_reason" class="form-label">Reason for Mortgage:</label>
             <select class="form-select" id="mortgage_reason" name="mortgage_reason" required>
                 <option value="" selected disabled>Select reason</option>
-                <option value="first_house">First House</option>
+                <option value="first_house">First Time Buyer</option>
+                <option value="moving_home">Remortgage</option>
                 <option value="moving_home">Moving Home</option>
             </select>
         </div>
