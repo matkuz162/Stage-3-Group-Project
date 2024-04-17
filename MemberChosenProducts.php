@@ -7,11 +7,11 @@ $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
 
 $sql = "SELECT * 
         FROM Quote
-        INNER JOIN RegisteredUser ON (Quote.RegisteredUser_ID = RegisteredUser.RegisteredUser_ID)
-        INNER JOIN Product ON (Quote.Product_ID = Product.Product_ID)
-        INNER JOIN financialdetails ON (financialdetails.RegisteredUser_ID = RegisteredUser.RegisteredUser_ID)
+        LEFT JOIN RegisteredUser ON (Quote.RegisteredUser_ID = RegisteredUser.RegisteredUser_ID)
+        LEFT JOIN Product ON (Quote.Product_ID = Product.Product_ID)
+        LEFT JOIN financialdetails ON (financialdetails.RegisteredUser_ID = RegisteredUser.RegisteredUser_ID)
         WHERE product_starred = 1
-        AND RegisteredUser_ID=:RegisteredUser_ID"
+        AND RegisteredUser.RegisteredUser_ID = $RegisteredUser_ID"
         ;
 
 $statement = $db->query($sql);
