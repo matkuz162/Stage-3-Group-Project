@@ -185,7 +185,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <div class="container mt-5">
-    <button class="btn btn-delete" id="deleteBtn">Delete Account</button>
+    <button class="btn btn-delete-broker" id="delete-brokerBtn">Delete Account</button>
 </div>
 
 
@@ -208,7 +208,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $(document).ready(function() {
       $('#deleteBtn').click(function() {
         if (confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
-          window.location.href = 'delete-account.php';
+          window.location.href = 'delete-broker.php';
         }
       });
     });
