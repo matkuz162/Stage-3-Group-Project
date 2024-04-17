@@ -95,7 +95,7 @@ $statement = $db->query($sql);
             <div class="card-body">
             <h5 class="card-title"><b><?php echo $row["YearRate"] . " Year " . $row["ProductType"]; ?></b></h5>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Monthly Cost: </b><?php echo $row["monthly_repayments"]; ?></li>
+                    <li class="list-group-item"><b>Monthly Cost: </b><?php echo $row["initial_monthly_repayments"]; ?></li>
                     <li class="list-group-item"><b>Initial rate: </b><?php echo $row["initial_interest_rate"]; ?></li>
                     <li class="list-group-item"><b>Product fee: </b><?php echo $row["ProductFee"]; ?></li>
                 </ul>

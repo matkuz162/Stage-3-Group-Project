@@ -8,6 +8,7 @@ $sql = "SELECT *
         INNER JOIN Product ON (Quote.Product_ID = Product.Product_ID)
         INNER JOIN financialdetails ON (financialdetails.RegisteredUser_ID = RegisteredUser.RegisteredUser_ID)
         ";
+
 $statement = $db->query($sql);
 
 ?>
@@ -69,12 +70,13 @@ $statement = $db->query($sql);
       ?>
       <div class="card" style="width: 18rem;">
         <div class="card-header">
-          <?php echo $row["YearRate"]."Year ". $row["ProductType"]; ?>
+          <?php echo $row["YearRate"]." Year ". $row["ProductType"]; ?>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><b>Initial Rate: </b><?php echo $row["initial_interest_rate"]; ?></li>
           <li class="list-group-item"><b>Product Fee:  </b><?php echo $row["ProductFee"]; ?></li>
-          <li class="list-group-item"><b>Monthly Payments: </b><?php echo $row["monthly_repayments"]; ?></li>
+          <li class="list-group-item"><b>Monthly Payments: </b><?php echo $row["initial_monthly_repayments"]; ?></li>
+          <li class="list-group-item"><b>Monthly Payments: </b><?php echo $row["secondary_monthly_repayments"]; ?></li>
           <li class="list-group-item"><b>Total Repayment: </b><?php echo $row["total_repayment"]; ?></li>
         </ul>
       </div>
