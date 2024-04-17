@@ -14,19 +14,21 @@
         $isDraft = isset($_POST['isDraft']) ? 1 : 0;
         //Check if the form was submitted
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $pname = validate($_POST['product-name']);
+            $yearRate = validate($_POST['year-rate']);
+            $productType = validate($_POST['product-type']);
             $baseInt = validate($_POST['base-interest']);
+            $secondaryInt = validate($_POST['secondary-interest']);
+            $productFee = validate($_POST['product-fee']);
             $expectedInc = validate($_POST['expected-income']);
             $expectedOutg = validate($_POST['expected-outgoings']);
             $expectedCredit = validate($_POST['expected-credit']);
-            $expectedOcc = validate($_POST['expected-occupation']);
             $loanRatio = validate($_POST['mtv-ratio']);
             
         if (isset($_POST['createProduct'])) {
-            createProduct($brokerId,$pname,$expectedInc,$expectedOutg,$expectedCredit,$expectedOcc,$baseInt,$loanRatio,$isDraft, $db);
+            createProduct($brokerId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt, $secondaryInt,$productFee,$loanRatio,$isDraft, $db);
         } else if (isset($_POST['updateProduct'])) {
             $productId = validate($_POST['product-id']);
-            updateProduct($productId,$pname,$expectedInc,$expectedOutg,$expectedCredit,$expectedOcc,$baseInt,$loanRatio,$isDraft, $db);
+            updateProduct($productId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt, $secondaryInt,$productFee,$loanRatio,$isDraft, $db);
         }else{
             header("Location: broker-product-creation.php?error=no form sent or incorrect name");
             exit();
@@ -41,14 +43,14 @@
     header("Location: LogIn.php");
     exit();
 }
-    function createProduct($brokerId,$pname,$expectedInc,$expectedOutg,$expectedCredit,$expectedOcc,$baseInt,$loanRatio,$isDraft, $db){
-        if (empty($pname)|| empty($baseInt)|| empty($expectedInc)||empty($expectedOutg)|| empty($expectedCredit)||empty($expectedOcc) ||empty($loanRatio) ){
+    function createProduct($brokerId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt, $secondaryInt,$productFee,$loanRatio,$isDraft, $db){
+        if (empty($yearRate)|| empty($baseInt)|| empty($expectedInc)||empty($expectedOutg)|| empty($expectedCredit)||empty($secondaryInt) ||empty($productType) || empty($productFee) || empty($loanRatio)){
             header("Location: Broker-product-creation.php?error=All required fields must be entered");
             exit();
         }
         try {
-            $stmt = $db->prepare("INSERT INTO Product (Broker_ID, name, expected_income, expected_outgoings, expected_credit_score, expected_employment_type, interest_rate, mtv_ratio, aDraft) VALUES (?,?,?,?,?,?,?,?,?)");
-            $stmt->execute([$brokerId,$pname, $expectedInc, $expectedOutg, $expectedCredit, $expectedOcc, $baseInt, $loanRatio, $isDraft]);
+            $stmt = $db->prepare("INSERT INTO Product (Broker_ID, YearRate, ProductType, expected_income, expected_outgoings, expected_credit_score, initial_interest_rate, secondary_interest_rate, ProductFee, mtv_ratio, aDraft) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+            $stmt->execute([$brokerId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt, $secondaryInt,$productFee,$loanRatio,$isDraft]);
             header("Location: broker-manage-product.php?success=Product successfully created");
             exit();
         } catch(PDOException $e) {
@@ -56,15 +58,19 @@
         }
 
     }
-    function updateProduct($productId,$pname,$expectedInc,$expectedOutg,$expectedCredit,$expectedOcc,$baseInt,$loanRatio,$isDraft, $db){
+    function updateProduct($productId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt, $secondaryInt,$productFee,$loanRatio,$isDraft, $db){
         try {
             // Constructing the SQL Query based on non-empty fields
         $query = "UPDATE Product SET ";
         $params = array();
 
-        if (!empty($pname)) {
-            $query .= "name=?, ";
-            $params[] = $pname;
+        if (!empty($yearRate)) {
+            $query .= "YearRate=?, ";
+            $params[] = $yearRate;
+        }
+        if (!empty($productType)) {
+            $query .= "ProductType=?, ";
+            $params[] = $productType;
         }
         if (!empty($expectedInc)) {
             $query .= "expected_income=?, ";
@@ -78,13 +84,17 @@
             $query .= "expected_credit_score=?, ";
             $params[] = $expectedCredit;
         }
-        if (!empty($expectedOcc)) {
-            $query .= "expected_employment_type=?, ";
-            $params[] = $expectedOcc;
-        }
         if (!empty($baseInt)) {
-            $query .= "interest_rate=?, ";
+            $query .= "initial_interest_rate=?, ";
             $params[] = $baseInt;
+        }
+        if (!empty($secondaryInt)) {
+            $query .= "secondary_interest_rate=?, ";
+            $params[] = $secondaryInt;
+        }
+        if (!empty($productFee)) {
+            $query .= "ProductFee=?, ";
+            $params[] = $productFee;
         }
         if (!empty($loanRatio)) {
             $query .= "mtv_ratio=?, ";
@@ -104,17 +114,22 @@
         $query = rtrim($query, ", ");
 
         // Add the WHERE clause for the query
-        $query .= " WHERE Product_ID=?";
+        $query .= " WHERE Product_ID= ?";
         $params[] = $productId;
 
         // Prepare and execute the statement
         $stmt = $db->prepare($query);
         $stmt->execute($params);
-
+        
+        if ($stmt) {
             header("Location: broker-manage-product.php?success=Product updated successfully");
             exit();
+        } else {
+            header("Location: broker-manage-product.php?error=Failed to update product");
+        }
         } catch(PDOException $e) {
-            return false;
+            header("Location: broker-manage-product.php?error=Failed to update product: " . $e->getMessage());
+            exit();
         }
     }
 ?>

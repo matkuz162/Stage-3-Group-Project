@@ -351,6 +351,9 @@ form.product {
 .initial-rate-section {
   
 }
+.product-area{
+  margin: 20px;
+}
 .product-section{
   display: flex;
   flex-direction: column;

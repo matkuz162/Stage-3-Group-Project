@@ -51,12 +51,16 @@ include 'connection.php';
                             <p class ="success-field"><?php echo $_GET['success']; ?></p>
                         <?php }?>
 
-                            <label class="label-group" for="product-name">Product Name *</label>
-                            <input class="form-control" type="text" id="product-name" name="product-name"><br>
-                            <label class="label-group" for="base-interest">Base Interest Rate *</label>
+                            <label class="label-group" for="year-rate">Year Rate *</label>
+                            <input class="form-control" type="text" id="year-rate" name="year-rate"><br>
+                            <label class="label-group" for="product-type">Product Type *</label>
+                            <input class="form-control" type="text" id="product-type" name="product-type"><br>
+                            <label class="label-group" for="base-interest">Initial Interest Rate *</label>
                             <input class="form-control" type="text" id="base-interest" name="base-interest"><br>
-                            <label for="isDraft">Set as Draft *</label>
-                            <input type="checkbox" name="isDraft" style="width:25px;height:25px"/>
+                            <label class="label-group" for="secondary-interest">Secondary Interest Rate *</label>
+                            <input class="form-control" type="text" id="secondary-interest" name="secondary-interest"><br>
+                            <label class="label-group" for="product-fee">Product Fee *</label>
+                            <input class="form-control" type="text" id="product-fee" name="product-fee"><br>
                         </div>
                     
                         <div class="expected-description">
@@ -66,10 +70,10 @@ include 'connection.php';
                             <input class="form-control" type="text" id="expected-outgoings" name="expected-outgoings"><br>
                             <label  class="label-group" for="expected-credit">Expected Credit Score *</label>
                             <input class="form-control" type="text" id="expected-credit" name="expected-credit"><br>
-                            <label  class="label-group" for="expected-occupation">Expected Type of Employment *</label>
-                            <input class="form-control" type="text" id="expected-occupation" name="expected-occupation"><br>
                             <label  class="label-group" for="mtv-ratio">Maximum loan to value ratio *</label>
                             <input class="form-control" type="text" id="mtv-ratio" name="mtv-ratio"><br>
+                            <label for="isDraft">Set as Draft *</label>
+                            <input type="checkbox" name="isDraft" style="width:25px;height:25px"/>
                         </div>
                     </div>
                     <div>
