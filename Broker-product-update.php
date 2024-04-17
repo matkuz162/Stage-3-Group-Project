@@ -54,7 +54,7 @@ include 'connection.php';
                     <label class="label-group" for="year-rate">Year Rate *</label>
                     <input class="form-control" type="text" id="year-rate" name="year-rate" value="<?php echo $product['YearRate']; ?>"><br>
                     <label class="label-group" for="product-type">Product Type *</label>
-                    <select class="form-control" id="product-type" name="product-type">
+                    <select class="form-control" id="product-type" name="product-type <?= ($product['ProductType'] == 'Fixed rate') ? 'Fixed rate': 'Tracked rate'; ?>">
                         <option value="Fixed Rate">Fixed rate</option>
                         <option value="Tracked Rate">Tracked rate</option>
                     </select><br>
