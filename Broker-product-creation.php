@@ -54,7 +54,10 @@ include 'connection.php';
                             <label class="label-group" for="year-rate">Year Rate *</label>
                             <input class="form-control" type="text" id="year-rate" name="year-rate"><br>
                             <label class="label-group" for="product-type">Product Type *</label>
-                            <input class="form-control" type="text" id="product-type" name="product-type"><br>
+                            <select class="form-control" id="product-type" name="product-type">
+                                <option value="Fixed Rate">Fixed rate</option>
+                                 <option value="Tracked Rate">Tracked rate</option>
+                            </select><br>
                             <label class="label-group" for="base-interest">Initial Interest Rate *</label>
                             <input class="form-control" type="text" id="base-interest" name="base-interest"><br>
                             <label class="label-group" for="secondary-interest">Secondary Interest Rate *</label>
