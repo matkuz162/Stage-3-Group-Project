@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     const editPersonalBtn = document.getElementById('editPersonalBtn');
     const savePersonalBtn = document.getElementById('savePersonalBtn');
@@ -38,6 +39,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
   });
+
+//delete account
+
+$(document).ready(function() {
+  $('#delete-userBtn').click(function() {
+    if (confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+      window.location.href = 'delete-user.php';
+    }
+  });
+});
 
 
 

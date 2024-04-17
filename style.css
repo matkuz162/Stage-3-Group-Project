@@ -479,7 +479,7 @@ form.reset-password {
 }
 
 /* delete button */
-.btn-delete {
+.btn-delete-user {
   background-color: #dc3545;
   border-color: #dc3545;
   color: #fff;
@@ -487,8 +487,22 @@ form.reset-password {
   margin-left: 85%;
 }
 
-/* delete button */
-.btn-delete:hover {
+
+.btn-delete-user:hover {
+  background-color: #ff0019;
+  border-color: #ff0019;
+}
+
+.btn-delete-broker {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #fff;
+  width: 100px;
+  margin-left: 85%;
+}
+
+
+.btn-delete-broker:hover {
   background-color: #ff0019;
   border-color: #ff0019;
 }

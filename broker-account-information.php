@@ -185,7 +185,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <div class="container mt-5">
-    <button class="btn btn-delete" id="deleteBtn">Delete Account</button>
+    <button class="btn btn-delete-broker" id="delete-brokerBtn">Delete Account</button>
 </div>
 
 

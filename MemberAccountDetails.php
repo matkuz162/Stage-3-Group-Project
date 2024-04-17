@@ -258,6 +258,12 @@ if (isset($_POST['loan-submit'])) {
 
     </main>
 
+
+<div class="container mt-5">
+  <button class="btn btn-delete-user" id="delete-userBtn">Delete Account</button>
+</div>
+
+
 <footer>
 
 </footer>
@@ -265,7 +271,15 @@ if (isset($_POST['loan-submit'])) {
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="script.js"></script>
+<script>
+  $(document).ready(function() {
+  $('#delete-userBtn').click(function() {
+    if (confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+      window.location.href = 'delete-user.php';
+    }
+  });
+});
+</script>
 
 
 
