@@ -74,6 +74,7 @@ include 'connection.php';
                     <input class="form-control" type="text" id="expected-credit" name="expected-credit" value="<?php echo $product['expected_credit_score']; ?>"><br>
                     <label  class="label-group" for="mtv-ratio">Maximum loan to value ratio *</label>
                     <input class="form-control" type="text" id="mtv-ratio" name="mtv-ratio" value="<?php echo $product['mtv_ratio']; ?>"><br>
+                    <input type="hidden" name="product-id" value="<?php echo $productId; ?>">
                 </div>
             </div>
             <div>

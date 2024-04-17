@@ -28,7 +28,7 @@
             createProduct($brokerId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt, $secondaryInt,$productFee,$loanRatio,$isDraft, $db);
         } else if (isset($_POST['updateProduct'])) {
             $productId = validate($_POST['product-id']);
-            updateProduct($brokerId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt, $secondaryInt,$productFee,$loanRatio,$isDraft, $db);
+            updateProduct($productId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt, $secondaryInt,$productFee,$loanRatio,$isDraft, $db);
         }else{
             header("Location: broker-product-creation.php?error=no form sent or incorrect name");
             exit();
@@ -90,7 +90,7 @@
         }
         if (!empty($secondaryInt)) {
             $query .= "secondary_interest_rate=?, ";
-            $params[] = $baseInt;
+            $params[] = $secondaryInt;
         }
         if (!empty($productFee)) {
             $query .= "ProductFee=?, ";
@@ -114,17 +114,22 @@
         $query = rtrim($query, ", ");
 
         // Add the WHERE clause for the query
-        $query .= " WHERE Product_ID=?";
+        $query .= " WHERE Product_ID= ?";
         $params[] = $productId;
 
         // Prepare and execute the statement
         $stmt = $db->prepare($query);
         $stmt->execute($params);
-
+        
+        if ($stmt) {
             header("Location: broker-manage-product.php?success=Product updated successfully");
             exit();
+        } else {
+            header("Location: broker-manage-product.php?error=Failed to update product");
+        }
         } catch(PDOException $e) {
-            return false;
+            header("Location: broker-manage-product.php?error=Failed to update product: " . $e->getMessage());
+            exit();
         }
     }
 ?>
