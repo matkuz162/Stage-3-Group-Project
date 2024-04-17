@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   });
 
+  
 //delete account
 
 $(document).ready(function() {
