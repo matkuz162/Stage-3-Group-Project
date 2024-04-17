@@ -45,19 +45,17 @@ if (isset($_POST['deselect'])) {
 
 <body>
 
-  <header class="flex-container">
-
+<header class="flex-container">
     <a href="MemberViewProducts.php"> <img src="Assets/logo.png" alt="Rose Mortgage"> </a>
-
     <div>
       <ul class="nav-links">
+        <li><a href="Loan-details.php">Loan Details</a></li>
         <li><a href="MemberViewProducts.php">Available Products</a></li>
         <li><a href="MemberChosenProducts.php">Chosen Products</a></li>
         <li><a href="MemberAccountDetails.php">Account Details</a></li>
         <li><a href="home.php">Sign Out</a></li>
       </ul>
     </div>
-
   </header>
 
 

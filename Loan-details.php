@@ -1,0 +1,127 @@
+<?php
+session_start();
+
+// Include database connection
+include 'connection.php';
+
+// Check if user is not logged in
+if (!isset($_SESSION['RegisteredUser_ID'])) {
+    // Redirect to login page
+    header('Location: login.php');
+    exit();
+}
+
+// Check if form is submitted
+if (isset($_POST['loan-submit'])) {
+    try {
+        // Update loan details
+        $mortgage_reason = $_POST['mortgage_reason'];
+        $estimated_property_value = $_POST['estimated_property_value'];
+        $borrow_amount = $_POST['borrow_amount'];
+        $mortgage_term = $_POST['mortgage_term'];
+        $RegisteredUser_ID = $_SESSION['RegisteredUser_ID']; // Fetch user ID from session
+  
+        // Prepare SQL statement
+        $loansubmit = "UPDATE financialdetails 
+                       SET mortgage_reason = :mortgage_reason,
+                           estimated_property_value = :estimated_property_value,
+                           borrow_amount = :borrow_amount,
+                           mortgage_term = :mortgage_term
+                       WHERE RegisteredUser_ID = :RegisteredUser_ID";
+  
+        $stmt = $db->prepare($loansubmit);
+        // Bind parameters
+        $stmt->bindParam(':mortgage_reason', $mortgage_reason);
+        $stmt->bindParam(':estimated_property_value', $estimated_property_value);
+        $stmt->bindParam(':borrow_amount', $borrow_amount);
+        $stmt->bindParam(':mortgage_term', $mortgage_term);
+        $stmt->bindParam(':RegisteredUser_ID', $RegisteredUser_ID, PDO::PARAM_INT);
+  
+        // Execute statement
+        if ($stmt->execute()) {
+            echo "Loan details updated successfully";
+        } else {
+            echo "Error updating loan details: " . $stmt->errorInfo()[2];
+        }
+    } catch (Exception $e) {
+        // Roll back transaction if error occurs
+        $db->rollBack();
+        echo "Error: " . $e->getMessage();
+    }
+}
+?>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Financial Details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="flex-container">
+    <a href="MemberViewProducts.php"> <img src="Assets/logo.png" alt="Rose Mortgage"> </a>
+    <div>
+      <ul class="nav-links">
+        <li><a href="Loan-details.php">Loan Details</a></li>
+        <li><a href="MemberViewProducts.php">Available Products</a></li>
+        <li><a href="MemberChosenProducts.php">Chosen Products</a></li>
+        <li><a href="MemberAccountDetails.php">Account Details</a></li>
+        <li><a href="home.php">Sign Out</a></li>
+      </ul>
+    </div>
+  </header>
+
+    <main>
+
+    <div class="reg">
+      <h2 class="mb-4"><b>Loan Details:</b></h2>
+      <form action="MemberAccountDetails.php" method="post">
+        <div class="form-group">
+          <label for="mortgage_reason" class="form-label">Reason for Mortgage:</label>
+          <select class="form-select" id="mortgage_reason" name="mortgage_reason" required>
+            <option value="first_time_buyer" <?php if ($loanDetails['mortgage_reason'] == 'first_time_buyer') echo 'selected'; ?>>First Time Buyer</option>
+            <option value="remortgage" <?php if ($loanDetails['mortgage_reason'] == 'remortgage') echo 'selected'; ?>>Remortgage</option>
+            <option value="moving_home" <?php if ($loanDetails['mortgage_reason'] == 'moving_home') echo 'selected'; ?>>Moving Home</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="estimated_property_value" class="form-label">Estimated Property Value:</label>
+          <input type="number" class="form-control" id="estimated_property_value" name="estimated_property_value" value="<?php echo $loanDetails['estimated_property_value']; ?>" required>
+        </div>
+        <div class="form-group">
+          <label for="borrow_amount" class="form-label">Amount to Borrow (minimum £6000):</label>
+          <input type="number" class="form-control" id="borrow_amount" name="borrow_amount" value="<?php echo $loanDetails['borrow_amount']; ?>" min="6000" required>
+        </div>
+        <div class="form-group">
+          <label for="mortgage_term" class="form-label">Mortgage Term (years):</label>
+          <input type="number" class="form-control" id="mortgage_term" name="mortgage_term" value="<?php echo $loanDetails['mortgage_term']; ?>" required>
+        </div>
+        <button type="button" id="editLoanBtn" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Edit Loan Details</button>
+        <button type="submit" name="loan-submit" id="saveLoanBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save Loan Details</button>
+      </form>
+    </div>
+
+
+    </main>
+
+    <footer>
+
+    </footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>
