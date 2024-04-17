@@ -16,6 +16,16 @@ $sql = "SELECT *
 
 $statement = $db->query($sql);
 
+$sqlQuote = "SELECT *
+             FROM Quote
+             LEFT JOIN RegisteredUser ON (Quote.RegisteredUser_ID = RegisteredUser.RegisteredUser_ID)
+             WHERE RegisteredUser.RegisteredUser_ID = RegisteredUser_ID";
+
+
+
+if (isset($_POST['deselect'])) {
+  $product_starred = "0";
+}
 ?>
 
 <!DOCTYPE html>
@@ -82,6 +92,7 @@ $statement = $db->query($sql);
           <li class="list-group-item"><b>Secondary Monthly Payments: </b><?php echo $row["secondary_monthly_repayments"]; ?></li>
           <li class="list-group-item"><b>Total Repayment: </b><?php echo $row["total_repayment"]; ?></li>
         </ul>
+        <button type="button" id="deselct" class="btn btn-primary">Deselect</button>
       </div>
       <?php
       }
