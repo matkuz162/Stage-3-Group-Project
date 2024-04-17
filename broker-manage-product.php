@@ -76,7 +76,7 @@ if (isset($_SESSION['Broker_ID'])){
                     <div class="product-area">
                         <div class="product-header">
                             <h3><?php echo $product['YearRate'];?> year <?php echo $product['ProductType'];?></h3>
-                            <div>
+                            <div class="product-btns">
                                 <a href="Broker-product-update.php?id=<?php echo $product['Product_ID']; ?>" class="edit-product-btn">Edit</a>
                                 <a href="broker-product-deletion.php?id=<?php echo $product['Product_ID']; ?>" class="delete-product-btn">Delete</a>
                             </div>
@@ -95,9 +95,9 @@ if (isset($_SESSION['Broker_ID'])){
                                     <h5>Product Fee</h5>
                                     <p><?php echo $product['ProductFee']?></p>
                                 </div>
-                                <div class="product-fee-section">
-                                    <h5>Product Fee</h5>
-                                    <p><?php echo $product['ProductFee']?></p>
+                                <div class="mtv-section">
+                                    <h5>Maximum Loan to Value</h5>
+                                    <p><?php echo $product['mtv_ratio']?></p>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,7 @@ if (isset($_SESSION['Broker_ID'])){
                     <div class="product-area">
                         <div class="product-header">
                             <h3><?php echo $product['YearRate'];?> year <?php echo $product['ProductType'];?></h3>
-                            <div>
+                            <div class="product-btns">
                                 <a href="Broker-product-update.php?id=<?php echo $product['Product_ID']; ?>" class="edit-product-btn">Edit</a>
                                 <a href="broker-product-deletion.php?id=<?php echo $product['Product_ID']; ?>" class="delete-product-btn">Delete</a>
                             </div>
@@ -133,24 +133,24 @@ if (isset($_SESSION['Broker_ID'])){
                                     <h5>Initial rate</h5>
                                     <p><?php echo $product['initial_interest_rate']?></p>
                                 </div>
-                                <div class="product-fee-section">
-                                    <h5>Product Fee</h5>
-                                    <p><?php echo $product['ProductFee']?></p>
+                                <div class="secondary-rate-section">
+                                    <h5>Secondary rate</h5>
+                                    <p><?php echo $product['secondary_interest_rate']?></p>
                                 </div>
                                 <div class="product-fee-section">
                                     <h5>Product Fee</h5>
                                     <p><?php echo $product['ProductFee']?></p>
                                 </div>
-                                <div class="product-fee-section">
-                                    <h5>Product Fee</h5>
-                                    <p><?php echo $product['ProductFee']?></p>
+                                <div class="mtv-section">
+                                    <h5>Maximum Loan to Value</h5>
+                                    <p><?php echo $product['mtv_ratio']?></p>
                                 </div>
                         </div>
                     </div>
                     <?php endforeach; ?>
                 <?php else : ?>
                     <div class ="no-products-text">
-                        <p>No Products Created</p>
+                        <p>No Drafts Created</p>
                     </div>
                 <?php endif; ?>
             </div>

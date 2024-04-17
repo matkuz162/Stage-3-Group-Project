@@ -55,6 +55,7 @@ include 'connection.php';
                             <input class="form-control" type="text" id="year-rate" name="year-rate"><br>
                             <label class="label-group" for="product-type">Product Type *</label>
                             <select class="form-control" id="product-type" name="product-type">
+                                <option value="">Please select</option>
                                 <option value="Fixed Rate">Fixed rate</option>
                                  <option value="Tracked Rate">Tracked rate</option>
                             </select><br>
