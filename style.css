@@ -299,6 +299,10 @@ form.product {
 }
 
 .product-layout{
+  display: grid;
+  grid-template-columns: repeat(auto-fil, minmax(300px, 1fr));
+  overflow: auto;
+  flex-wrap: wrap;
   background-color: #c4fbff;
   margin: 40px auto;
   max-width: 900px;
@@ -313,6 +317,9 @@ form.product {
 .no-products-text p {
   padding: 10px;
 }
+.product-btns{
+  display: flex;
+}
 .product-header{
   background-color: #98CFED;
   padding: 20px;
@@ -320,6 +327,8 @@ form.product {
   display: flex;
   justify-content: space-between;
   font-size: 18px;
+  flex-direction: column;
+  height: 170px;
 }
 
 .edit-product-btn{
@@ -339,24 +348,44 @@ form.product {
   display: flex;
   background-color: #fff;
   padding: 40px;
+  margin: 0 auto;
+  height: 170px;
 }
 .manage-product-information h5 {
   font-size: 16px;
   font-weight: 500;
 }
 .manage-product-information p {
-  font-size: 16px;
+  padding-top: 6px;
+  font-size: 24px;
   font-weight: 600;
+
 }
 .initial-rate-section {
-  
+  margin: 12px;
+  text-align: center;
+}
+.secondary-rate-section{
+  margin: 12px;
+  text-align: center;
+}
+.product-fee-section{
+  margin: 12px;
+  text-align: center;
+}
+.mtv-section{
+  margin: 12px;
+  text-align: center;
 }
 .product-area{
+  display: flex;
   margin: 20px;
+  max-height: 155px;
 }
 .product-section{
   display: flex;
   flex-direction: column;
+  height: 170px;
 }
 .product-creation-btn{
   padding: 10px 20px;
