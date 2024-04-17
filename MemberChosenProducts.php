@@ -75,8 +75,8 @@ $statement = $db->query($sql);
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><b>Initial Rate: </b><?php echo $row["initial_interest_rate"]; ?></li>
           <li class="list-group-item"><b>Product Fee:  </b><?php echo $row["ProductFee"]; ?></li>
-          <li class="list-group-item"><b>Monthly Payments: </b><?php echo $row["initial_monthly_repayments"]; ?></li>
-          <li class="list-group-item"><b>Monthly Payments: </b><?php echo $row["secondary_monthly_repayments"]; ?></li>
+          <li class="list-group-item"><b>Initial Monthly Payments: </b><?php echo $row["initial_monthly_repayments"]; ?></li>
+          <li class="list-group-item"><b>Secondary Monthly Payments: </b><?php echo $row["secondary_monthly_repayments"]; ?></li>
           <li class="list-group-item"><b>Total Repayment: </b><?php echo $row["total_repayment"]; ?></li>
         </ul>
       </div>
