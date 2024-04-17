@@ -13,6 +13,19 @@ if (!isset($_SESSION['RegisteredUser_ID'])) {
 
 $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
 
+
+if (isset($_POST['compare'])) {
+    
+    $productID = $_POST['Product_id'];
+    
+    
+    $updateSql = "UPDATE Quote SET product_starred = 1 WHERE Product_ID = :Product_id";
+    $updateStatement = $db->prepare($updateSql);
+    $updateStatement->bindParam(':Product_id', $productID);
+    $updateStatement->execute();
+}
+
+
 $sql = "SELECT *
         FROM Product
         LEFT JOIN financialdetails ON (financialdetails.RegisteredUser_ID = Product.Broker_ID)
@@ -98,7 +111,10 @@ $statement = $db->query($sql);
                     <li class="list-group-item"><b>Product fee: </b><?php echo $row["ProductFee"]; ?></li>
                 </ul>
                 <br>
-                <a href="#" class="btn btn-primary">Compare</a>
+                <form method="post" action="">
+                    <input type="hidden" name="Product_id" value="<?php echo $row['Product_ID']; ?>">
+                    <button type="submit" name="compare" class="btn btn-primary">Compare</button>
+                </form>
             </div>
         </div>
         <?php
