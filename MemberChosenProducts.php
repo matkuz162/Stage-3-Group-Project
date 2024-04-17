@@ -59,10 +59,10 @@ $statement = $db->query($sql);
         <div class="input-group mb-3">
           <label class="input-group-text" for="inputGroupSelect01">Sort By:</label>
           <select class="form-select" id="inputGroupSelect01">
-            <option selected>Highest Price:</option>
-            <option value="1">Lowest Price</option>
-            <option value="2">Oldest Product</option>
-            <option value="3">Newest Product</option>
+          <option selected>Monthly Payments</option>
+          <option value="1">Total Repayment</option>
+          <option value="2">Initial Rate</option>
+          <option value="3">Initial Period</option>
           </select>
         </div>
 
