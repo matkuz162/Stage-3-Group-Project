@@ -88,6 +88,7 @@ if (!$loanDetails) {
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -118,7 +119,7 @@ if (!$loanDetails) {
 
     <div class="reg">
         <h2 class="mb-4"><b>Loan Details:</b></h2>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">          
             <div class="form-group">
                 <label for="mortgage_reason" class="form-label">Reason for Mortgage:</label>
                 <select class="form-select" id="mortgage_reason" name="mortgage_reason" required>
@@ -139,8 +140,7 @@ if (!$loanDetails) {
                 <label for="mortgage_term" class="form-label">Mortgage Term (years):</label>
                 <input type="number" class="form-control" id="mortgage_term" name="mortgage_term" value="<?php echo $loanDetails['mortgage_term']; ?>" required>
             </div>
-            <button type="button" id="editLoanBtn" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Edit Loan Details</button>
-            <button type="submit" name="loan-submit" id="saveLoanBtn" class="btn btn-secondary btn-lg btn-block" style="display: none; width: 100%;">Save Loan Details</button>
+            <button type="submit" name="loan-submit">Save Loan Details</button>        
         </form>
     </div>
 
@@ -152,12 +152,10 @@ if (!$loanDetails) {
 
 
 
-
-
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="script.js"></script>
+
 
 </body>
 
