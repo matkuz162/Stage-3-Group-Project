@@ -91,7 +91,8 @@ $statement->execute();
 
                 $secondarymonthlyInterestRate = $row["secondary_interest_rate"] / 100/ 12;
                 $leftovermonths = ($row["mortgage_term"] - $row["YearRate"]) * 12;
-                $secondarymonthlyPayments = $secondarymonthlyInterestRate * (($secondarymonthlyInterestRate * pow((1 + $secondarymonthlyInterestRate), $leftovermonths)) / (pow((1 + $secondarymonthlyInterestRate), $leftovermonths) - 1));
+                $remainingamount = $row["borrow_amount"] - $initialmonthlyPayments * $initialmonths
+                $secondarymonthlyPayments = $remainingamount * (($secondarymonthlyInterestRate * pow((1 + $secondarymonthlyInterestRate), $leftovermonths)) / (pow((1 + $secondarymonthlyInterestRate), $leftovermonths) - 1));
                 $secondaryrounded = round($secondarymonthlyPayments,2);
 
                 $totalpayment = ($initialmonths * $initialmonthlyPayments) + ($leftovermonths * $secondarymonthlyPayments);
