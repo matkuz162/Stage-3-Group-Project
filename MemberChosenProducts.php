@@ -86,12 +86,12 @@ $statement->execute();
             <?php while ($row = $statement->fetch(PDO::FETCH_ASSOC)) { 
                 $initialmonthlyInterestRate = $row["initial_interest_rate"] / 100/ 12;
                 $initialmonths = $row["YearRate"]*12;
-                $initialmonthlyPayments = $row["initial_interest_rate"] * ($initialmonthlyInterestRate * pow((1 + $initialmonthlyInterestRate), $initialmonths)) / (pow((1 + $initialmonthlyInterestRate), $initialmonths) - 1);
+                $initialmonthlyPayments = $row["borrow_amount"] * ($initialmonthlyInterestRate * pow((1 + $initialmonthlyInterestRate), $initialmonths)) / (pow((1 + $initialmonthlyInterestRate), $initialmonths) - 1);
                 $initialrounded = round($initialmonthlyPayments,2);
 
                 $secondarymonthlyInterestRate = $row["secondary_interest_rate"] / 100/ 12;
                 $leftovermonths = ($row["mortgage_term"] - $row["YearRate"]) * 12;
-                $secondarymonthlyPayments = $row["secondary_interest_rate"] * ($secondarymonthlyInterestRate * pow((1 + $secondarymonthlyInterestRate), $leftovermonths)) / (pow((1 + $secondarymonthlyInterestRate), $leftovermonths) - 1);
+                $secondarymonthlyPayments = $secondarymonthlyInterestRate * (($secondarymonthlyInterestRate * pow((1 + $secondarymonthlyInterestRate), $leftovermonths)) / (pow((1 + $secondarymonthlyInterestRate), $leftovermonths) - 1));
                 $secondaryrounded = round($secondarymonthlyPayments,2);
 
                 $totalpayment = ($initialmonths * $initialmonthlyPayments) + ($leftovermonths * $secondarymonthlyPayments);
