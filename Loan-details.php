@@ -142,7 +142,7 @@ if (!$loanDetails) {
             </div>
             <div class="form-group">
                 <label for="ltv_ratio" class="form-label">Loan-to-Value (LTV) Ratio:</label>
-                <input type="text" class="form-control" id="ltv_ratio" name="ltv_ratio" value="<?php echo isset($loanDetails['ltv_ratio']) ? $loanDetails['ltv_ratio'] : ''; ?>" readonly>
+                <input type="text" class="form-control" id="ltv_ratio" name="ltv_ratio" value="<?php echo isset($loanDetails['user_ltv']) ? $loanDetails['user_ltv'] : ''; ?>" readonly>
             </div>
             <button type="submit" name="loan-submit">Save Loan Details</button>        
         </form>
