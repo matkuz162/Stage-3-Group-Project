@@ -15,10 +15,17 @@ $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
 
 
 if (isset($_POST['compare'])) {
-    
     $productID = $_POST['Product_id'];
+
+    $sql = "INSERT INTO Quote (Product_ID, RegisteredUser_ID, initial_monthly_repayments, secondary_monthly_repayments, total_repayment, product_starred) 
+            VALUES (:productID, :RegisteredUser_ID, 100, 100, 100, 0)";
     
-    
+    if 
+    $statement = $db->prepare($sql);
+    $statement->bindParam(':productID', $productID);
+    $statement->bindParam(':RegisteredUser_ID', $RegisteredUser_ID);
+    $statement->execute();
+
     $updateSql = "UPDATE Quote SET product_starred = 1 WHERE Product_ID = :Product_id";
     $updateStatement = $db->prepare($updateSql);
     $updateStatement->bindParam(':Product_id', $productID);
