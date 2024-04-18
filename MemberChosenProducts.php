@@ -86,9 +86,15 @@ $statement->execute();
         <div class="flex-table">
             <?php while ($row = $statement->fetch(PDO::FETCH_ASSOC)) { 
                 $initialmonthlyInterestRate = $row["initial_interest_rate"] / 100/ 12;
-                $initialmonths = $row["YearRate"]*12;
+                $initialmonths = $row["mortgage_term"]*12;
                 $initialmonthlyPayments = $row["borrow_amount"] * (($initialmonthlyInterestRate * pow((1 + $initialmonthlyInterestRate), $initialmonths)) / (pow((1 + $initialmonthlyInterestRate), $initialmonths) - 1));
                 $initialrounded = round($initialmonthlyPayments,2);
+
+                $remainingmonthlyInterestRate = 7.5/100/12;
+                $remainingmonths = ($row["mortgage_term"] - $row["YearRate"]) * 12;
+                $remainingamount = ($row["borrow_amount"] - ($initialmonths * $initialmonthlyPayments));
+                $remainingmonthlyPayments = $remainingamount * (($remainingmonthlyInterestRate * pow((1 + $remainingmonthlyInterestRate), $remainingmonths)) / (pow((1 + $remainingmonthlyInterestRate), $remainingmonths) - 1));
+                $remainingrounded = round($remainingmonthlyPayments,2);
 
                 ?>
                 <div class="card" style="width: 18rem;">
@@ -96,10 +102,10 @@ $statement->execute();
                         <?php echo $row["YearRate"] . " Year " . $row["ProductType"]; ?>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><b>Initial Rate: </b>£<?php echo $row["initial_interest_rate"]; ?></li>
+                        <li class="list-group-item"><b>Initial Rate: </b><?php echo $row["initial_interest_rate"]; ?>%</li>
                         <li class="list-group-item"><b>Product Fee: </b><?php echo $row["ProductFee"]; ?></li>
                         <li class="list-group-item"><b>Monthly Payments: </b>£<?php echo $initialrounded; ?></li>
-                        <li class="list-group-item"><b>Remaining Monthly Payments: </b>£<?php echo $initialrounded; ?></li>
+                        <li class="list-group-item"><b>Remaining Monthly Payments: </b>£<?php echo $remainingrounded; ?></li>
                         <li class="list-group-item"><b>Total Repayment: </b>£<?php echo $initialrounded; ?></li>
                     </ul>
                     
