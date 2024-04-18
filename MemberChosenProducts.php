@@ -37,7 +37,6 @@ if($sortingOption == '1'){
 
 $statement = $db->query($sql);
 
-?>
 $statement->bindParam(':registered_user_id', $RegisteredUser_ID);
 $statement->execute();
 ?>
@@ -91,9 +90,9 @@ $statement->execute();
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Sort By:</label>
                     <select class="form-select" id="inputGroupSelect01">
-                        <option value="1"<?php echo ($sortOption == '1')? 'selected' : '';?>>Initial Rate</option>
-                        <option value="2"<?php echo ($sortOption == '2')? 'selected' : '';?>>Initial Period</option>
-                        <option value="3"<?php echo ($sortOption == '3')? 'selected' : '';?>>Total Repayment</option>
+                        <option value="1"<?php echo ($sortingOption == '1')? 'selected' : '';?>>Initial Rate</option>
+                        <option value="2"<?php echo ($sortingOption == '2')? 'selected' : '';?>>Initial Period</option>
+                        <option value="3"<?php echo ($sortingOption == '3')? 'selected' : '';?>>Total Repayment</option>
                     </select>
                 </div>
 
