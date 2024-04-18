@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION["role"] = "registered_user";
                     $_SESSION["RegisteredUser_ID"] = $row["RegisteredUser_ID"];
                     
-                    header("Location: memberviewproducts.php");
+                    header("Location: Loan-details.php");
                     exit();
                 } else {
                     echo "Incorrect password";

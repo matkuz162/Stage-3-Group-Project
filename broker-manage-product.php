@@ -108,10 +108,6 @@ if (isset($_SESSION['Broker_ID'])){
                                     <h5>Initial rate</h5>
                                     <p><?php echo $product['initial_interest_rate']?>%</p>
                                 </div>
-                                <div class="secondary-rate-section">
-                                    <h5>Secondary rate</h5>
-                                    <p><?php echo $product['secondary_interest_rate']?>%</p>
-                                </div>
                                 <div class="product-fee-section">
                                     <h5>Product Fee</h5>
                                     <p><?php echo $product['ProductFee']?></p>
@@ -153,10 +149,6 @@ if (isset($_SESSION['Broker_ID'])){
                                 <div class="initial-rate-section">
                                     <h5>Initial rate</h5>
                                     <p><?php echo $product['initial_interest_rate']?>%</p>
-                                </div>
-                                <div class="secondary-rate-section">
-                                    <h5>Secondary rate</h5>
-                                    <p><?php echo $product['secondary_interest_rate']?>%</p>
                                 </div>
                                 <div class="product-fee-section">
                                     <h5>Product Fee</h5>

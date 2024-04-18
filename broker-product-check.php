@@ -17,18 +17,17 @@
             $yearRate = validate($_POST['year-rate']);
             $productType = validate($_POST['product-type']);
             $baseInt = validate($_POST['base-interest']);
-            $secondaryInt = validate($_POST['secondary-interest']);
             $productFee = validate($_POST['product-fee']);
             $expectedInc = validate($_POST['expected-income']);
             $expectedOutg = validate($_POST['expected-outgoings']);
             $expectedCredit = validate($_POST['expected-credit']);
-            $loanRatio = validate($_POST['mtv-ratio']);
+            $loanRatio = validate($_POST['ltv-ratio']);
             
         if (isset($_POST['createProduct'])) {
-            createProduct($brokerId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt, $secondaryInt,$productFee,$loanRatio,$isDraft, $db);
+            createProduct($brokerId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt,$productFee,$loanRatio,$isDraft, $db);
         } else if (isset($_POST['updateProduct'])) {
             $productId = validate($_POST['product-id']);
-            updateProduct($productId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt, $secondaryInt,$productFee,$loanRatio,$isDraft, $db);
+            updateProduct($productId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt, $productFee,$loanRatio,$isDraft, $db);
         }else{
             header("Location: broker-product-creation.php?error=no form sent or incorrect name");
             exit();
@@ -43,14 +42,14 @@
     header("Location: LogIn.php");
     exit();
 }
-    function createProduct($brokerId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt, $secondaryInt,$productFee,$loanRatio,$isDraft, $db){
-        if (empty($yearRate)|| empty($baseInt)|| empty($expectedInc)||empty($expectedOutg)|| empty($expectedCredit)||empty($secondaryInt) ||empty($productType) || empty($productFee) || empty($loanRatio)){
+    function createProduct($brokerId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt, $productFee,$loanRatio,$isDraft, $db){
+        if (empty($yearRate)|| empty($baseInt)|| empty($expectedInc)||empty($expectedOutg)|| empty($expectedCredit)||empty($productType) || empty($loanRatio)){
             header("Location: Broker-product-creation.php?error=All required fields must be entered");
             exit();
         }
         try {
-            $stmt = $db->prepare("INSERT INTO Product (Broker_ID, YearRate, ProductType, expected_income, expected_outgoings, expected_credit_score, initial_interest_rate, secondary_interest_rate, ProductFee, mtv_ratio, aDraft) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
-            $stmt->execute([$brokerId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt, $secondaryInt,$productFee,$loanRatio,$isDraft]);
+            $stmt = $db->prepare("INSERT INTO Product (Broker_ID, YearRate, ProductType, expected_income, expected_outgoings, expected_credit_score, initial_interest_rate, ProductFee, ltv_ratio, aDraft) VALUES (?,?,?,?,?,?,?,?,?,?)");
+            $stmt->execute([$brokerId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt, $productFee,$loanRatio,$isDraft]);
             header("Location: broker-manage-product.php?success=Product successfully created");
             exit();
         } catch(PDOException $e) {
@@ -58,7 +57,7 @@
         }
 
     }
-    function updateProduct($productId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt, $secondaryInt,$productFee,$loanRatio,$isDraft, $db){
+    function updateProduct($productId,$yearRate, $productType, $expectedInc,$expectedOutg,$expectedCredit,$baseInt,$productFee,$loanRatio,$isDraft, $db){
         try {
             // Constructing the SQL Query based on non-empty fields
         $query = "UPDATE Product SET ";
@@ -88,16 +87,12 @@
             $query .= "initial_interest_rate=?, ";
             $params[] = $baseInt;
         }
-        if (!empty($secondaryInt)) {
-            $query .= "secondary_interest_rate=?, ";
-            $params[] = $secondaryInt;
-        }
-        if (!empty($productFee)) {
+        if (isset($productFee)) {
             $query .= "ProductFee=?, ";
             $params[] = $productFee;
         }
         if (!empty($loanRatio)) {
-            $query .= "mtv_ratio=?, ";
+            $query .= "ltv_ratio=?, ";
             $params[] = $loanRatio;
         }
         if (isset($isDraft)){
