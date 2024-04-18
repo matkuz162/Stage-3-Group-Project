@@ -440,14 +440,6 @@ form.reset-password {
   justify-content: center;
   margin-bottom: 25px;
 }
-
-.captch_box {
-  display: flex;
-  justify-content: center;
-  height: 40px;
-  margin-bottom: 25px;
-}
-
 .otp-field input {
   width: 200px;
   height: 20px;
@@ -466,42 +458,6 @@ form.reset-password {
 .otp-field input:focus{
   border:2px solid green;
   box-shadow: 0 0 2px 2px green;
-}
-
-.disabled{
-  opacity:0.5s;
-}
-
-.space{
-  margin-right: 1rem !important;
-}
-
-.confirm-btn {
-  padding: 10px 20px;
-  background-color: rgba(255, 255, 255, 0.8);
-  cursor: pointer;
-  transition: 0.5s;
-  border: solid 1px #9c9a9a;
-  margin-top: 50px;
-  border-radius: 8px;
-}
-
-.confirm-btn:hover {
-  background-color: rgba(200, 200, 200, 0.8);
-}
-
-.resetPass{
-  padding: 0px;
-}
-
-.passwordreset-btn {
-  padding: 10px 20px;
-  background-color: blue;
-  cursor: pointer;
-  transition: 0.5s;
-  border: solid 1px #9c9a9a;
-  margin-top: 50px;
-  border-radius: 8px;
 }
 
 /* delete button */
