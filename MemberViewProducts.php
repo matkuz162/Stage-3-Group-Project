@@ -32,13 +32,6 @@ if (isset($_POST['compare'])) {
     $updateStatement->bindParam(':RegisteredUser_ID', $RegisteredUser_ID);
     $updateStatement->execute();
 }
-$sortingOption = isset($_GET['sort']) ? $_GET['sort'] : '1';
-if($sortingOption == '1'){
-    $sql .= "ORDER BY Product.initial_interest_rate DESC";
-   } else if (sortingOption == '2'){
-    $sql .= "ORDER BY Product.YearRate DESC";
-    }
-
 $sql = "SELECT *
         FROM Product
         LEFT JOIN financialdetails ON (financialdetails.RegisteredUser_ID = Product.Broker_ID)
@@ -47,6 +40,13 @@ $sql = "SELECT *
         WHERE Product.expected_income <= (SELECT annual_income FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID)
         AND Product.expected_credit_score <= (SELECT credit_score FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID)
         AND Product.ltv_ratio <= (SELECT ltv_ratio FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID);";
+
+$sortingOption = isset($_GET['sort']) ? $_GET['sort'] : '1';
+if($sortingOption == '1'){
+    $sql .= "ORDER BY Product.initial_interest_rate DESC";
+   } else if (sortingOption == '2'){
+    $sql .= "ORDER BY Product.YearRate DESC";
+    }
 
 $statement = $db->query($sql);
 
