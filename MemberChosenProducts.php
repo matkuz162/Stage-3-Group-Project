@@ -96,7 +96,8 @@ $statement->execute();
                 $remainingmonthlyPayments = $remainingamount * (($remainingmonthlyInterestRate * pow((1 + $remainingmonthlyInterestRate), $remainingmonths)) / (pow((1 + $remainingmonthlyInterestRate), $remainingmonths) - 1));
                 $remainingrounded = round($remainingmonthlyPayments,2);
 
-                $totalpayment = (($row["YearRate"]*12)$initialmonthlyPayments)
+                $totalpayment = (($row["YearRate"]*12)*$initialmonthlyPayments) + ((($row["mortgage_term"]-$row["YearRate"])*12)*$remainingmonthlyPayments);
+                $totalrounded = round($totalpayment,2);
 
                 ?>
                 <div class="card" style="width: 18rem;">
@@ -108,7 +109,7 @@ $statement->execute();
                         <li class="list-group-item"><b>Product Fee: </b><?php echo $row["ProductFee"]; ?></li>
                         <li class="list-group-item"><b>Monthly Payments: </b>£<?php echo $initialrounded; ?></li>
                         <li class="list-group-item"><b>Remaining Monthly Payments: </b>£<?php echo $remainingrounded; ?></li>
-                        <li class="list-group-item"><b>Total Repayment: </b>£<?php echo $initialrounded; ?></li>
+                        <li class="list-group-item"><b>Total Repayment: </b>£<?php echo $totalrounded; ?></li>
                     </ul>
                     
                     <form method="post" action="">

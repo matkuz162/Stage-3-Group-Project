@@ -40,7 +40,6 @@ $sql = "SELECT *
         LEFT JOIN RegisteredUser ON (RegisteredUser.RegisteredUser_ID = financialdetails.RegisteredUser_ID)
         LEFT JOIN Quote ON (Quote.Product_ID = Product.Product_ID)
         WHERE Product.expected_income <= (SELECT annual_income FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID)
-        AND Product.expected_outgoings <= (SELECT monthly_spending_amounts FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID)
         AND Product.expected_credit_score <= (SELECT credit_score FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID)
         AND Product.ltv_ratio <= (SELECT ltv_ratio FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID);";
 
