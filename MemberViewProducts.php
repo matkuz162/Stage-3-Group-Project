@@ -42,7 +42,7 @@ $sql = "SELECT *
         WHERE Product.expected_income <= (SELECT annual_income FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID)
         AND Product.expected_outgoings <= (SELECT monthly_spending_amounts FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID)
         AND Product.expected_credit_score <= (SELECT credit_score FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID)
-        AND Product.ltv_score <= (SELECT ltv_score FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID);";
+        AND Product.ltv_ratio <= (SELECT ltv_ratio FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID);";
 
 $statement = $db->query($sql);
 
@@ -109,16 +109,16 @@ $statement = $db->query($sql);
     <div class="flex-table">
         <?php
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-            $monthlyInterestRate = $row["initial_interest_rate"] / 100/ 12;
-            $months = $row["YearRate"]*12;
-            $monthlyPayments = $row["borrow_amount"] * (($monthlyInterestRate * pow((1 + $monthlyInterestRate), $months)) / (pow((1 + $monthlyInterestRate), $months) - 1));
-            $rounded = round($monthlyPayments,2);
+            $initialmonthlyInterestRate = $row["initial_interest_rate"] / 100/ 12;
+            $initialmonths = $row["YearRate"]*12;
+            $initialmonthlyPayments = $row["borrow_amount"] * ($initialmonthlyInterestRate * pow((1 + $initialmonthlyInterestRate), $initialmonths)) / (pow((1 + $initialmonthlyInterestRate), $initialmonths) - 1);
+            $initialrounded = round($initialmonthlyPayments,2);
         ?>
         <div class="card" style="width: 18rem; margin-bottom: 50px;">
             <div class="card-body">
                 <h5 class="card-title"><b><?php echo $row["YearRate"] . " Year " . $row["ProductType"]; ?></b></h5>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Monthly Payments: </b><?php echo $rounded; ?></li>
+                    <li class="list-group-item"><b>Monthly Payments: </b><?php echo $initialrounded; ?></li>
                     <li class="list-group-item"><b>Initial rate: </b><?php echo $row["initial_interest_rate"]; ?></li>
                     <li class="list-group-item"><b>Product fee: </b><?php echo $row["ProductFee"]; ?></li>
                 </ul>
