@@ -22,6 +22,7 @@ if (isset($_POST['loan-submit'])) {
         $estimated_property_value = $_POST['estimated_property_value'];
         $borrow_amount = $_POST['borrow_amount'];
         $mortgage_term = $_POST['mortgage_term'];
+        $ltv_ratio = $_POST['ltv_ratio'];
 
         // Prepare SQL statement to check if the user already has loan details
         $check_loan_details_query = "SELECT * FROM financialdetails WHERE RegisteredUser_ID = :RegisteredUser_ID";
@@ -41,8 +42,8 @@ if (isset($_POST['loan-submit'])) {
             $stmt = $db->prepare($update_loan_query);
         } else {
             // If no loan details exist, insert new loan details
-            $insert_loan_query = "INSERT INTO financialdetails (RegisteredUser_ID, mortgage_reason, estimated_property_value, borrow_amount, mortgage_term) 
-                                  VALUES (:RegisteredUser_ID, :mortgage_reason, :estimated_property_value, :borrow_amount, :mortgage_term)";
+            $insert_loan_query = "INSERT INTO financialdetails (RegisteredUser_ID, mortgage_reason, estimated_property_value, borrow_amount, mortgage_term, ltv_ratio) 
+                                  VALUES (:RegisteredUser_ID, :mortgage_reason, :estimated_property_value, :borrow_amount, :mortgage_term, :ltv_ratio)";
             $stmt = $db->prepare($insert_loan_query);
         }
 
@@ -52,6 +53,7 @@ if (isset($_POST['loan-submit'])) {
         $stmt->bindParam(':estimated_property_value', $estimated_property_value);
         $stmt->bindParam(':borrow_amount', $borrow_amount);
         $stmt->bindParam(':mortgage_term', $mortgage_term);
+        $stmt->bindParam(':ltv_ratio', $ltv_ratio);
 
         // Execute statement
         if ($stmt->execute()) {
@@ -79,7 +81,8 @@ if (!$loanDetails) {
         'mortgage_reason' => '',
         'estimated_property_value' => '',
         'borrow_amount' => '',
-        'mortgage_term' => ''
+        'mortgage_term' => '',
+        'ltv_ratio' => ''
     );
 }
 ?>
@@ -139,6 +142,10 @@ if (!$loanDetails) {
             <div class="form-group">
                 <label for="mortgage_term" class="form-label">Mortgage Term (years):</label>
                 <input type="number" class="form-control" id="mortgage_term" name="mortgage_term" value="<?php echo $loanDetails['mortgage_term']; ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="ltv_ratio" class="form-label">Loan-to-Value (LTV) Ratio</label>
+                <input type="number" class="ltv_ratio" id="ltv_ratio" name="ltv_ratio" value="<?php echo $loanDetails['ltv_ratio']; ?>" required>
             </div>
             <button type="submit" name="loan-submit">Save Loan Details</button>        
         </form>
