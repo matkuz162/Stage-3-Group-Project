@@ -88,12 +88,11 @@ $statement = $db->query($sql);
 
         <div>
             <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupSelect01">Sort By:</label>
-                <select class="form-select" id="inputGroupSelect01">
+                <label class="input-group-text" for="sorting">Sort By:</label>
+                <select class="form-select" id="sorting">
                     <option selected>Monthly Payments</option>
-                    <option value="1">Total Repayment</option>
-                    <option value="2">Initial Rate</option>
-                    <option value="3">Initial Period</option>
+                    <option value="1">Initial Rate</option>
+                    <option value="2">Initial Period</option>
                 </select>
             </div>
 
@@ -118,7 +117,7 @@ $statement = $db->query($sql);
             <div class="card-body">
                 <h5 class="card-title"><b><?php echo $row["YearRate"] . " Year " . $row["ProductType"]; ?></b></h5>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Initial Monthly Cost: </b><?php echo $rounded; ?></li>
+                    <li class="list-group-item"><b>Monthly Payments: </b><?php echo $rounded; ?></li>
                     <li class="list-group-item"><b>Initial rate: </b><?php echo $row["initial_interest_rate"]; ?></li>
                     <li class="list-group-item"><b>Product fee: </b><?php echo $row["ProductFee"]; ?></li>
                 </ul>
