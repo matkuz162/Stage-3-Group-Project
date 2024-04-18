@@ -118,7 +118,7 @@ if (isset($_SESSION['Broker_ID'])){
                                 </div>
                                 <div class="mtv-section">
                                     <h5>Maximum Loan to Value</h5>
-                                    <p><?php echo $product['mtv_ratio']?>%</p>
+                                    <p><?php echo $product['ltv_ratio']?>%</p>
                                 </div>
                             </div>
                         </div>
@@ -164,7 +164,7 @@ if (isset($_SESSION['Broker_ID'])){
                                 </div>
                                 <div class="mtv-section">
                                     <h5>Maximum Loan to Value</h5>
-                                    <p><?php echo $product['mtv_ratio']?>%</p>
+                                    <p><?php echo $product['ltv_ratio']?>%</p>
                                 </div>
                             </div>
                         </div>
