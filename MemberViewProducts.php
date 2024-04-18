@@ -18,8 +18,8 @@ if (isset($_POST['compare'])) {
     $productID = $_POST['Product_id'];
     $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
 
-    $sql = "INSERT INTO Quote (Product_ID, RegisteredUser_ID, initial_monthly_repayments, secondary_monthly_repayments, total_repayment, product_starred) 
-            VALUES (:ProductID, :RegisteredUser_ID, 100, 100, 100, 0)";
+    $sql = "INSERT INTO Quote (Product_ID, RegisteredUser_ID, product_starred) 
+            VALUES (:ProductID, :RegisteredUser_ID,0)";
     
     $statement = $db->prepare($sql);
     $statement->bindParam(':ProductID', $productID);
@@ -110,7 +110,7 @@ $statement = $db->query($sql);
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
             $monthlyInterestRate = $row["initial_interest_rate"] / 100/ 12;
             $months = $row["YearRate"]*12;
-            $monthlyPayments = $row["initial_interest_rate"] * ($monthlyInterestRate * pow((1 + $monthlyInterestRate), $months)) / (pow((1 + $monthlyInterestRate), $months) - 1);
+            $monthlyPayments = $row["borrow_amount"] * (($monthlyInterestRate * pow((1 + $monthlyInterestRate), $months)) / (pow((1 + $monthlyInterestRate), $months) - 1));
             $rounded = round($monthlyPayments,2);
         ?>
         <div class="card" style="width: 18rem; margin-bottom: 50px;">
