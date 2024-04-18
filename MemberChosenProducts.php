@@ -45,7 +45,7 @@ $statement->execute();
     function sortProducts() {
         var sortBy = document.getElementById("sorting").value;
     console.log("Selected sorting option:", sortBy);
-    var url = "MemberViewProducts.php?sort=" + sortBy;
+    var url = "MemberChosenProducts.php?sort=" + sortBy;
     console.log("Redirecting to:", url);
     window.location.href = url;
 }
