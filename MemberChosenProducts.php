@@ -42,7 +42,7 @@ $statement->execute();
 ?>
 <script>
     function sortProducts() {
-        var sortBy = document.getElementById("sorting").value;
+        var sortBy = document.getElementById("inputGroupSelect01").value;
     console.log("Selected sorting option:", sortBy);
     var url = "MemberChosenProducts.php?sort=" + sortBy;
     console.log("Redirecting to:", url);
@@ -89,7 +89,7 @@ $statement->execute();
             <div>
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Sort By:</label>
-                    <select class="form-select" id="inputGroupSelect01">
+                    <select class="form-select" id="inputGroupSelect01" onchange="sortProducts()">
                         <option value="1"<?php echo ($sortingOption == '1')? 'selected' : '';?>>Initial Rate</option>
                         <option value="2"<?php echo ($sortingOption == '2')? 'selected' : '';?>>Initial Period</option>
                         <option value="3"<?php echo ($sortingOption == '3')? 'selected' : '';?>>Total Repayment</option>
