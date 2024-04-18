@@ -51,7 +51,7 @@ include 'connection.php';
                         <p class ="success-field"><?php echo $_GET['success']; ?></p>
                     <?php }?>
 
-                    <label class="label-group" for="year-rate">Year Rate *</label>
+                    <label class="label-group" for="year-rate">Year Rate Duration *</label>
                     <input class="form-control" type="text" id="year-rate" name="year-rate" value="<?php echo $product['YearRate']; ?>"><br>
                     <label class="label-group" for="product-type">Product Type *</label>
                     <select class="form-control" id="product-type" name="product-type">

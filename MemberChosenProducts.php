@@ -87,17 +87,9 @@ $statement->execute();
             <?php while ($row = $statement->fetch(PDO::FETCH_ASSOC)) { 
                 $initialmonthlyInterestRate = $row["initial_interest_rate"] / 100/ 12;
                 $initialmonths = $row["YearRate"]*12;
-                $initialmonthlyPayments = $row["borrow_amount"] * ($initialmonthlyInterestRate * pow((1 + $initialmonthlyInterestRate), $initialmonths)) / (pow((1 + $initialmonthlyInterestRate), $initialmonths) - 1);
+                $initialmonthlyPayments = $row["borrow_amount"] * (($initialmonthlyInterestRate * pow((1 + $initialmonthlyInterestRate), $initialmonths)) / (pow((1 + $initialmonthlyInterestRate), $initialmonths) - 1));
                 $initialrounded = round($initialmonthlyPayments,2);
 
-                $secondarymonthlyInterestRate = 7.5 / 100/ 12;
-                $leftovermonths = ($row["mortgage_term"] - $row["YearRate"]) * 12;
-                $remainingamount = $row["borrow_amount"] - $initialmonthlyPayments * $initialmonths;
-                $secondarymonthlyPayments = $remainingamount * (($secondarymonthlyInterestRate * pow((1 + $secondarymonthlyInterestRate), $leftovermonths)) / (pow((1 + $secondarymonthlyInterestRate), $leftovermonths) - 1));
-                $secondaryrounded = round($secondarymonthlyPayments,2);
-
-                $totalpayment = ($initialmonths * $initialmonthlyPayments) + ($leftovermonths * $secondarymonthlyPayments);
-                $totalpaymentrounded = round($totalpayment,2);
                 ?>
                 <div class="card" style="width: 18rem;">
                     <div class="card-header">
@@ -107,8 +99,8 @@ $statement->execute();
                         <li class="list-group-item"><b>Initial Rate: </b>£<?php echo $row["initial_interest_rate"]; ?></li>
                         <li class="list-group-item"><b>Product Fee: </b><?php echo $row["ProductFee"]; ?></li>
                         <li class="list-group-item"><b>Monthly Payments: </b>£<?php echo $initialrounded; ?></li>
-                        <li class="list-group-item"><b>Remaining Monthly Payments: </b>£<?php echo $secondaryrounded; ?></li>
-                        <li class="list-group-item"><b>Total Repayment: </b>£<?php echo $totalpaymentrounded; ?></li>
+                        <li class="list-group-item"><b>Remaining Monthly Payments: </b>£<?php echo $initialrounded; ?></li>
+                        <li class="list-group-item"><b>Total Repayment: </b>£<?php echo $initialrounded; ?></li>
                     </ul>
                     
                     <form method="post" action="">
