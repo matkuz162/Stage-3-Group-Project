@@ -92,9 +92,11 @@ $statement->execute();
 
                 $remainingmonthlyInterestRate = 7.5/100/12;
                 $remainingmonths = ($row["mortgage_term"] - $row["YearRate"]) * 12;
-                $remainingamount = ($row["borrow_amount"] - ($initialmonths * $initialmonthlyPayments));
+                $remainingamount = ($row["borrow_amount"] - ($row["YearRate"] * $initialmonthlyPayments));
                 $remainingmonthlyPayments = $remainingamount * (($remainingmonthlyInterestRate * pow((1 + $remainingmonthlyInterestRate), $remainingmonths)) / (pow((1 + $remainingmonthlyInterestRate), $remainingmonths) - 1));
                 $remainingrounded = round($remainingmonthlyPayments,2);
+
+                $totalpayment = (($row["YearRate"]*12)$initialmonthlyPayments)
 
                 ?>
                 <div class="card" style="width: 18rem;">
