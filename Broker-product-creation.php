@@ -70,7 +70,7 @@ include 'connection.php';
                             <input class="form-control" type="text" id="expected-income" name="expected-income"><br>
                             <label  class="label-group" for="expected-credit">Expected Credit Score *</label>
                             <input class="form-control" type="text" id="expected-credit" name="expected-credit"><br>
-                            <label  class="label-group" for="ltv-ratio">Maximum loan to value ratio *</label>
+                            <label  class="label-group" for="ltv-ratio">Maximum loan to value ratio (In %) *</label>
                             <input class="form-control" type="text" id="ltv-ratio" name="ltv-ratio"><br>
                             <label for="isDraft">Set as Draft *</label>
                             <input type="checkbox" id="isDraft" name="isDraft" style="width:25px;height:25px"/>
