@@ -40,12 +40,12 @@ if (isset($_POST['loan-submit'])) {
                                       estimated_property_value = :estimated_property_value,
                                       borrow_amount = :borrow_amount,
                                       mortgage_term = :mortgage_term,
-                                      ltv_ratio = :ltv_ratio
+                                      user_ltv = :ltv_ratio
                                   WHERE RegisteredUser_ID = :RegisteredUser_ID";
             $stmt = $db->prepare($update_loan_query);
         } else {
             
-            $insert_loan_query = "INSERT INTO financialdetails (RegisteredUser_ID, mortgage_reason, estimated_property_value, borrow_amount, mortgage_term, ltv_ratio) 
+            $insert_loan_query = "INSERT INTO financialdetails (RegisteredUser_ID, mortgage_reason, estimated_property_value, borrow_amount, mortgage_term, user_ltv) 
                                   VALUES (:RegisteredUser_ID, :mortgage_reason, :estimated_property_value, :borrow_amount, :mortgage_term, :ltv_ratio)";
             $stmt = $db->prepare($insert_loan_query);
         }
@@ -83,7 +83,7 @@ if (!$loanDetails) {
         'estimated_property_value' => '',
         'borrow_amount' => '',
         'mortgage_term' => '',
-        'ltv_ratio' => ''
+        'user_ltv' => ''
     );
 }
 ?>
@@ -142,7 +142,7 @@ if (!$loanDetails) {
             </div>
             <div class="form-group">
                 <label for="ltv_ratio" class="form-label">Loan-to-Value (LTV) Ratio:</label>
-                <input type="text" class="form-control" id="ltv_ratio" name="ltv_ratio" value="<?php echo isset($loanDetails['ltv_ratio']) ? $loanDetails['ltv_ratio'] : ''; ?>" readonly>
+                <input type="text" class="form-control" id="ltv_ratio" name="ltv_ratio" value="<?php echo isset($loanDetails['user_ltv']) ? $loanDetails['user_ltv'] : ''; ?>" readonly>
             </div>
             <button type="submit" name="loan-submit">Save Loan Details</button>        
         </form>
