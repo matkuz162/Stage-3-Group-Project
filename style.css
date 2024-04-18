@@ -467,7 +467,7 @@ form.reset-password {
   justify-content:center;
   align-content: space-between;
 }
-.btn-delete-user ,.btn-changePassword-user {
+.btn-delete-user {
   background-color: #dc3545;
   border-color: #dc3545;
   color: #fff;
@@ -494,6 +494,18 @@ form.reset-password {
 .btn-delete-broker:hover {
   background-color: #ff0019;
   border-color: #ff0019;
+}
+
+.btn-changePassword-user{
+  background-color: green;
+  border-color: green;
+  color: #fff;
+  width: 100px;
+}
+
+.btn-changePassword-user:hover {
+  background-color: darkgreen;
+  border-color: darkgreen;
 }
 
 
