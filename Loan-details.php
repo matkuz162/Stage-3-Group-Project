@@ -4,29 +4,29 @@ session_start();
 // Include database connection
 include 'connection.php';
 
-
+// Check if user is not logged in
 if (!isset($_SESSION['RegisteredUser_ID'])) {
-    
+    // Redirect to login page
     header('Location: login.php');
     exit();
 }
 
-
+// Fetch user ID from session
 $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
 
-
+// Check if form is submitted
 if (isset($_POST['loan-submit'])) {
     try {
-        
+        // Update loan details
         $mortgage_reason = $_POST['mortgage_reason'];
         $estimated_property_value = $_POST['estimated_property_value'];
         $borrow_amount = $_POST['borrow_amount'];
         $mortgage_term = $_POST['mortgage_term'];
 
-        
+        // Calculate LTV ratio
         $ltv_ratio = ($borrow_amount / $estimated_property_value) * 100;
 
-        
+        // Prepare SQL statement to check if the user already has loan details
         $check_loan_details_query = "SELECT * FROM financialdetails WHERE RegisteredUser_ID = :RegisteredUser_ID";
         $stmt_check = $db->prepare($check_loan_details_query);
         $stmt_check->bindParam(':RegisteredUser_ID', $RegisteredUser_ID, PDO::PARAM_INT);
@@ -34,23 +34,23 @@ if (isset($_POST['loan-submit'])) {
         $loanDetails = $stmt_check->fetch(PDO::FETCH_ASSOC);
 
         if ($loanDetails) {
-            
+            // If loan details exist, update them
             $update_loan_query = "UPDATE financialdetails 
                                   SET mortgage_reason = :mortgage_reason,
                                       estimated_property_value = :estimated_property_value,
                                       borrow_amount = :borrow_amount,
                                       mortgage_term = :mortgage_term,
-                                      ltv_ratio = :ltv_ratio
+                                      user_ltv = :ltv_ratio
                                   WHERE RegisteredUser_ID = :RegisteredUser_ID";
             $stmt = $db->prepare($update_loan_query);
         } else {
-            
-            $insert_loan_query = "INSERT INTO financialdetails (RegisteredUser_ID, mortgage_reason, estimated_property_value, borrow_amount, mortgage_term, ltv_ratio) 
+            // If no loan details exist, insert new loan details
+            $insert_loan_query = "INSERT INTO financialdetails (RegisteredUser_ID, mortgage_reason, estimated_property_value, borrow_amount, mortgage_term, user_ltv) 
                                   VALUES (:RegisteredUser_ID, :mortgage_reason, :estimated_property_value, :borrow_amount, :mortgage_term, :ltv_ratio)";
             $stmt = $db->prepare($insert_loan_query);
         }
 
-        
+        // Bind parameters
         $stmt->bindParam(':RegisteredUser_ID', $RegisteredUser_ID, PDO::PARAM_INT);
         $stmt->bindParam(':mortgage_reason', $mortgage_reason);
         $stmt->bindParam(':estimated_property_value', $estimated_property_value);
@@ -58,7 +58,7 @@ if (isset($_POST['loan-submit'])) {
         $stmt->bindParam(':mortgage_term', $mortgage_term);
         $stmt->bindParam(':ltv_ratio', $ltv_ratio);
 
-        
+        // Execute statement
         if ($stmt->execute()) {
             echo "Loan details updated successfully";
         } else {
@@ -69,21 +69,21 @@ if (isset($_POST['loan-submit'])) {
     }
 }
 
-
+// Retrieve existing loan details for the user
 $retrieve_loan_query = "SELECT * FROM financialdetails WHERE RegisteredUser_ID = :RegisteredUser_ID";
 $stmt_retrieve = $db->prepare($retrieve_loan_query);
 $stmt_retrieve->bindParam(':RegisteredUser_ID', $RegisteredUser_ID, PDO::PARAM_INT);
 $stmt_retrieve->execute();
 $loanDetails = $stmt_retrieve->fetch(PDO::FETCH_ASSOC);
 
-
+// If no loan details exist, initialize empty array
 if (!$loanDetails) {
     $loanDetails = array(
         'mortgage_reason' => '',
         'estimated_property_value' => '',
         'borrow_amount' => '',
         'mortgage_term' => '',
-        'ltv_ratio' => ''
+        'user_ltv' => ''
     );
 }
 ?>
