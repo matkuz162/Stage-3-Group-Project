@@ -90,9 +90,9 @@ $statement = $db->query($sql);
             <div class="input-group mb-3">
                 <label class="input-group-text" for="sorting">Sort By:</label>
                 <select class="form-select" id="sorting">
-                    <option selected>Monthly Payments</option>
-                    <option value="1">Initial Rate</option>
-                    <option value="2">Initial Period</option>
+                    <option  value="1"selected>Monthly Payments</option>
+                    <option value="2">Initial Rate</option>
+                    <option value="3">Initial Period</option>
                 </select>
             </div>
 
