@@ -51,6 +51,10 @@ $(document).ready(function() {
   });
 });
 
+function passwordSubmitBtnClick() {
+    window.location.href = 'http://localhost/Stage-3-Group-Project/changePassword.php';
+}
+
 
 
 //Mortgage calculator
