@@ -83,7 +83,12 @@ $statement->execute();
 
         </div>
         <div class="flex-table">
-            <?php while ($row = $statement->fetch(PDO::FETCH_ASSOC)) { ?>
+            <?php while ($row = $statement->fetch(PDO::FETCH_ASSOC)) { 
+                $monthlyInterestRate = $row["initial_interest_rate"] / 100/ 12;
+                $months = $row["YearRate"]*12;
+                $monthlyPayments = $row["initial_interest_rate"] * ($monthlyInterestRate * pow((1 + $monthlyInterestRate), $months)) / (pow((1 + $monthlyInterestRate), $months) - 1);
+                $rounded = round($monthlyPayments,2);
+                ?>
                 <div class="card" style="width: 18rem;">
                     <div class="card-header">
                         <?php echo $row["YearRate"] . " Year " . $row["ProductType"]; ?>
@@ -91,7 +96,7 @@ $statement->execute();
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><b>Initial Rate: </b><?php echo $row["initial_interest_rate"]; ?></li>
                         <li class="list-group-item"><b>Product Fee: </b><?php echo $row["ProductFee"]; ?></li>
-                        <li class="list-group-item"><b>Monthly Payments: </b><?php echo $row["initial_monthly_repayments"]; ?></li>
+                        <li class="list-group-item"><b>Monthly Payments: </b><?php echo $rounded; ?></li>
                         <li class="list-group-item"><b>Secondary Monthly Payments: </b><?php echo $row["secondary_monthly_repayments"]; ?></li>
                         <li class="list-group-item"><b>Total Repayment: </b><?php echo $row["total_repayment"]; ?></li>
                     </ul>
