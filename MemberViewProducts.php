@@ -16,6 +16,7 @@ $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
 
 if (isset($_POST['compare'])) {
     $productID = $_POST['Product_id'];
+    echo "Product ID: " . $productID;
     $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
 
     $sql = "INSERT INTO Quote (Product_ID, RegisteredUser_ID, initial_monthly_repayments, secondary_monthly_repayments, total_repayment, product_starred) 
