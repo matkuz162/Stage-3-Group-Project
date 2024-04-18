@@ -32,7 +32,12 @@ if (isset($_POST['compare'])) {
     $updateStatement->bindParam(':RegisteredUser_ID', $RegisteredUser_ID);
     $updateStatement->execute();
 }
-
+$sortingOption = isset($_GET['sort']) ? $_GET['sort'] : '1';
+if($sortingOption == '1'){
+    $sql .= "ORDER BY Product.initial_interest_rate DESC";
+   } else if (sortingOption == '2'){
+    $sql .= "ORDER BY Product.YearRate DESC";
+    }
 
 $sql = "SELECT *
         FROM Product
@@ -46,10 +51,15 @@ $sql = "SELECT *
 $statement = $db->query($sql);
 
 ?>
-
-
-
-
+<script>
+    function sortProducts() {
+        var sortBy = document.getElementById("sorting").value;
+    console.log("Selected sorting option:", sortBy);
+    var url = "MemberViewProducts.php?sort=" + sortBy;
+    console.log("Redirecting to:", url);
+    window.location.href = url;
+}
+</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -89,10 +99,9 @@ $statement = $db->query($sql);
         <div>
             <div class="input-group mb-3">
                 <label class="input-group-text" for="sorting">Sort By:</label>
-                <select class="form-select" id="sorting">
-                    <option  value="1"selected>Monthly Payments</option>
-                    <option value="2">Initial Rate</option>
-                    <option value="3">Initial Period</option>
+                <select class="form-select" id="sorting" onchange="sortProducts()">
+                    <option value="1" <?php echo($sortingOption == '1')? 'selected' : ''?>>Initial Rate</option>
+                    <option value="2" <?php echo($sortingOption == '2')? 'selected' : ''?>>Initial Period</option>
                 </select>
             </div>
 
