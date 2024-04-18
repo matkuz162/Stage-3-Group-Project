@@ -61,8 +61,6 @@ include 'connection.php';
                     </select><br>
                     <label class="label-group" for="base-interest">Initial Interest Rate *</label>
                     <input class="form-control" type="text" id="base-interest" name="base-interest" value="<?php echo $product['initial_interest_rate']; ?>"><br>
-                    <label class="label-group" for="secondary-interest">Secondary Interest Rate *</label>
-                    <input class="form-control" type="text" id="secondary-interest" name="secondary-interest" value="<?php echo $product['secondary_interest_rate']; ?>"><br>
                     <label class="label-group" for="product-fee">Product Fee *</label>
                     <input class="form-control" type="text" id="product-fee" name="product-fee" value="<?php echo $product['ProductFee']; ?>"><br>
                 </div>

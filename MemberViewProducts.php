@@ -44,7 +44,7 @@ $sql = "SELECT *
 $sortingOption = isset($_GET['sort']) ? $_GET['sort'] : '1';
 if($sortingOption == '1'){
     $sql .= "ORDER BY Product.initial_interest_rate DESC";
-   } else if (sortingOption == '2'){
+   } else if ($sortingOption == '2'){
     $sql .= "ORDER BY Product.YearRate DESC";
     }
 
