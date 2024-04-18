@@ -102,11 +102,11 @@ $statement->execute();
                         <?php echo $row["YearRate"] . " Year " . $row["ProductType"]; ?>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><b>Initial Rate: </b><?php echo $row["initial_interest_rate"]; ?></li>
+                        <li class="list-group-item"><b>Initial Rate: </b>£<?php echo $row["initial_interest_rate"]; ?></li>
                         <li class="list-group-item"><b>Product Fee: </b><?php echo $row["ProductFee"]; ?></li>
-                        <li class="list-group-item"><b>Monthly Payments: </b><?php echo $initialrounded; ?></li>
-                        <li class="list-group-item"><b>Remaining Monthly Payments: </b><?php echo $secondaryrounded; ?></li>
-                        <li class="list-group-item"><b>Total Repayment: </b><?php echo $totalpaymentrounded; ?></li>
+                        <li class="list-group-item"><b>Monthly Payments: </b>£<?php echo $initialrounded; ?></li>
+                        <li class="list-group-item"><b>Remaining Monthly Payments: </b>£<?php echo $secondaryrounded; ?></li>
+                        <li class="list-group-item"><b>Total Repayment: </b>£<?php echo $totalpaymentrounded; ?></li>
                     </ul>
                     
                     <form method="post" action="">
