@@ -127,7 +127,7 @@ if (isset($_SESSION['Broker_ID'])){
                 <?php endif; ?>
             </div>
             <div class="products-type">
-                <h4>Drafted Products</h4>
+                <h4>Inactive Products</h4>
             </div>
             <div class="product-layout">
                 <?php 
@@ -164,7 +164,7 @@ if (isset($_SESSION['Broker_ID'])){
                     <?php endforeach; ?>
                 <?php else : ?>
                     <div class ="no-products-text">
-                        <p>No Drafts Created</p>
+                        <p>No Inactive Products Created</p>
                     </div>
                 <?php endif; ?>
             </div>
