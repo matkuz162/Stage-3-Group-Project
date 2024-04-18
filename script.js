@@ -70,6 +70,7 @@ function calculateMonthlyPayment() {
     document.getElementById("result").innerHTML = "£" + monthlyPayment.toFixed(2);  //result
 }
 
+
 const captchaTextBox = document.querySelector(".captch_box input");
 const refreshButton = document.querySelector(".refresh_button");
 const captchaInputBox = document.querySelector(".captch_input input");
