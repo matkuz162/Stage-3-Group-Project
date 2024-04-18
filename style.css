@@ -465,7 +465,7 @@ form.reset-password {
 .delete{
   display: flex;
   justify-content:center;
-  align-content: space-between;
+  gap: 30px;
 }
 .btn-delete-user ,.btn-changePassword-user {
   background-color: #dc3545;
