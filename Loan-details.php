@@ -144,7 +144,7 @@ if (!$loanDetails) {
                 <input type="number" class="form-control" id="mortgage_term" name="mortgage_term" value="<?php echo $loanDetails['mortgage_term']; ?>" required>
             </div>
             <div class="form-group">
-                <label for="ltv_ratio" class="form-label">Loan-to-Value (LTV) Ratio</label>
+                <label for="ltv_ratio" class="form-label">Loan-to-Value (LTV) Ratio (%):</label>
                 <input type="number" class="ltv_ratio" id="ltv_ratio" name="ltv_ratio" value="<?php echo $loanDetails['ltv_ratio']; ?>" required>
             </div>
             <button type="submit" name="loan-submit">Save Loan Details</button>        
