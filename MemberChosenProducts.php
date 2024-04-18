@@ -82,6 +82,7 @@ $statement->execute();
             </div>
 
         </div>
+        
         <div class="flex-table">
             <?php while ($row = $statement->fetch(PDO::FETCH_ASSOC)) { 
                 $initialmonthlyInterestRate = $row["initial_interest_rate"] / 100/ 12;
@@ -91,7 +92,7 @@ $statement->execute();
 
                 $secondarymonthlyInterestRate = $row["secondary_interest_rate"] / 100/ 12;
                 $leftovermonths = ($row["mortgage_term"] - $row["YearRate"]) * 12;
-                $remainingamount = $row["borrow_amount"] - $initialmonthlyPayments * $initialmonths
+                $remainingamount = $row["borrow_amount"] - $initialmonthlyPayments * $initialmonths;
                 $secondarymonthlyPayments = $remainingamount * (($secondarymonthlyInterestRate * pow((1 + $secondarymonthlyInterestRate), $leftovermonths)) / (pow((1 + $secondarymonthlyInterestRate), $leftovermonths) - 1));
                 $secondaryrounded = round($secondarymonthlyPayments,2);
 
