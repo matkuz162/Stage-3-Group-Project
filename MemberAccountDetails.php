@@ -205,7 +205,7 @@ if (isset($_POST['finance-submit'])) {
 
 <div class="delete">
   <div> <button class="btn btn-delete-user" id="delete-userBtn">Delete Account</button></div>
-  <div><button class="btn btn-changePassword-user" id="changePassword-userBtn">Change Password</button></div>
+  <div><button class="btn btn-changePassword-user" onclick="passwordSubmitBtnClick()" id="changePassword-userBtn">Change Password</button></div>
 </div>
 
 
