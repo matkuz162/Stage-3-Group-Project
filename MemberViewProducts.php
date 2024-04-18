@@ -40,7 +40,6 @@ $sql = "SELECT *
         LEFT JOIN RegisteredUser ON (RegisteredUser.RegisteredUser_ID = financialdetails.RegisteredUser_ID)
         LEFT JOIN Quote ON (Quote.Product_ID = Product.Product_ID)
         WHERE Product.expected_income <= (SELECT annual_income FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID)
-        AND Product.expected_outgoings <= (SELECT monthly_spending_amounts FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID)
         AND Product.expected_credit_score <= (SELECT credit_score FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID)
         AND Product.ltv_ratio <= (SELECT ltv_ratio FROM financialdetails WHERE RegisteredUser_ID = $RegisteredUser_ID);";
 
@@ -91,9 +90,9 @@ $statement = $db->query($sql);
             <div class="input-group mb-3">
                 <label class="input-group-text" for="sorting">Sort By:</label>
                 <select class="form-select" id="sorting">
-                    <option selected>Monthly Payments</option>
-                    <option value="1">Initial Rate</option>
-                    <option value="2">Initial Period</option>
+                    <option  value="1"selected>Monthly Payments</option>
+                    <option value="2">Initial Rate</option>
+                    <option value="3">Initial Period</option>
                 </select>
             </div>
 
