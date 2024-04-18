@@ -82,6 +82,7 @@ $statement->execute();
             </div>
 
         </div>
+        
         <div class="flex-table">
             <?php while ($row = $statement->fetch(PDO::FETCH_ASSOC)) { 
                 $initialmonthlyInterestRate = $row["initial_interest_rate"] / 100/ 12;
