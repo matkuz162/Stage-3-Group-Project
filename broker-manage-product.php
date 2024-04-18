@@ -6,11 +6,32 @@ if (isset($_SESSION['Broker_ID'])){
 
     //fetching products associated with the current broker
     $brokerId = $_SESSION['Broker_ID'];
-    $stmt = $db->prepare("SELECT * FROM Product WHERE Broker_ID = ?");
+    $sortOption = isset($_GET['sort']) ? $_GET['sort'] : 'initial-rate-desc';
+    
+    $query = "SELECT * FROM Product WHERE Broker_ID = ?";
+    if ($sortOption == 'initial-rate-desc') {
+        $query .= " ORDER BY initial_interest_rate DESC";
+    } else if ($sortOption == 'initial-rate-asc'){
+        $query .= " ORDER BY initial_interest_rate ASC";
+    } else if ($sortOption == 'year-rate-desc'){
+        $query .= " ORDER BY YearRate DESC";
+    } else if ($sortOption == 'year-rate-asc'){
+        $query .= " ORDER BY YearRate ASC";
+    }
+    
+    $stmt = $db->prepare("$query");
     $stmt->execute([$brokerId]);
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
-
+    <script>
+    function sortProducts() {
+        var sortBy = document.getElementById("sort-by").value;
+    console.log("Selected sorting option:", sortBy);
+    var url = "broker-manage-product.php?sort=" + sortBy;
+    console.log("Redirecting to:", url);
+    window.location.href = url;
+}
+    </script>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -18,7 +39,7 @@ if (isset($_SESSION['Broker_ID'])){
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
-        <link href="style.css" rel="stylesheet"></link> 
+        <link href="style.css"rel="stylesheet"></link> 
     </head>
     <body>
     <header class="flex-container">
@@ -46,11 +67,11 @@ if (isset($_SESSION['Broker_ID'])){
                             <a>Sort By:</a>
                         </div>
                         <div>
-                            <select>
-                                <option>Highest Rate</option>
-                                <option>Lowest Rate</option>
-                                <option>Longest Period</option>
-                                <option>Shortest Period</option>
+                            <select id="sort-by" onchange="sortProducts()">
+                                <option value="initial-rate-desc" <?php echo ($sortOption == 'initial-rate-desc')? 'selected' : '';?>>Highest Rate</option>
+                                <option value="initial-rate-asc" <?php echo ($sortOption == 'initial-rate-asc')? 'selected' : '';?>>Lowest Rate</option>
+                                <option value="year-rate-desc" <?php echo ($sortOption == 'year-rate-desc')? 'selected' : '';?>>Longest Period</option>
+                                <option value="year-rate-asc" <?php echo ($sortOption == 'year-rate-asc')? 'selected' : '';?>>Shortest Period</option>
                             </select>
                         </div>
                     </div>
@@ -119,7 +140,7 @@ if (isset($_SESSION['Broker_ID'])){
                     });
                     if (!empty($draftProducts)) : ?>
                     <?php foreach ($draftProducts as $product) : ?>
-                    <div class="product-area">
+                        <div class="product-area">
                         <div class="product-header">
                             <h3><?php echo $product['YearRate'];?> year <?php echo $product['ProductType'];?></h3>
                             <div class="product-btns">
@@ -129,7 +150,7 @@ if (isset($_SESSION['Broker_ID'])){
                         </div>
                         <div class="product-section">
                             <div class="manage-product-information">
-                            <div class="initial-rate-section">
+                                <div class="initial-rate-section">
                                     <h5>Initial rate</h5>
                                     <p><?php echo $product['initial_interest_rate']?></p>
                                 </div>
@@ -145,6 +166,7 @@ if (isset($_SESSION['Broker_ID'])){
                                     <h5>Maximum Loan to Value</h5>
                                     <p><?php echo $product['mtv_ratio']?></p>
                                 </div>
+                            </div>
                         </div>
                     </div>
                     <?php endforeach; ?>
