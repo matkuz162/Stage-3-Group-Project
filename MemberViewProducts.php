@@ -19,10 +19,10 @@ if (isset($_POST['compare'])) {
     $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
 
     $sql = "INSERT INTO Quote (Product_ID, RegisteredUser_ID, initial_monthly_repayments, secondary_monthly_repayments, total_repayment, product_starred) 
-            VALUES (:productID, :RegisteredUser_ID, 100, 100, 100, 0)";
+            VALUES (:ProductID, :RegisteredUser_ID, 100, 100, 100, 0)";
     
     $statement = $db->prepare($sql);
-    $statement->bindParam(':productID', $productID);
+    $statement->bindParam(':ProductID', $productID);
     $statement->bindParam(':RegisteredUser_ID', $RegisteredUser_ID);
     $statement->execute();
 
