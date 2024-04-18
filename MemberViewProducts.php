@@ -13,6 +13,27 @@ if (!isset($_SESSION['RegisteredUser_ID'])) {
 
 $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
 
+
+if (isset($_POST['compare'])) {
+    $productID = $_POST['Product_id'];
+    $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
+
+    $sql = "INSERT INTO Quote (Product_ID, RegisteredUser_ID, initial_monthly_repayments, secondary_monthly_repayments, total_repayment, product_starred) 
+            VALUES (:ProductID, :RegisteredUser_ID, 100, 100, 100, 0)";
+    
+    $statement = $db->prepare($sql);
+    $statement->bindParam(':ProductID', $productID);
+    $statement->bindParam(':RegisteredUser_ID', $RegisteredUser_ID);
+    $statement->execute();
+
+    $updateSql = "UPDATE Quote SET product_starred = 1 WHERE Product_ID = :Product_id AND RegisteredUser_ID = :RegisteredUser_ID";
+    $updateStatement = $db->prepare($updateSql);
+    $updateStatement->bindParam(':Product_id', $productID);
+    $updateStatement->bindParam(':RegisteredUser_ID', $RegisteredUser_ID);
+    $updateStatement->execute();
+}
+
+
 $sql = "SELECT *
         FROM Product
         LEFT JOIN financialdetails ON (financialdetails.RegisteredUser_ID = Product.Broker_ID)
@@ -67,12 +88,11 @@ $statement = $db->query($sql);
 
         <div>
             <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupSelect01">Sort By:</label>
-                <select class="form-select" id="inputGroupSelect01">
+                <label class="input-group-text" for="sorting">Sort By:</label>
+                <select class="form-select" id="sorting">
                     <option selected>Monthly Payments</option>
-                    <option value="1">Total Repayment</option>
-                    <option value="2">Initial Rate</option>
-                    <option value="3">Initial Period</option>
+                    <option value="1">Initial Rate</option>
+                    <option value="2">Initial Period</option>
                 </select>
             </div>
 
@@ -88,17 +108,24 @@ $statement = $db->query($sql);
     <div class="flex-table">
         <?php
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+            $monthlyInterestRate = $row["initial_interest_rate"] / 100/ 12;
+            $months = $row["YearRate"]*12;
+            $monthlyPayments = $row["initial_interest_rate"] * ($monthlyInterestRate * pow((1 + $monthlyInterestRate), $months)) / (pow((1 + $monthlyInterestRate), $months) - 1);
+            $rounded = round($monthlyPayments,2);
         ?>
         <div class="card" style="width: 18rem; margin-bottom: 50px;">
             <div class="card-body">
-            <h5 class="card-title"><b><?php echo $row["YearRate"] . " Year " . $row["ProductType"]; ?></b></h5>
+                <h5 class="card-title"><b><?php echo $row["YearRate"] . " Year " . $row["ProductType"]; ?></b></h5>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Initial Monthly Cost: </b><?php echo $row["initial_monthly_repayments"]; ?></li>
+                    <li class="list-group-item"><b>Monthly Payments: </b><?php echo $rounded; ?></li>
                     <li class="list-group-item"><b>Initial rate: </b><?php echo $row["initial_interest_rate"]; ?></li>
                     <li class="list-group-item"><b>Product fee: </b><?php echo $row["ProductFee"]; ?></li>
                 </ul>
                 <br>
-                <a href="#" class="btn btn-primary">Compare</a>
+                <form method="post" action="">
+                    <input type="hidden" name="Product_id" value="<?php echo $row['Product_ID']; ?>">
+                    <button type="submit" name="compare" class="btn btn-primary">Compare</button>
+                </form>
             </div>
         </div>
         <?php

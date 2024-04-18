@@ -23,7 +23,8 @@ $sql = "SELECT *
         LEFT JOIN Product ON (Quote.Product_ID = Product.Product_ID)
         LEFT JOIN financialdetails ON (financialdetails.RegisteredUser_ID = RegisteredUser.RegisteredUser_ID)
         WHERE product_starred = 1
-        AND RegisteredUser.RegisteredUser_ID = :registered_user_id";
+        AND RegisteredUser.RegisteredUser_ID = :registered_user_id
+        ";
 
 $statement = $db->prepare($sql);
 $statement->bindParam(':registered_user_id', $RegisteredUser_ID);
@@ -82,17 +83,30 @@ $statement->execute();
 
         </div>
         <div class="flex-table">
-            <?php while ($row = $statement->fetch(PDO::FETCH_ASSOC)) { ?>
+            <?php while ($row = $statement->fetch(PDO::FETCH_ASSOC)) { 
+                $initialmonthlyInterestRate = $row["initial_interest_rate"] / 100/ 12;
+                $initialmonths = $row["YearRate"]*12;
+                $initialmonthlyPayments = $row["borrow_amount"] * ($initialmonthlyInterestRate * pow((1 + $initialmonthlyInterestRate), $initialmonths)) / (pow((1 + $initialmonthlyInterestRate), $initialmonths) - 1);
+                $initialrounded = round($initialmonthlyPayments,2);
+
+                $secondarymonthlyInterestRate = $row["secondary_interest_rate"] / 100/ 12;
+                $leftovermonths = ($row["mortgage_term"] - $row["YearRate"]) * 12;
+                $secondarymonthlyPayments = $secondarymonthlyInterestRate * (($secondarymonthlyInterestRate * pow((1 + $secondarymonthlyInterestRate), $leftovermonths)) / (pow((1 + $secondarymonthlyInterestRate), $leftovermonths) - 1));
+                $secondaryrounded = round($secondarymonthlyPayments,2);
+
+                $totalpayment = ($initialmonths * $initialmonthlyPayments) + ($leftovermonths * $secondarymonthlyPayments);
+                $totalpaymentrounded = round($totalpayment,2);
+                ?>
                 <div class="card" style="width: 18rem;">
                     <div class="card-header">
                         <?php echo $row["YearRate"] . " Year " . $row["ProductType"]; ?>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><b>Initial Rate: </b><?php echo $row["initial_interest_rate"]; ?></li>
+                        <li class="list-group-item"><b>Initial Rate: </b>£<?php echo $row["initial_interest_rate"]; ?></li>
                         <li class="list-group-item"><b>Product Fee: </b><?php echo $row["ProductFee"]; ?></li>
-                        <li class="list-group-item"><b>Initial Monthly Payments: </b><?php echo $row["initial_monthly_repayments"]; ?></li>
-                        <li class="list-group-item"><b>Secondary Monthly Payments: </b><?php echo $row["secondary_monthly_repayments"]; ?></li>
-                        <li class="list-group-item"><b>Total Repayment: </b><?php echo $row["total_repayment"]; ?></li>
+                        <li class="list-group-item"><b>Monthly Payments: </b>£<?php echo $initialrounded; ?></li>
+                        <li class="list-group-item"><b>Remaining Monthly Payments: </b>£<?php echo $secondaryrounded; ?></li>
+                        <li class="list-group-item"><b>Total Repayment: </b>£<?php echo $totalpaymentrounded; ?></li>
                     </ul>
                     
                     <form method="post" action="">
