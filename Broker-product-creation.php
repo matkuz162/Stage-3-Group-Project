@@ -61,21 +61,17 @@ include 'connection.php';
                             </select><br>
                             <label class="label-group" for="base-interest">Initial Interest Rate *</label>
                             <input class="form-control" type="text" id="base-interest" name="base-interest"><br>
-                            <label class="label-group" for="secondary-interest">Secondary Interest Rate *</label>
-                            <input class="form-control" type="text" id="secondary-interest" name="secondary-interest"><br>
                             <label class="label-group" for="product-fee">Product Fee *</label>
                             <input class="form-control" type="text" id="product-fee" name="product-fee"><br>
                         </div>
                     
                         <div class="expected-description">
-                            <label  class="label-group" for="expected-income">Expected annual income *</label>
+                            <label  class="label-group" for="expected-income">Expected available income *</label>
                             <input class="form-control" type="text" id="expected-income" name="expected-income"><br>
-                            <label  class="label-group" for="expected-outgoings">Expected monthly outgoings *</label>
-                            <input class="form-control" type="text" id="expected-outgoings" name="expected-outgoings"><br>
                             <label  class="label-group" for="expected-credit">Expected Credit Score *</label>
                             <input class="form-control" type="text" id="expected-credit" name="expected-credit"><br>
-                            <label  class="label-group" for="mtv-ratio">Maximum loan to value ratio *</label>
-                            <input class="form-control" type="text" id="mtv-ratio" name="mtv-ratio"><br>
+                            <label  class="label-group" for="ltv-ratio">Maximum loan to value ratio *</label>
+                            <input class="form-control" type="text" id="ltv-ratio" name="ltv-ratio"><br>
                             <label for="isDraft">Set as Draft *</label>
                             <input type="checkbox" id="isDraft" name="isDraft" style="width:25px;height:25px"/>
                         </div>
