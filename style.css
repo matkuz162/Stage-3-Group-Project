@@ -505,12 +505,19 @@ form.reset-password {
 }
 
 /* delete button */
-.btn-delete-user {
+
+.delete{
+  display: flex;
+  justify-content:center;
+  align-content: space-between;
+}
+.btn-delete-user ,.btn-changePassword-user {
   background-color: #dc3545;
   border-color: #dc3545;
   color: #fff;
   width: 100px;
-  margin-left: 85%;
+  /* margin-right: 5px; */
+
 }
 
 
@@ -524,7 +531,7 @@ form.reset-password {
   border-color: #dc3545;
   color: #fff;
   width: 100px;
-  margin-left: 85%;
+
 }
 
 
