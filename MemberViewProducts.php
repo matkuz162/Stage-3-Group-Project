@@ -110,8 +110,8 @@ $statement = $db->query($sql);
         <?php
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
             $initialmonthlyInterestRate = $row["initial_interest_rate"] / 100/ 12;
-            $initialmonths = $row["YearRate"]*12;
-            $initialmonthlyPayments = $row["borrow_amount"] * ($initialmonthlyInterestRate * pow((1 + $initialmonthlyInterestRate), $initialmonths)) / (pow((1 + $initialmonthlyInterestRate), $initialmonths) - 1);
+            $initialmonths = $row["mortgage_term"]*12;
+            $initialmonthlyPayments = $row["borrow_amount"] * (($initialmonthlyInterestRate * pow((1 + $initialmonthlyInterestRate), $initialmonths)) / (pow((1 + $initialmonthlyInterestRate), $initialmonths) - 1));
             $initialrounded = round($initialmonthlyPayments,2);
         ?>
         <div class="card" style="width: 18rem; margin-bottom: 50px;">
