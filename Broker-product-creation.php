@@ -77,7 +77,7 @@ include 'connection.php';
                             <label  class="label-group" for="mtv-ratio">Maximum loan to value ratio *</label>
                             <input class="form-control" type="text" id="mtv-ratio" name="mtv-ratio"><br>
                             <label for="isDraft">Set as Draft *</label>
-                            <input type="checkbox" name="isDraft" style="width:25px;height:25px"/>
+                            <input type="checkbox" id="isDraft" name="isDraft" style="width:25px;height:25px"/>
                         </div>
                     </div>
                     <div>

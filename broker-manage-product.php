@@ -106,11 +106,11 @@ if (isset($_SESSION['Broker_ID'])){
                             <div class="manage-product-information">
                                 <div class="initial-rate-section">
                                     <h5>Initial rate</h5>
-                                    <p><?php echo $product['initial_interest_rate']?></p>
+                                    <p><?php echo $product['initial_interest_rate']?>%</p>
                                 </div>
                                 <div class="secondary-rate-section">
                                     <h5>Secondary rate</h5>
-                                    <p><?php echo $product['secondary_interest_rate']?></p>
+                                    <p><?php echo $product['secondary_interest_rate']?>%</p>
                                 </div>
                                 <div class="product-fee-section">
                                     <h5>Product Fee</h5>
@@ -118,7 +118,7 @@ if (isset($_SESSION['Broker_ID'])){
                                 </div>
                                 <div class="mtv-section">
                                     <h5>Maximum Loan to Value</h5>
-                                    <p><?php echo $product['mtv_ratio']?></p>
+                                    <p><?php echo $product['mtv_ratio']?>%</p>
                                 </div>
                             </div>
                         </div>
@@ -152,11 +152,11 @@ if (isset($_SESSION['Broker_ID'])){
                             <div class="manage-product-information">
                                 <div class="initial-rate-section">
                                     <h5>Initial rate</h5>
-                                    <p><?php echo $product['initial_interest_rate']?></p>
+                                    <p><?php echo $product['initial_interest_rate']?>%</p>
                                 </div>
                                 <div class="secondary-rate-section">
                                     <h5>Secondary rate</h5>
-                                    <p><?php echo $product['secondary_interest_rate']?></p>
+                                    <p><?php echo $product['secondary_interest_rate']?>%</p>
                                 </div>
                                 <div class="product-fee-section">
                                     <h5>Product Fee</h5>
@@ -164,7 +164,7 @@ if (isset($_SESSION['Broker_ID'])){
                                 </div>
                                 <div class="mtv-section">
                                     <h5>Maximum Loan to Value</h5>
-                                    <p><?php echo $product['mtv_ratio']?></p>
+                                    <p><?php echo $product['mtv_ratio']?>%</p>
                                 </div>
                             </div>
                         </div>

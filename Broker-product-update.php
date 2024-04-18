@@ -65,8 +65,6 @@ include 'connection.php';
                     <input class="form-control" type="text" id="secondary-interest" name="secondary-interest" value="<?php echo $product['secondary_interest_rate']; ?>"><br>
                     <label class="label-group" for="product-fee">Product Fee *</label>
                     <input class="form-control" type="text" id="product-fee" name="product-fee" value="<?php echo $product['ProductFee']; ?>"><br>
-                    <label for="isDraft">Set as Draft *</label>
-                    <input type="checkbox" name="isDraft"  <?= ($product['aDraft'] == 0) ? '': 'checked'; ?> style="width:25px;height:25px"/>
                 </div>
                     
                 <div class="expected-description">
@@ -78,6 +76,8 @@ include 'connection.php';
                     <input class="form-control" type="text" id="expected-credit" name="expected-credit" value="<?php echo $product['expected_credit_score']; ?>"><br>
                     <label  class="label-group" for="mtv-ratio">Maximum loan to value ratio *</label>
                     <input class="form-control" type="text" id="mtv-ratio" name="mtv-ratio" value="<?php echo $product['mtv_ratio']; ?>"><br>
+                    <label for="isDraft">Set as Draft *</label>
+                    <input type="checkbox" name="isDraft" id="isDraft"  <?= ($product['aDraft'] == 0) ? '': 'checked'; ?> style="width:25px;height:25px"/>
                     <input type="hidden" name="product-id" value="<?php echo $productId; ?>">
                 </div>
             </div>
