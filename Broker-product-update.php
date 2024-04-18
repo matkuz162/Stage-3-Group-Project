@@ -68,14 +68,12 @@ include 'connection.php';
                 </div>
                     
                 <div class="expected-description">
-                    <label  class="label-group" for="expected-income">Expected annual income *</label>
+                    <label  class="label-group" for="expected-income">Expected available income *</label>
                     <input class="form-control" type="text" id="expected-income" name="expected-income" value="<?php echo $product['expected_income']; ?>"><br>
-                    <label  class="label-group" for="expected-outgoings">Expected monthly outgoings *</label>
-                    <input class="form-control" type="text" id="expected-outgoings" name="expected-outgoings" value="<?php echo $product['expected_outgoings']; ?>"><br>
                     <label  class="label-group" for="expected-credit">Expected Credit Score *</label>
                     <input class="form-control" type="text" id="expected-credit" name="expected-credit" value="<?php echo $product['expected_credit_score']; ?>"><br>
-                    <label  class="label-group" for="mtv-ratio">Maximum loan to value ratio *</label>
-                    <input class="form-control" type="text" id="mtv-ratio" name="mtv-ratio" value="<?php echo $product['mtv_ratio']; ?>"><br>
+                    <label  class="label-group" for="ltv-ratio">Maximum loan to value ratio *</label>
+                    <input class="form-control" type="text" id="ltv-ratio" name="ltv-ratio" value="<?php echo $product['ltv_ratio']; ?>"><br>
                     <label for="isDraft">Set as Draft *</label>
                     <input type="checkbox" name="isDraft" id="isDraft"  <?= ($product['aDraft'] == 0) ? '': 'checked'; ?> style="width:25px;height:25px"/>
                     <input type="hidden" name="product-id" value="<?php echo $productId; ?>">
