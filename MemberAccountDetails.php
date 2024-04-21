@@ -203,9 +203,11 @@ if (isset($_POST['finance-submit'])) {
     </main>
 
 
-<div class="container mt-5">
-  <button class="btn btn-delete-user" id="delete-userBtn">Delete Account</button>
+<div class="delete">
+  <div> <button class="btn btn-delete-user" id="delete-userBtn">Delete Account</button></div>
+  <div><button class="btn btn-changePassword-user" onclick="passwordSubmitBtnClick()" id="changePassword-userBtn">Change Password</button></div>
 </div>
+
 
 
 <footer>

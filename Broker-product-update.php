@@ -61,8 +61,6 @@ include 'connection.php';
                     </select><br>
                     <label class="label-group" for="base-interest">Initial Interest Rate *</label>
                     <input class="form-control" type="text" id="base-interest" name="base-interest" value="<?php echo $product['initial_interest_rate']; ?>"><br>
-                    <label class="label-group" for="secondary-interest">Secondary Interest Rate *</label>
-                    <input class="form-control" type="text" id="secondary-interest" name="secondary-interest" value="<?php echo $product['secondary_interest_rate']; ?>"><br>
                     <label class="label-group" for="product-fee">Product Fee *</label>
                     <input class="form-control" type="text" id="product-fee" name="product-fee" value="<?php echo $product['ProductFee']; ?>"><br>
                 </div>
@@ -72,7 +70,7 @@ include 'connection.php';
                     <input class="form-control" type="text" id="expected-income" name="expected-income" value="<?php echo $product['expected_income']; ?>"><br>
                     <label  class="label-group" for="expected-credit">Expected Credit Score *</label>
                     <input class="form-control" type="text" id="expected-credit" name="expected-credit" value="<?php echo $product['expected_credit_score']; ?>"><br>
-                    <label  class="label-group" for="ltv-ratio">Maximum loan to value ratio *</label>
+                    <label  class="label-group" for="ltv-ratio">Maximum loan to value ratio (In %)  *</label>
                     <input class="form-control" type="text" id="ltv-ratio" name="ltv-ratio" value="<?php echo $product['ltv_ratio']; ?>"><br>
                     <label for="isDraft">Set as Draft *</label>
                     <input type="checkbox" name="isDraft" id="isDraft"  <?= ($product['aDraft'] == 0) ? '': 'checked'; ?> style="width:25px;height:25px"/>
