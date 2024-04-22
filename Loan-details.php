@@ -93,7 +93,7 @@ if (!$loanDetails) {
 <html lang="en">
 
 <head>
-    <title>Financial Details</title>
+    <title>Loan Details</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
