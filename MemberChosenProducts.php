@@ -107,7 +107,7 @@ $statement->execute();
                 $initialmonthlyPayments = $row["borrow_amount"] * (($initialmonthlyInterestRate * pow((1 + $initialmonthlyInterestRate), $initialmonths)) / (pow((1 + $initialmonthlyInterestRate), $initialmonths) - 1));
                 $initialrounded = round($initialmonthlyPayments,2);
                 
-                if ($row["ProductType"] = "FixedRate") {
+                if ($row["ProductType"] = "Fixed Rate") {
                     $remainingmonthlyInterestRate = 7.5/100/12;
                     $remainingmonths = ($row["mortgage_term"] - $row["YearRate"]) * 12;
                     $remainingamount = ($row["borrow_amount"] - ($row["YearRate"] * $initialmonthlyPayments));
