@@ -18,20 +18,30 @@ if (isset($_POST['compare'])) {
     $productID = $_POST['Product_id'];
     $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
 
-    $sql = "INSERT INTO Quote (Product_ID, RegisteredUser_ID, product_starred) 
-            VALUES (:ProductID, :RegisteredUser_ID,0)";
-    
-    $statement = $db->prepare($sql);
-    $statement->bindParam(':ProductID', $productID);
-    $statement->bindParam(':RegisteredUser_ID', $RegisteredUser_ID);
-    $statement->execute();
+    $checkSql = "SELECT COUNT(*) FROM Quote WHERE Product_ID = :ProductID AND RegisteredUser_ID = :RegisteredUser_ID";
+    $checkStatement = $db->prepare($checkSql);
+    $checkStatement->bindParam(':ProductID', $productID);
+    $checkStatement->bindParam(':RegisteredUser_ID', $RegisteredUser_ID);
+    $checkStatement->execute();
+    $quoteCount = $checkStatement->fetchColumn();
 
-    $updateSql = "UPDATE Quote SET product_starred = 1 WHERE Product_ID = :Product_id AND RegisteredUser_ID = :RegisteredUser_ID";
-    $updateStatement = $db->prepare($updateSql);
-    $updateStatement->bindParam(':Product_id', $productID);
-    $updateStatement->bindParam(':RegisteredUser_ID', $RegisteredUser_ID);
-    $updateStatement->execute();
+    if ($quoteCount == 0) {
+        $sql = "INSERT INTO Quote (Product_ID, RegisteredUser_ID, product_starred) 
+                VALUES (:ProductID, :RegisteredUser_ID, 1)";
+
+        $statement = $db->prepare($sql);
+        $statement->bindParam(':ProductID', $productID);
+        $statement->bindParam(':RegisteredUser_ID', $RegisteredUser_ID);
+        $statement->execute();
+    } else {
+        $updateSql = "UPDATE Quote SET product_starred = 1 WHERE Product_ID = :ProductID AND RegisteredUser_ID = :RegisteredUser_ID";
+        $updateStatement = $db->prepare($updateSql);
+        $updateStatement->bindParam(':ProductID', $productID);
+        $updateStatement->bindParam(':RegisteredUser_ID', $RegisteredUser_ID);
+        $updateStatement->execute();
+    }
 }
+
 $sql = "SELECT *
         FROM Product
         LEFT JOIN financialdetails ON (financialdetails.RegisteredUser_ID = Product.Broker_ID)
@@ -117,16 +127,11 @@ $statement = $db->query($sql);
     <div class="flex-table">
         <?php
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-            $initialmonthlyInterestRate = $row["initial_interest_rate"] / 100/ 12;
-            $initialmonths = $row["mortgage_term"]*12;
-            $initialmonthlyPayments = $row["borrow_amount"] * (($initialmonthlyInterestRate * pow((1 + $initialmonthlyInterestRate), $initialmonths)) / (pow((1 + $initialmonthlyInterestRate), $initialmonths) - 1));
-            $initialrounded = round($initialmonthlyPayments,2);
         ?>
         <div class="card" style="width: 18rem; margin-bottom: 50px;">
             <div class="card-body">
                 <h5 class="card-title"><b><?php echo $row["YearRate"] . " Year " . $row["ProductType"]; ?></b></h5>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Monthly Payments: </b><?php echo $initialrounded; ?></li>
                     <li class="list-group-item"><b>Initial rate: </b><?php echo $row["initial_interest_rate"]; ?></li>
                     <li class="list-group-item"><b>Product fee: </b><?php echo $row["ProductFee"]; ?></li>
                 </ul>
