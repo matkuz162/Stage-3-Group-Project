@@ -25,6 +25,7 @@ if (isset($_POST['compare'])) {
     $checkStatement->execute();
     $quoteCount = $checkStatement->fetchColumn();
 
+
     if ($quoteCount == 0) {
         $sql = "INSERT INTO Quote (Product_ID, RegisteredUser_ID, product_starred) 
                 VALUES (:ProductID, :RegisteredUser_ID, 1)";
@@ -41,6 +42,7 @@ if (isset($_POST['compare'])) {
         $updateStatement->execute();
     }
 }
+
 
 $sql = "SELECT *
         FROM Product
