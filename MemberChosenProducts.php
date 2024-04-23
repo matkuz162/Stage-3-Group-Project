@@ -106,12 +106,25 @@ $statement->execute();
                 $initialmonths = $row["mortgage_term"]*12;
                 $initialmonthlyPayments = $row["borrow_amount"] * (($initialmonthlyInterestRate * pow((1 + $initialmonthlyInterestRate), $initialmonths)) / (pow((1 + $initialmonthlyInterestRate), $initialmonths) - 1));
                 $initialrounded = round($initialmonthlyPayments,2);
+                
+                if ($row["ProductType"] = "FixedRate") {
+                    $remainingmonthlyInterestRate = 7.5/100/12;
+                    $remainingmonths = ($row["mortgage_term"] - $row["YearRate"]) * 12;
+                    $remainingamount = ($row["borrow_amount"] - ($row["YearRate"] * $initialmonthlyPayments));
+                    $remainingmonthlyPayments = $remainingamount * (($remainingmonthlyInterestRate * pow((1 + $remainingmonthlyInterestRate), $remainingmonths)) / (pow((1 + $remainingmonthlyInterestRate), $remainingmonths) - 1));
+                    $remainingrounded = round($remainingmonthlyPayments,2);
 
-                $remainingmonthlyInterestRate = 7.5/100/12;
-                $remainingmonths = ($row["mortgage_term"] - $row["YearRate"]) * 12;
-                $remainingamount = ($row["borrow_amount"] - ($row["YearRate"] * $initialmonthlyPayments));
-                $remainingmonthlyPayments = $remainingamount * (($remainingmonthlyInterestRate * pow((1 + $remainingmonthlyInterestRate), $remainingmonths)) / (pow((1 + $remainingmonthlyInterestRate), $remainingmonths) - 1));
-                $remainingrounded = round($remainingmonthlyPayments,2);
+                } else {
+                    $trackedrate = 7.5 - $row["initial_interest_rate"];
+                    if ($trackedrate < 3){
+                        $trackedrate = 3;
+                    }
+                    $remainingmonthlyInterestRate = ($trackedrate)/100/12;
+                    $remainingmonths = ($row["mortgage_term"] - $row["YearRate"]) * 12;
+                    $remainingamount = ($row["borrow_amount"] - ($row["YearRate"] * $initialmonthlyPayments));
+                    $remainingmonthlyPayments = $remainingamount * (($remainingmonthlyInterestRate * pow((1 + $remainingmonthlyInterestRate), $remainingmonths)) / (pow((1 + $remainingmonthlyInterestRate), $remainingmonths) - 1));
+                    $remainingrounded = round($remainingmonthlyPayments,2);
+                }
 
                 $totalpayment = (($row["YearRate"]*12)*$initialmonthlyPayments) + ((($row["mortgage_term"]-$row["YearRate"])*12)*$remainingmonthlyPayments);
                 $totalrounded = round($totalpayment,2);
