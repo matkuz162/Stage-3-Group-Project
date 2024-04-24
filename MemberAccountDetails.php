@@ -4,7 +4,6 @@ session_start();
 include 'connection.php'; 
 
 if (!isset($_SESSION['RegisteredUser_ID'])) {
-  // Redirect to login page
   header('Location: login.php');
   exit();
 }
@@ -15,26 +14,22 @@ $sqlPersonal = "SELECT first_name, last_name, email, phone_number, country, coun
 $sqlFinancial = "SELECT annual_income, additional_income_amount, total_balance, other_commitments, credit_score FROM financialdetails WHERE RegisteredUser_ID=:RegisteredUser_ID";
 $sqlLoan = "SELECT mortgage_reason, estimated_property_value, borrow_amount, mortgage_term FROM financialdetails WHERE RegisteredUser_ID=:RegisteredUser_ID";
 
-// Fetch personal details
 $stmtPersonal = $db->prepare($sqlPersonal);
 $stmtPersonal->bindParam(':RegisteredUser_ID', $RegisteredUser_ID, PDO::PARAM_INT);
 $stmtPersonal->execute();
 $personalDetails = $stmtPersonal->fetch(PDO::FETCH_ASSOC);
 
-// Fetch financial details
 $stmtFinancial = $db->prepare($sqlFinancial);
 $stmtFinancial->bindParam(':RegisteredUser_ID', $RegisteredUser_ID, PDO::PARAM_INT);
 $stmtFinancial->execute();
 $financialDetails = $stmtFinancial->fetch(PDO::FETCH_ASSOC);
 
-// Fetch loan details
 $stmtLoan = $db->prepare($sqlLoan);
 $stmtLoan->bindParam(':RegisteredUser_ID', $RegisteredUser_ID, PDO::PARAM_INT);
 $stmtLoan->execute();
 $loanDetails = $stmtLoan->fetch(PDO::FETCH_ASSOC);
 
 if (isset($_POST['submit'])) {
-  // Update personal details
   $first_name = $_POST['first_name'];
   $last_name = $_POST['last_name'];
   $email = $_POST['email'];
@@ -67,7 +62,6 @@ if (isset($_POST['submit'])) {
 }
 
 if (isset($_POST['finance-submit'])) {
-  // Update financial details
   $annual_income = $_POST['annual_income'];
   $additional_income = $_POST['additional_income'];
   $total_balance = $_POST['total_balance'];

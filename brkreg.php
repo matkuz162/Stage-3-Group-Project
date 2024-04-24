@@ -15,21 +15,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $broker_name = $_POST['broker_name'];
     $broker_license_number = $_POST["broker_license_number"];
     $company_name = $_POST["company_name"];
-    $company_registration_number = $_POST['company_registration_number']; // Matched variable name to column name
+    $company_registration_number = $_POST['company_registration_number'];
     $company_country = $_POST["company_country"];
     $company_county = $_POST["company_county"];
-    $company_city = $_POST['company_city']; // Directly assigning from POST data
-    $company_postcode = $_POST['company_postcode']; // Directly assigning from POST data
-    $role = "Broker"; // Assuming role is a string, change to match your data type
-    
-    // Initialize $confirm_password
+    $company_city = $_POST['company_city']; 
+    $company_postcode = $_POST['company_postcode']; 
+    $role = "Broker"; 
     $confirm_password = $_POST["confirm_password"];
 
     if ($password == $confirm_password) {
         try {
             $db->beginTransaction();
 
-            // Hash the password
+            //Hash the password
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
             $sql = "INSERT INTO Broker (first_name, last_name, email, phone_number, country, city, postcode, password, brokage_name, broker_license_number, company_name, company_registration_number, company_country, company_county, company_city, company_postcode, role) 
@@ -50,8 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(':company_registration_number', $company_registration_number);
             $stmt->bindParam(':company_country', $company_country);
             $stmt->bindParam(':company_county', $company_county);
-            $stmt->bindParam(':company_city', $company_city); // Bind company_city
-            $stmt->bindParam(':company_postcode', $company_postcode); // Bind company_postcode
+            $stmt->bindParam(':company_city', $company_city); 
+            $stmt->bindParam(':company_postcode', $company_postcode); 
             $stmt->bindParam(':role', $role);
 
             $stmt->execute();

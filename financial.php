@@ -1,19 +1,14 @@
 <?php
 session_start();
 
-// Include database connection
 include 'connection.php';
 
-// Check if user is not logged in
 if (!isset($_SESSION['RegisteredUser_ID'])) {
-    // Redirect to login page
     header('Location: login.php');
     exit();
 }
 
-// Process form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
     $annual_income = $_POST["annual_income"];
     $additional_income_amount = $_POST["additional_income_amount"];
     $total_balance = $_POST["total_balance"];
@@ -25,20 +20,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $borrow_amount = $_POST["borrow_amount"];
     $mortgage_term = $_POST["mortgage_term"];
 
-    // Retrieve RegisteredUser_ID from session
     $RegisteredUser_ID = $_SESSION['RegisteredUser_ID'];
 
     try {
-        // Begin transaction
         $db->beginTransaction();
 
-        // SQL query to insert financial details
         $sql = "INSERT INTO financialdetails (RegisteredUser_ID, annual_income, additional_income_amount, total_balance, other_commitments, monthly_spending_amounts, credit_score, mortgage_reason, estimated_property_value, borrow_amount, mortgage_term) 
                 VALUES (:RegisteredUser_ID, :annual_income, :additional_income_amount, :total_balance, :other_commitments, :monthly_spending_amounts, :credit_score, :mortgage_reason, :estimated_property_value, :borrow_amount, :mortgage_term)";
 
         $stmt = $db->prepare($sql);
 
-        // Bind parameters
         $stmt->bindParam(':RegisteredUser_ID', $RegisteredUser_ID);
         $stmt->bindParam(':annual_income', $annual_income);
         $stmt->bindParam(':additional_income_amount', $additional_income_amount);

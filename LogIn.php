@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
         if(isset($db)) {
             
-            // Check if the user exists in the RegisteredUser table
+            //Check if the user exists in the RegisteredUser table
             $stmt = $db->prepare("SELECT * FROM RegisteredUser WHERE email = :email");
             $stmt->bindParam(':email', $enteredemail, PDO::PARAM_STR);
             $stmt->execute();
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo "Incorrect password";
                 }
             } else {
-                // Check if the user exists in the Broker table
+                //Check if the user exists in the Broker table
                 $stmt = $db->prepare("SELECT * FROM Broker WHERE email = :email");
                 $stmt->bindParam(':email', $enteredemail, PDO::PARAM_STR);
                 $stmt->execute();

@@ -7,32 +7,32 @@ document.addEventListener('DOMContentLoaded', function() {
     const editLoanBtn = document.getElementById('editLoanBtn');
     const saveLoanBtn = document.getElementById('saveLoanBtn');
 
-    // Function to toggle between edit and save buttons
+    //Function to toggle between edit and save buttons
     function toggleButtons(editBtn, saveBtn) {
       editBtn.style.display = 'none';
       saveBtn.style.display = 'block';
     }
 
-    // Function to enable editing of form fields
+    //Function to enable editing of form fields
     function enableEditing(fields) {
       fields.forEach(field => {
         field.removeAttribute('readonly');
       });
     }
 
-    // Personal Details
+    //Personal Details
     editPersonalBtn.addEventListener('click', function() {
       toggleButtons(editPersonalBtn, savePersonalBtn);
       enableEditing(document.querySelectorAll('#first_name, #last_name, #email, #phone_number, #country, #county, #city, #postcode'));
     });
 
-    // Financial Details
+    //Financial Details
     editFinancialBtn.addEventListener('click', function() {
       toggleButtons(editFinancialBtn, saveFinancialBtn);
       enableEditing(document.querySelectorAll('#annual_income, #additional_income, #total_balance, #major_monthly_commitments_bool, #credit_score'));
     });
 
-    // Loan Details
+    //Loan Details
     editLoanBtn.addEventListener('click', function() {
       toggleButtons(editLoanBtn, saveLoanBtn);
       enableEditing(document.querySelectorAll('#mortgage_reason, #estimated_property_value, #borrow_amount, #mortgage_term'));

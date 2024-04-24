@@ -58,7 +58,7 @@
     }
     function updateProduct($productId,$yearRate, $productType, $expectedInc,$expectedCredit,$baseInt,$productFee,$loanRatio,$isDraft, $db){
         try {
-            // Constructing the SQL Query based on non-empty fields
+
         $query = "UPDATE Product SET ";
         $params = array();
 
@@ -94,20 +94,17 @@
             $query .= "aDraft=?, ";
             $params[] = $isDraft;
         }
-        // Check if any fields were provided to update
+
         if (empty($params)) {
             header("Location: Broker-product-update.php?id=$productId&error=No fields to update");
             exit();
         }
 
-        // Removing space from the query
         $query = rtrim($query, ", ");
 
-        // Add the WHERE clause for the query
         $query .= " WHERE Product_ID= ?";
         $params[] = $productId;
 
-        // Prepare and execute the statement
         $stmt = $db->prepare($query);
         $stmt->execute($params);
         
