@@ -2,12 +2,12 @@
 include 'connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $firstname = $_POST["first_name"]; // Updated variable name to match HTML form
-    $lastname = $_POST["last_name"]; // Updated variable name to match HTML form
+    $firstname = $_POST["first_name"]; 
+    $lastname = $_POST["last_name"];
     $email = $_POST["email"];
-    $phonenumber = $_POST["phone_number"]; // Updated variable name to match HTML form
+    $phonenumber = $_POST["phone_number"]; 
     $password = $_POST["password"];
-    $confirmPassword = $_POST["confirm_password"]; // Updated variable name to match HTML form
+    $confirmPassword = $_POST["confirm_password"]; 
     $country = $_POST["country"];
     $county = $_POST["county"];
     $city = $_POST["city"];
@@ -15,7 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($password == $confirmPassword) {
         try {
-            // Begin transaction
             $db->beginTransaction();
 
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -39,13 +38,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $stmt->execute();
 
-            // Commit transaction
             $db->commit();
 
             header('Location: financial');
             exit();
         } catch (Exception $e) {
-            // Rollback transaction
             $db->rollBack();
             echo "Error: " . $e->getMessage();
         }
