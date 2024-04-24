@@ -39,7 +39,7 @@ if (isset($_SESSION['Broker_ID'])){
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
-        <link href="style.css"rel="stylesheet"></link> 
+        <link href="css/style.css"rel="stylesheet"></link> 
     </head>
     <body>
     <header class="flex-container">
